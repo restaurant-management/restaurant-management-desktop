@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="GradleJavaFx4.main" target="12" />
+      <module name="GradleJavaFx4.test" target="12" />
       <module name="org.superse.GradleJavaFx4.main" target="1.8" />
       <module name="org.superse.GradleJavaFx4.test" target="1.8" />
     </bytecodeTargetLevel>

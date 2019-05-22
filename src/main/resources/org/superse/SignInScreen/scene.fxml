@@ -1,20 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.StackPane?>
-
-
-<StackPane
-        maxHeight="-Infinity"
-        maxWidth="-Infinity"
-        minHeight="-Infinity"
-        minWidth="-Infinity"
-        prefHeight="400.0"
-        prefWidth="600.0"
-        xmlns="http://javafx.com/javafx/8.0.171"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="org.superse.SignInScreen.Controller">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox prefHeight="400.0" prefWidth="640.0"
+      xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.superse.SignInScreen.Controller">
     <children>
-        <Label fx:id="label" text="Label" />
+        <AnchorPane prefHeight="400.0" prefWidth="752.0" style="-fx-background-color: BLACK;">
+            <children>
+                <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" layoutX="159.0" layoutY="59.0"
+                          prefHeight="282.0" prefWidth="265.0"
+                          style="-fx-background-color: WHITE; -fx-background-radius: 10;">
+                    <children>
+                        <Pane prefHeight="111.0" prefWidth="292.0"
+                              style="-fx-background-color: #7B1FA2; -fx-background-radius: 10;">
+                            <FlowPane.margin>
+                                <Insets top="-50.0"/>
+                            </FlowPane.margin>
+                            <children>
+                                <Label alignment="CENTER" prefHeight="111.0" prefWidth="292.0" text="Đăng nhập"
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font size="22.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <FlowPane alignment="TOP_CENTER" prefHeight="30.0" prefWidth="337.0">
+                            <children>
+                                <!--<ImageView fitHeight="30.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                <!--<Image url="@../Images/icons8-people-outline-64.png" />-->
+                                <!--</image>-->
+                                <!--<FlowPane.margin>-->
+                                <!--<Insets right="10.0" />-->
+                                <!--</FlowPane.margin>-->
+                                <!--</ImageView>-->
+                                <!--<JFXTextField prefHeight="25.0" prefWidth="255.0" promptText="Email..."/>-->
+                            </children>
+                            <FlowPane.margin>
+                                <Insets top="10.0"/>
+                            </FlowPane.margin>
+                        </FlowPane>
+                        <FlowPane alignment="TOP_CENTER" layoutX="10.0" layoutY="96.0" prefHeight="30.0"
+                                  prefWidth="337.0">
+                            <children>
+                                <!--<ImageView fitHeight="30.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">-->
+                                <!--<image>-->
+                                <!--<Image url="@../Images/icons8-people-outline-64.png" />-->
+                                <!--</image>-->
+                                <!--<FlowPane.margin>-->
+                                <!--<Insets right="10.0" />-->
+                                <!--</FlowPane.margin>-->
+                                <!--</ImageView>-->
+                                <!--<JFXPasswordField prefHeight="25.0" prefWidth="255.0" promptText="Password..."/>-->
+                            </children>
+                            <FlowPane.margin>
+                                <Insets top="10.0"/>
+                            </FlowPane.margin>
+                        </FlowPane>
+                        <!--<JFXButton prefHeight="25.0" prefWidth="156.0" ripplerFill="#ab47bc"-->
+                                   <!--style="-fx-background-radius: 10;" text="Đăng nhập" textFill="#9c27b0">-->
+                            <!--<FlowPane.margin>-->
+                                <!--<Insets top="10.0"/>-->
+                            <!--</FlowPane.margin>-->
+                        <!--</JFXButton>-->
+                        <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="17.0" prefWidth="302.0"
+                               text="Quên mật khẩu?" textAlignment="CENTER" textFill="#999999">
+                            <FlowPane.margin>
+                                <Insets top="61.0"/>
+                            </FlowPane.margin>
+                        </Label>
+                    </children>
+                </FlowPane>
+            </children>
+        </AnchorPane>
     </children>
-</StackPane>
+</VBox>
+
