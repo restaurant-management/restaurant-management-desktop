@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GradleJavaFx4.iml" filepath="$PROJECT_DIR$/.idea/modules/GradleJavaFx4.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GradleJavaFx4.main.iml" filepath="$PROJECT_DIR$/.idea/modules/GradleJavaFx4.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GradleJavaFx4.test.iml" filepath="$PROJECT_DIR$/.idea/modules/GradleJavaFx4.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/restaurant-management-desktop.iml" filepath="$PROJECT_DIR$/.idea/restaurant-management-desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/restaurant-management-desktop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/restaurant-management-desktop.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/restaurant-management-desktop.test.iml" filepath="$PROJECT_DIR$/.idea/modules/restaurant-management-desktop.test.iml" />
     </modules>
   </component>
 </project>

@@ -6,6 +6,8 @@
       <module name="GradleJavaFx4.test" target="12" />
       <module name="org.superse.GradleJavaFx4.main" target="1.8" />
       <module name="org.superse.GradleJavaFx4.test" target="1.8" />
+      <module name="restaurant-management-desktop.main" target="11" />
+      <module name="restaurant-management-desktop.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

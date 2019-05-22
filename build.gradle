@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.jfoenix:jfoenix:8.0.8'
+    implementation 'com.jfoenix:jfoenix:9.0.8'
 }
 
 javafx {
