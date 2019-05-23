@@ -10,7 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="restaurant-management-desktop.main" />
-    <orderEntry type="library" name="Gradle: com.jfoenix:jfoenix:9.0.8" level="project" />
+    <orderEntry type="library" name="Gradle: com.jfoenix:jfoenix:8.0.8" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:win:12" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:12" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:12" level="project" />

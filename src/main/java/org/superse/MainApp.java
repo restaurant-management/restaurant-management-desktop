@@ -5,13 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.superse.AccountScreen.AccountScreen;
 import org.superse.SignInScreen.SignInScreen;
 
 public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Scene scene = new Scene(new SignInScreen());
+        Scene scene = new Scene(new AccountScreen());
 
         primaryStage.setTitle("JavaFX and Gradle");
         primaryStage.setScene(scene);
