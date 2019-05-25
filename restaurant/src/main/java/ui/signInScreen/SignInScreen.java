@@ -1,4 +1,4 @@
-package SignInScreen;
+package ui.signInScreen;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class SignInScreen extends StackPane {
     public SignInScreen() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("signInScreen.fxml"));
         this.getChildren().add(root);
     }
 }

@@ -1,4 +1,4 @@
-package AccountScreen;
+package ui.accountScreen;
 
 import javafx.fxml.Initializable;
 

@@ -1,9 +1,7 @@
-import AccountScreen.AccountScreen;
-import SignInScreen.SignInScreen;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import ui.signInScreen.SignInScreen;
 
 import java.io.IOException;
 
@@ -11,9 +9,9 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Scene scene = new Scene(new AccountScreen());
+        Scene scene = new Scene(new SignInScreen());
 
-        primaryStage.setTitle("JavaFX and Gradle");
+        primaryStage.setTitle("Quản lý quán cơm");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

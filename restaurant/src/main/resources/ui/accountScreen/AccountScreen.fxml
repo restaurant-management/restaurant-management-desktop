@@ -13,7 +13,7 @@
     prefWidth="900.0"
     xmlns="http://javafx.com/javafx/11.0.1"
     xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="AccountScreen.Controller"
+    fx:controller="ui.accountScreen.Controller"
 >
     <children>
         <FlowPane>
