@@ -1,2 +1,3 @@
-rootProject.name = 'restaurant-management-desktop'
-
+include 'jfoenix'
+include 'restaurant'
+rootProject.name = 'restaurant-management'

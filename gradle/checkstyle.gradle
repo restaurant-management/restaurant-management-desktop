@@ -1,0 +1,22 @@
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = '8.2'
+    configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+    showViolations = false
+    ignoreFailures = true
+}
+
+checkstyleMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+checkstyleTest.enabled = false
+
+dependencies {
+    checkstyle "com.puppycrawl.tools:checkstyle:$checkstyle.toolVersion"
+    checkstyle 'com.github.sevntu-checkstyle:sevntu-checks:1.24.2'
+}
