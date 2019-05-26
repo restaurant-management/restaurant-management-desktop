@@ -3,14 +3,16 @@ package util;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import javafx.scene.Scene;
+import com.jfoenix.controls.events.JFXDialogEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import ui.base.StageManager;
 
 public class ErrorDialog {
     private JFXDialog _alert;
 
-    public ErrorDialog(Scene scene, String title, String message, String closeButtonText) {
+    public ErrorDialog(String title, String message, String closeButtonText) {
         JFXDialogLayout body = new JFXDialogLayout();
         body.setHeading(new Label(title));
         body.setBody(new Label(message));
@@ -23,7 +25,7 @@ public class ErrorDialog {
 
         _alert = new JFXDialog();
         _alert.setTransitionType(JFXDialog.DialogTransition.CENTER);
-        _alert.setDialogContainer((StackPane) scene.getRoot());
+        _alert.setDialogContainer((StackPane) StageManager.getInstance().getCurrent().getScene().getRoot());
         _alert.setOverlayClose(false);
         _alert.setContent(body);
     }
@@ -34,5 +36,9 @@ public class ErrorDialog {
 
     public void close() {
         _alert.close();
+    }
+
+    public void setOnDialogClosed(EventHandler<? super JFXDialogEvent> handler) {
+        _alert.setOnDialogClosed(handler);
     }
 }

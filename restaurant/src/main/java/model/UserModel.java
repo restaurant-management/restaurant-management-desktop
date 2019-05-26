@@ -2,6 +2,8 @@ package model;
 
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserModel {
@@ -20,7 +22,11 @@ public class UserModel {
         _fullName = jsonObject.getString("fullName");
         _avatar = jsonObject.getString("avatar");
         _email = jsonObject.getString("email");
-        _birthday = (Date) jsonObject.get("birthday");
+        try {
+            _birthday = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.getString("birthday"));
+        } catch (ParseException e) {
+            _birthday = new Date();
+        }
         _point = jsonObject.getInt("point");
         _role = jsonObject.getString("role");
     }

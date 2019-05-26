@@ -2,6 +2,7 @@ package bus;
 
 import dao.Repository;
 import dao.exceptions.AuthenticationFailException;
+import dao.exceptions.FetchUserFailException;
 import javafx.scene.Scene;
 import ui.base.StageManager;
 import ui.signInScreen.SignInScreen;
@@ -15,7 +16,7 @@ public class AuthenticationBus {
         return _repository.checkLoggedIn();
     }
 
-    public void login(String username, String password) throws AuthenticationFailException {
+    public void login(String username, String password) throws AuthenticationFailException, FetchUserFailException {
         _repository.login(username, password);
     }
 

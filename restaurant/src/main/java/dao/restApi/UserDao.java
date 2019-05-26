@@ -2,10 +2,14 @@ package dao.restApi;
 
 import dao.base.IUserDao;
 import dao.exceptions.AuthenticationFailException;
+import dao.exceptions.FetchUserFailException;
 import dao.exceptions.RequestFailException;
+import model.UserModel;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,5 +35,21 @@ public class UserDao implements IUserDao {
         }
 
         return token.replace("\"", "");
+    }
+
+    public UserModel getProfileByUsername(String token, String username) throws FetchUserFailException {
+        HttpConnection http = new HttpConnection();
+        BasicHeader header = new BasicHeader("Authorization", token);
+        try {
+            String response = http.get("/api/users/" + username, new Header[]{header});
+            JSONObject json = new JSONObject(response);
+            return new UserModel(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (RequestFailException e) {
+            throw new FetchUserFailException(e.getMessage());
+        }
+
+        return null;
     }
 }

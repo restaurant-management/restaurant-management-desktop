@@ -53,7 +53,7 @@ public class Controller implements Initializable {
     void loginAction() {
         if (!textUsername.validate() && !textPassword.validate()) return;
         loginButton.setDisable(true);
-        _loadingDialog = new LoadingDialog(textUsername.getScene(), "Đang đăng nhập");
+        _loadingDialog = new LoadingDialog("Đang đăng nhập");
         _loadingDialog.show();
         if (_errorDialog != null) _errorDialog.close();
         login();
@@ -80,7 +80,7 @@ public class Controller implements Initializable {
 
             @Override
             protected void failed() {
-                _errorDialog = new ErrorDialog(textUsername.getScene(), "Đăng nhập thất bại", getException().getMessage(), null);
+                _errorDialog = new ErrorDialog("Đăng nhập thất bại", getException().getMessage(), null);
                 _errorDialog.show();
                 loginFail();
             }
