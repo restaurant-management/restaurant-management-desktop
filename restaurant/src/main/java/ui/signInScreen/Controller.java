@@ -3,15 +3,14 @@ package ui.signInScreen;
 import bus.AuthenticationBus;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import ui.accountScreen.AccountScreen;
+import ui.base.StageManager;
 import util.ErrorDialog;
 import util.LoadingDialog;
 
@@ -28,9 +27,6 @@ public class Controller implements Initializable {
 
     @FXML
     public JFXButton loginButton;
-
-    @FXML
-    public JFXProgressBar loadingBar;
 
 
     private LoadingDialog _loadingDialog;
@@ -90,22 +86,15 @@ public class Controller implements Initializable {
             }
         };
 
-//        task.setOnRunning();
-
         new Thread(task).start();
     }
 
     private void loginSuccess() {
-        Stage stage = (Stage) textUsername.getScene().getWindow();
-        stage.close();
-        Scene scene = null;
         try {
-            scene = new Scene(new AccountScreen());
+            StageManager.getInstance().pushReplacement(new Scene(new AccountScreen()), "Quản lý quán cơm");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.setScene(scene);
-        stage.show();
     }
 
     private void loginFail() {

@@ -12,9 +12,8 @@ public class Repository {
 
     //region Singleton
     private static Repository _ourInstance = new Repository();
-    private Preferences _prefs;
     //endregion
-
+    private Preferences _prefs;
     private UserDao _userDao;
 
     private Repository() {
@@ -22,8 +21,14 @@ public class Repository {
         _userDao = new UserDao();
     }
 
+    //region Singleton
     public static Repository getInstance() {
         return _ourInstance;
+    }
+    //endregion
+
+    public boolean checkLoggedIn() {
+        return !_prefs.get(PREF_TOKEN, "").equals("");
     }
 
     public void login(String username, String password) throws AuthenticationFailException {
@@ -36,7 +41,7 @@ public class Repository {
         System.out.println(getToken());
     }
 
-    public void logout(){
+    public void logout() {
         deleteToken();
     }
 
@@ -49,7 +54,7 @@ public class Repository {
         return _prefs.get(PREF_TOKEN, "");
     }
 
-    private void deleteToken(){
+    private void deleteToken() {
         _prefs.remove(PREF_TOKEN);
         _prefs.remove(PREF_CURRENT_USER);
     }

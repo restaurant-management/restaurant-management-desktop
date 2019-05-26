@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ui.base.StageManager;
 import ui.splashScreen.SplashScreen;
 
 import java.io.IOException;
@@ -16,7 +17,8 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.show();
+
+        StageManager.getInstance().push(primaryStage);
     }
 
     public static void main(String[] args) {
