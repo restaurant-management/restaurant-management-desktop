@@ -14,8 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import ui.accountScreen.AccountScreen;
 import ui.base.StageManager;
+import ui.mainScreen.MainScreen;
 import ui.signInScreen.SignInScreen;
 import util.ErrorDialog;
 
@@ -64,7 +64,7 @@ public class Controller implements Initializable {
             protected void succeeded() {
                 if (new AuthenticationBus().checkLoggedIn()) {
                     try {
-                        StageManager.getInstance().pushReplacement(new Scene(new AccountScreen()), "Quản lý quán cơm");
+                        StageManager.getInstance().pushReplacement(new Scene(new MainScreen()), "Quản lý quán cơm");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
