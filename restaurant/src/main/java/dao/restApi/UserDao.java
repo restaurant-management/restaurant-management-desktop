@@ -30,6 +30,6 @@ public class UserDao implements IUserDao {
             throw new AuthenticationFailException(e.getMessage());
         }
 
-        return token;
+        return token.replace("\"", "");
     }
 }

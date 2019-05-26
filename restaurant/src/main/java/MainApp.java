@@ -2,7 +2,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ui.signInScreen.SignInScreen;
+import ui.splashScreen.SplashScreen;
 
 import java.io.IOException;
 
@@ -10,12 +10,12 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Scene scene = new Scene(new SignInScreen());
+        Scene scene = new Scene(new SplashScreen());
 
         primaryStage.setTitle("Quản lý quán cơm");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }
 
