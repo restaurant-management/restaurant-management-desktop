@@ -1,6 +1,8 @@
 import com.jfoenix.assets.JFoenixResources;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
@@ -48,12 +50,15 @@ public class MainApp extends Application {
 
         JFXDecorator decorator = new JFXDecorator(primaryStage, container.getView());
         decorator.setCustomMaximize(true);
+        FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.CUTLERY);
+        icon.setFill(Color.WHITE);
+        decorator.setGraphic(icon);
 
         double width = 800;
         double height = 600;
         try {
             Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
-            width = bounds.getWidth() / 2.5;
+            width = bounds.getWidth() / 1.35;
             height = bounds.getHeight() / 1.35;
         } catch (Exception e) {
         }

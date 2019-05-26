@@ -13,7 +13,7 @@
             <VBox spacing="20">
                 <JFXToolbar>
                     <leftItems>
-                        <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                        <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);">
                             <StackPane fx:id="titleBurgerContainer">
                                 <JFXHamburger fx:id="titleBurger">
                                     <HamburgerBackArrowBasicTransition/>
@@ -24,7 +24,7 @@
                     </leftItems>
                     <rightItems>
                         <JFXRippler fx:id="optionsRippler" maskType="CIRCLE"
-                                    style="-fx-ripple-color:WHITE;">
+                                    style="-fx-ripple-color:linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);">
                             <StackPane fx:id="optionsBurger">
                                 <JFXHamburger styleClass="jfx-options-burger">
                                 </JFXHamburger>

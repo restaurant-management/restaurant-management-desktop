@@ -186,7 +186,7 @@
 }
 
 .jfx-tool-bar Label {
-    -fx-text-fill: WHITE;
+    -fx-text-fill: white;
 }
 
 .jfx-tool-bar .jfx-options-burger {
@@ -198,12 +198,12 @@
 }
 
 .jfx-tool-bar .jfx-rippler {
-    -jfx-rippler-fill: WHITE;
+    -jfx-rippler-fill: white;
 }
 
 .option-list-view {
     -fx-pref-width: 160.0px;
-    -fx-background-color: WHITE;
+    -fx-background-color: white;
 }
 
 .option-jfx-list-view-icon {
@@ -756,7 +756,8 @@
 }
 
 .jfx-decorator .resize-border {
-    -fx-border-width: 0 0 0 0;
+    -fx-border-color: white linear-gradient(from 0% 0% to 100% 100%, #9c27b0, #FC5C7D) linear-gradient(from 0% 0% to 100% 100%, #9c27b0, #FC5C7D) linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+    -fx-border-width: 0 4 4 4;
 }
 
 .jfx-decorator .jfx-decorator-title-container .jfx-decorator-text {
