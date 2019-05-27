@@ -27,34 +27,34 @@ public class HttpConnection {
     }
 
     public String post(final String uri, final Header[] headers, final List<NameValuePair> body) throws IOException, RequestFailException {
+        System.out.print("POST " + uri);
         HttpPost request = new HttpPost(url + uri);
         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
         for (Header header : headers) {
             request.addHeader(header);
         }
         request.setEntity(new UrlEncodedFormEntity(body));
-        System.out.print("POST " + uri);
         return handleResponse(request);
     }
 
     public String get(final String uri, final Header[] headers) throws IOException, RequestFailException {
+        System.out.print("GET " + uri);
         HttpGet request = new HttpGet(url + uri);
         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
         for (Header header : headers) {
             request.addHeader(header);
         }
-        System.out.print("GET " + uri);
         return handleResponse(request);
     }
 
     public String put(final String uri, final Header[] headers, final List<NameValuePair> body) throws IOException, RequestFailException {
+        System.out.print("PUT " + uri);
         HttpPut request = new HttpPut(url + uri);
         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
         for (Header header : headers) {
             request.addHeader(header);
         }
         request.setEntity(new UrlEncodedFormEntity(body));
-        System.out.print("PUT " + uri);
         return handleResponse(request);
     }
 

@@ -207,9 +207,13 @@
 }
 
 .option-jfx-list-view-icon {
-    -fx-fill: #5264AE;
+    -fx-fill: linear-gradient(from 50% 0% to 50% 100%, #FC5C7D, #9c27b0);
     -fx-padding: 0.0 10.0 0.0 5.0;
     -fx-cursor: hand;
+}
+
+.option-jfx-list-view-text {
+    -fx-text-fill: linear-gradient(from 50% 0% to 50% 100%, #FC5C7D, #9c27b0);
 }
 
 /*******************************************************************************

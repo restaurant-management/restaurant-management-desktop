@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+           stylesheets="@../../css/mainDrawer.css">
+    <VBox alignment="CENTER">
+        <JFXButton fx:id="statisticsBtn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0"
+                   prefWidth="160.0" text="Thống kê"
+                   textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="PIE_CHART" size="25"/>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="menuBtn" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="400.0"
+                   prefWidth="160.0" text="Menu" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="BOOK" size="25"/>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="dishBtn" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="400.0"
+                   prefWidth="160.0" text="Món ăn" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="CUTLERY" size="25"/>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="billBtn" contentDisplay="TOP" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" prefHeight="400.0"
+                   prefWidth="160.0" text="Hoá đơn" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="TH_LIST" size="25"/>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="roleBtn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="400.0" prefWidth="160.0"
+                   text="Vai trò" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="CHECK" size="25" textAlignment="CENTER"/>
+            </graphic>
+        </JFXButton>
+        <JFXButton fx:id="userBtn" contentDisplay="TOP" layoutX="10.0" layoutY="223.0" mnemonicParsing="false" prefHeight="400.0"
+                   prefWidth="160.0" text="Thành viên" textAlignment="CENTER">
+            <graphic>
+                <FontAwesomeIconView glyphName="GROUP" size="25"/>
+            </graphic>
+        </JFXButton>
+    </VBox>
+</StackPane>

@@ -5,22 +5,28 @@ import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
+import io.datafx.controller.util.VetoException;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import ui.accountScreen.AccountScreen;
 import ui.base.ExtendedAnimatedFlowContainer;
+import ui.mainScreen.tabs.AboutTab;
+import ui.mainScreen.tabs.ProfileTab;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 
-import static io.datafx.controller.flow.container.ContainerAnimations.SWIPE_LEFT;
+import static io.datafx.controller.flow.container.ContainerAnimations.*;
 
 @ViewController(value = "/ui/mainScreen/MainScreen.fxml")
-public class MainScreen{
+public class MainScreen {
+    @FXMLViewFlowContext
+    private ViewFlowContext context;
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -28,9 +34,9 @@ public class MainScreen{
     @FXML
     private StackPane titleBurgerContainer;
     @FXML
-    public JFXRippler optionsRippler;
+    private JFXRippler optionsRippler;
     @FXML
-    public StackPane optionsBurger;
+    private StackPane optionsBurger;
     private JFXPopup toolbarPopup;
 
     @PostConstruct
@@ -58,26 +64,42 @@ public class MainScreen{
         });
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainPopup.fxml"));
-        toolbarPopup = loader.load();
+        // set flow for content
+        context = new ViewFlowContext();
+        Flow innerFlow = new Flow(ProfileTab.class);
+        final FlowHandler flowHandler = innerFlow.createHandler(context);
+        context.register("ContentFlowHandler", flowHandler);
+        context.register("ContentFlow", innerFlow);
+        final Duration containerAnimationDuration = Duration.millis(320);
+        drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_RIGHT)));
 
+        // set flow for popup
+        Flow popupFlow = new Flow(MainPopup.class);
+        final FlowHandler popupFlowHandler = popupFlow.createHandler(context);
+        toolbarPopup = new JFXPopup(popupFlowHandler.start());
+        context.register("ToolbarPopup", toolbarPopup);
         optionsBurger.setOnMouseClicked(e ->
                 toolbarPopup.show(optionsBurger,
                         JFXPopup.PopupVPosition.TOP,
                         JFXPopup.PopupHPosition.RIGHT,
-                        -12,
-                        15));
+                        0,
+                        50));
         JFXTooltip.setVisibleDuration(Duration.millis(3000));
         JFXTooltip.install(titleBurgerContainer, burgerTooltip, Pos.BOTTOM_CENTER);
 
-        // create the inner flow and content
-        // set the default controller
-        Flow innerFlow = new Flow(AccountScreen.class);
+        // set flow for drawer
+        Flow sideMenuFlow = new Flow(MainDrawer.class);
+        final FlowHandler sideMenuFlowHandler = sideMenuFlow.createHandler(context);
+        drawer.setSidePane(sideMenuFlowHandler.start());
 
-        final FlowHandler flowHandler = innerFlow.createHandler();
-        final Duration containerAnimationDuration = Duration.millis(320);
-        drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_LEFT)));
+        //Add tab not in drawer to flow
+        innerFlow.withGlobalLink("profileTab", ProfileTab.class);
+        innerFlow.withGlobalLink("aboutTab", AboutTab.class);
+    }
 
+    @FXML
+    private void goToProfile() throws VetoException, FlowException {
+        ((FlowHandler) context.getRegisteredObject("ContentFlowHandler")).navigateTo(ProfileTab.class);
     }
 
 }
