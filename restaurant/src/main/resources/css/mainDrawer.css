@@ -1,0 +1,11 @@
+.jfx-button {
+    -fx-text-fill: linear-gradient(from 50% 0% to 50% 100%, #FC5C7D, #9c27b0);
+}
+
+.jfx-button:hover {
+    -fx-background-color: derive(white, -5%);
+}
+
+.glyph-icon {
+    -fx-fill: linear-gradient(from 50% 0% to 50% 100%, #FC5C7D, #9c27b0);
+}

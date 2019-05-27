@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" orientation="VERTICAL" styleClass="login-container"
-          xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+          xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+          stylesheets="@../../css/signInScreen.css">
     <FlowPane styleClass="login-box" alignment="CENTER" columnHalignment="CENTER">
         <FlowPane columnHalignment="CENTER" alignment="CENTER">
             <Label text="LOGIN" styleClass="login-title">

@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXPopup?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<JFXPopup fx:id="toolbarPopup" styleClass="option-list-view" xmlns="http://javafx.com/javafx/8"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.mainScreen.MainPopup">
-    <JFXListView fx:id="toolbarPopupList">
-        <Label>
-            Contact Us
-            <graphic>
-                <StackPane styleClass="custom-jfx-list-view-icon-container">
-                    <FontIcon iconLiteral="far-user" iconSize="18" styleClass="option-jfx-list-view-icon"/>
-                </StackPane>
-            </graphic>
-        </Label>
-        <Label onMouseClicked="#logout">
-            Đăng xuất
-            <graphic>
-                <StackPane styleClass="custom-jfx-list-view-icon-container">
-                    <FontIcon iconLiteral="fas-reply" iconSize="18" styleClass="option-jfx-list-view-icon"/>
-                </StackPane>
-            </graphic>
-        </Label>
-    </JFXListView>
-</JFXPopup>
+<JFXListView fx:id="toolbarPopupList" styleClass="option-list-view" xmlns="http://javafx.com/javafx/8.0.141"
+             xmlns:fx="http://javafx.com/fxml/1">
+    <Label onMouseClicked="#goToAbout" styleClass="option-jfx-list-view-text">
+        Về chúng tôi
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-hand-peace" iconSize="18" styleClass="option-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+    <Label onMouseClicked="#logout" styleClass="option-jfx-list-view-text">
+        Đăng xuất
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-reply" iconSize="18" styleClass="option-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+</JFXListView>

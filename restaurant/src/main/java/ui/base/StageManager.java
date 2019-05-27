@@ -78,7 +78,7 @@ public class StageManager {
         showTopStack();
     }
 
-    public FlowHandler getCurrentFlowHandler(){
+    public FlowHandler getCurrentFlowHandler() {
         return _flowHandlerStack.peek();
     }
 
@@ -123,9 +123,10 @@ public class StageManager {
         stage.setTitle(title);
         Scene scene = new Scene(new StackPane(decorator), width, height);
         final ObservableList<String> stylesheets = scene.getStylesheets();
-        stylesheets.addAll(StageManager.class.getResource("../../css/jfoenix-main-demo.css").toExternalForm(),
-                StageManager.class.getResource("../../css/signInScreen.css").toExternalForm());
+        stylesheets.addAll(StageManager.class.getResource("../../css/jfoenix-main-demo.css").toExternalForm());
         stage.setScene(scene);
+        stage.setMinHeight(400);
+        stage.setMinWidth(400);
 
         //Add listener
         stage.setOnCloseRequest(event -> onStageClosed());
