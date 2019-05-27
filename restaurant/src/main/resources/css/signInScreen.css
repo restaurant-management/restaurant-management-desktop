@@ -1,0 +1,25 @@
+.login-container {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+}
+
+.login-container .jfx-text-field, .jfx-password-field {
+    -jfx-focus-color: #9c27b0;
+}
+
+.login-container .jfx-button {
+    -fx-background-color: #9c27b0;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+.login-box {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.login-title {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font: 30px Arial-Black;
+    -fx-font-family: 'Arial Black'
+}

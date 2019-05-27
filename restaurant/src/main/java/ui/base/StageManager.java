@@ -123,7 +123,8 @@ public class StageManager {
         stage.setTitle(title);
         Scene scene = new Scene(new StackPane(decorator), width, height);
         final ObservableList<String> stylesheets = scene.getStylesheets();
-        stylesheets.addAll(StageManager.class.getResource("../../css/jfoenix-main-demo.css").toExternalForm());
+        stylesheets.addAll(StageManager.class.getResource("../../css/jfoenix-main-demo.css").toExternalForm(),
+                StageManager.class.getResource("../../css/signInScreen.css").toExternalForm());
         stage.setScene(scene);
 
         //Add listener
