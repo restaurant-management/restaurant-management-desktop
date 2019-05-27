@@ -3,25 +3,24 @@ package ui.mainScreen;
 import com.jfoenix.controls.*;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
-import io.datafx.controller.flow.context.FXMLViewFlowContext;
-import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.animation.Transition;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import ui.accountScreen.AccountScreen;
+import ui.base.ExtendedAnimatedFlowContainer;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 
+import static io.datafx.controller.flow.container.ContainerAnimations.SWIPE_LEFT;
+
 @ViewController(value = "/ui/mainScreen/MainScreen.fxml")
 public class MainScreen{
-    @FXMLViewFlowContext
-    private ViewFlowContext context;
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -35,7 +34,7 @@ public class MainScreen{
     private JFXPopup toolbarPopup;
 
     @PostConstruct
-    public void init() throws IOException {
+    public void init() throws IOException, FlowException {
         final JFXTooltip burgerTooltip = new JFXTooltip("Mở menu");
 
         drawer.setOnDrawerOpening(e -> {
@@ -72,14 +71,12 @@ public class MainScreen{
         JFXTooltip.install(titleBurgerContainer, burgerTooltip, Pos.BOTTOM_CENTER);
 
         // create the inner flow and content
-        context = new ViewFlowContext();
         // set the default controller
         Flow innerFlow = new Flow(AccountScreen.class);
 
-        final FlowHandler flowHandler = innerFlow.createHandler(context);
-        context.register("ContentFlowHandler", flowHandler);
-        context.register("ContentFlow", innerFlow);
+        final FlowHandler flowHandler = innerFlow.createHandler();
         final Duration containerAnimationDuration = Duration.millis(320);
+        drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_LEFT)));
 
     }
 

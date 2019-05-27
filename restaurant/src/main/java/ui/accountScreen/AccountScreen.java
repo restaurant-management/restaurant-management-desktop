@@ -1,14 +1,15 @@
 package ui.accountScreen;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
+import bus.AuthenticationBus;
+import io.datafx.controller.ViewController;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AccountScreen extends StackPane {
-    public AccountScreen() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("accountScreen.fxml"));
-        this.getChildren().add(root);
-    }
+
+@ViewController(value = "/ui/accountScreen/AccountScreen.fxml")
+public class AccountScreen {
 }

@@ -65,14 +65,12 @@ public class SplashScreen {
             @Override
             protected void succeeded() {
                 if (new AuthenticationBus().checkLoggedIn()) {
-                    // TODO navigate to main screen
                     try {
                         actionHandler.navigate(MainScreen.class);
                     } catch (VetoException | FlowException e) {
                         e.printStackTrace();
                     }
                 } else {
-                    // TODO navigate to sign in screen
                     try {
                         actionHandler.navigate(SignInScreen.class);
                     } catch (VetoException | FlowException e) {
