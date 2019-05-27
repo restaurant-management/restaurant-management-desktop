@@ -7,9 +7,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.signInScreen.Controller">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="400.0" prefWidth="752.0" style="-fx-background-color: BLACK;">
-        <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" layoutX="159.0" layoutY="59.0" prefHeight="282.0" prefWidth="265.0" style="-fx-background-color: WHITE; -fx-background-radius: 10;">
+        <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" layoutX="159.0" layoutY="59.0"
+                  prefHeight="282.0" prefWidth="265.0" style="-fx-background-color: WHITE; -fx-background-radius: 10;">
             <Pane prefHeight="111.0" prefWidth="292.0" style="-fx-background-color: #7B1FA2; -fx-background-radius: 10;">
                 <FlowPane.margin>
                     <Insets top="-50.0" />

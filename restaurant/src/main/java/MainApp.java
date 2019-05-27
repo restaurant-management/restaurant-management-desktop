@@ -1,35 +1,22 @@
-import com.jfoenix.assets.JFoenixResources;
-import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
-import io.datafx.controller.flow.container.DefaultFlowContainer;
-import io.datafx.controller.flow.context.FXMLViewFlowContext;
-import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import ui.base.StageManager;
-import ui.mainScreen.Controller;
+import ui.splashScreen.SplashScreen;
 
 import java.io.IOException;
 
 public class MainApp extends Application {
-    @FXMLViewFlowContext
-    private ViewFlowContext flowContext;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException, FlowException {
+    public void start(Stage primaryStage) throws FlowException {
 
         //region Load font
         new Thread(() -> {
@@ -42,37 +29,14 @@ public class MainApp extends Application {
         }).start();
         //endregion
 
-        Flow flow = new Flow(Controller.class);
-        DefaultFlowContainer container = new DefaultFlowContainer();
-        flowContext = new ViewFlowContext();
-        flowContext.register("Stage", primaryStage);
-        flow.createHandler(flowContext).start(container);
-
-        JFXDecorator decorator = new JFXDecorator(primaryStage, container.getView());
-        decorator.setCustomMaximize(true);
-        FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.CUTLERY);
-        icon.setFill(Color.WHITE);
-        decorator.setGraphic(icon);
-
         double width = 800;
         double height = 600;
         try {
             Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
-            width = bounds.getWidth() / 1.35;
-            height = bounds.getHeight() / 1.35;
-        } catch (Exception e) {
+            width = bounds.getWidth() / 1.5;
+            height = bounds.getHeight() / 1.5;
+        } catch (Exception ignored) {
         }
-        Scene scene = new Scene(decorator, width, height);
-
-        primaryStage.setTitle("Quản lý quán cơm");
-        final ObservableList<String> stylesheets = scene.getStylesheets();
-        stylesheets.addAll(JFoenixResources.load("css/jfoenix-fonts.css").toExternalForm(),
-                JFoenixResources.load("css/jfoenix-design.css").toExternalForm(),
-                MainApp.class.getResource("/css/jfoenix-main-demo.css").toExternalForm());
-
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(scene);
-
-        StageManager.getInstance().push(primaryStage);
+        StageManager.getInstance().push(SplashScreen.class, width, height, "Phần mềm quản lý quán cơm", null);
     }
 }
