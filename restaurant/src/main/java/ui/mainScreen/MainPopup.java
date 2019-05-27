@@ -8,8 +8,6 @@ import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.util.VetoException;
 import javafx.fxml.FXML;
-import ui.base.StageManager;
-import ui.signInScreen.SignInScreen;
 
 public class MainPopup {
     @FXML
@@ -25,7 +23,5 @@ public class MainPopup {
     @FXML
     private void logout() throws VetoException, FlowException {
         new AuthenticationBus().logout();
-        StageManager.getInstance().getCurrentFlowHandler().navigateTo(SignInScreen.class);
-        toolbarPopup.hide();
     }
 }
