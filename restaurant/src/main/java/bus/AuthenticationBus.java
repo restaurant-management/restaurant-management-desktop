@@ -1,8 +1,8 @@
 package bus;
 
 import dao.Repository;
-import dao.exceptions.AuthenticationFailException;
-import dao.exceptions.FetchUserFailException;
+import dao.exceptions.userExceptions.AuthenticationFailException;
+import dao.exceptions.userExceptions.FetchUserFailException;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.util.VetoException;
 import ui.base.StageManager;

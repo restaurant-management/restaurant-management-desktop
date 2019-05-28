@@ -1,6 +1,10 @@
 package dao.base;
 
 import dao.exceptions.*;
+import dao.exceptions.userExceptions.AuthenticationFailException;
+import dao.exceptions.userExceptions.ChangeRoleFailException;
+import dao.exceptions.userExceptions.FetchUserFailException;
+import dao.exceptions.userExceptions.SaveUserFailException;
 import model.UserModel;
 import model.enums.Permission;
 

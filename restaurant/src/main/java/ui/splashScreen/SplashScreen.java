@@ -3,7 +3,7 @@ package ui.splashScreen;
 import bus.AppStartedBus;
 import bus.AuthenticationBus;
 import com.jfoenix.controls.JFXProgressBar;
-import dao.exceptions.FetchUserFailException;
+import dao.exceptions.userExceptions.FetchUserFailException;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.context.ActionHandler;
