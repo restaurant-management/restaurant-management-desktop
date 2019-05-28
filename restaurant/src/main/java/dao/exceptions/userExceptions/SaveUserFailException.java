@@ -1,4 +1,4 @@
-package dao.exceptions;
+package dao.exceptions.userExceptions;
 
 public class SaveUserFailException extends Exception {
     private String _message;

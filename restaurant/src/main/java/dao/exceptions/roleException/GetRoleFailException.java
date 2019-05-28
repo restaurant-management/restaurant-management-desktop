@@ -1,9 +1,9 @@
-package dao.exceptions;
+package dao.exceptions.roleException;
 
-public class FetchUserFailException extends Exception {
+public class GetRoleFailException extends Exception {
     private String _message;
 
-    public FetchUserFailException(String message) {
+    public GetRoleFailException(String message) {
         _message = message;
     }
 

@@ -1,7 +1,7 @@
 package bus;
 
 import dao.Repository;
-import dao.exceptions.FetchUserFailException;
+import dao.exceptions.userExceptions.FetchUserFailException;
 
 public class AppStartedBus {
     public void initializeLogic() throws FetchUserFailException {

@@ -1,5 +1,7 @@
 package model.enums;
 
+import model.exceptions.IsNotAPermissionException;
+
 public enum Permission {
     ROLE_MANAGEMENT("role-management"),
     USER_MANAGEMENT("user-management"),
@@ -31,5 +33,12 @@ public enum Permission {
             if (text.equals(permission.toString())) return true;
         }
         return false;
+    }
+
+    public static Permission get(String text) throws IsNotAPermissionException {
+        for (Permission permission : Permission.values()) {
+            if (text.equals(permission.toString())) return permission;
+        }
+        throw new IsNotAPermissionException();
     }
 }

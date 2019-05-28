@@ -1,7 +1,7 @@
 package dao;
 
-import dao.exceptions.AuthenticationFailException;
-import dao.exceptions.FetchUserFailException;
+import dao.exceptions.userExceptions.AuthenticationFailException;
+import dao.exceptions.userExceptions.FetchUserFailException;
 import dao.restApi.UserDao;
 import model.UserModel;
 

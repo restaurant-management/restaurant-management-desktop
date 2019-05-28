@@ -1,9 +1,9 @@
-package dao.exceptions;
+package dao.exceptions.roleException;
 
-public class AuthenticationFailException extends Exception {
+public class EditRoleFailException extends Exception {
     private String _message;
 
-    public AuthenticationFailException(String message) {
+    public EditRoleFailException(String message) {
         _message = message;
     }
 
