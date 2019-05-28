@@ -1,9 +1,9 @@
-package dao.exceptions.roleException;
+package dao.exceptions.roleExceptions;
 
-public class GetRoleFailException extends Exception {
+public class EditRoleFailException extends Exception {
     private String _message;
 
-    public GetRoleFailException(String message) {
+    public EditRoleFailException(String message) {
         _message = message;
     }
 

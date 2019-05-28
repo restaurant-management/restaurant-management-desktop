@@ -23,6 +23,13 @@ public enum Permission {
         _value = permissionString;
     }
 
+    public static Permission get(String text) throws IsNotAPermissionException {
+        for (Permission permission : Permission.values()) {
+            if (text.equals(permission.toString())) return permission;
+        }
+        throw new IsNotAPermissionException();
+    }
+
     @Override
     public String toString() {
         return _value;
@@ -33,12 +40,5 @@ public enum Permission {
             if (text.equals(permission.toString())) return true;
         }
         return false;
-    }
-
-    public static Permission get(String text) throws IsNotAPermissionException {
-        for (Permission permission : Permission.values()) {
-            if (text.equals(permission.toString())) return permission;
-        }
-        throw new IsNotAPermissionException();
     }
 }
