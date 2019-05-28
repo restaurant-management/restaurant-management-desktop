@@ -1,7 +1,9 @@
 package dao.restApi;
 
 import dao.base.IUserDao;
-import dao.exceptions.*;
+import dao.exceptions.AddPermissionFailException;
+import dao.exceptions.RemovePermissionFailException;
+import dao.exceptions.RequestFailException;
 import dao.exceptions.userExceptions.AuthenticationFailException;
 import dao.exceptions.userExceptions.ChangeRoleFailException;
 import dao.exceptions.userExceptions.FetchUserFailException;
@@ -67,24 +69,12 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public ArrayList<UserModel> getAllUser(String token) throws RequestFailException, IOException {
+    public ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws RequestFailException, IOException {
         HttpConnection http = new HttpConnection();
         BasicHeader header = new BasicHeader("Authorization", token);
-        String response = http.get("/api/users", new Header[]{header});
-
-        ArrayList<UserModel> result = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(response);
-        for (Object json : jsonArray) {
-            result.add(new UserModel((JSONObject) json));
-        }
-        return result;
-    }
-
-    @Override
-    public ArrayList<UserModel> getAllUser(String token, int length, int offset) throws RequestFailException, IOException {
-        HttpConnection http = new HttpConnection();
-        BasicHeader header = new BasicHeader("Authorization", token);
-        String uri = "/api/users?length=" + length + "&offset=" + offset;
+        String uri = "/api/users?";
+        if (length != null) uri += "length=" + length;
+        if (offset != null) uri += "&offset=" + offset;
         String response = http.get(uri, new Header[]{header});
 
         ArrayList<UserModel> result = new ArrayList<>();

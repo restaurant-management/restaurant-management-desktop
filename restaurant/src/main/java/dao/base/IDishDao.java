@@ -17,7 +17,5 @@ public interface IDishDao {
 
     DishModel editDish(String token, int dishId, String name, String description, ArrayList<String> images, int defaultPrice) throws EditDishFailException;
 
-    ArrayList<DishModel> getAll(String token) throws GetDishFailException;
-
-    ArrayList<DishModel> getAll(String token, int length, int offset) throws GetDishFailException;
+    ArrayList<DishModel> getAll(String token, Integer length, Integer offset) throws GetDishFailException;
 }
