@@ -1,4 +1,4 @@
-package dao.exceptions.roleException;
+package dao.exceptions.roleExceptions;
 
 public class DeleteRoleFailException extends Exception {
     private String _message;

@@ -93,31 +93,14 @@ public class DishDao implements IDishDao {
     }
 
     @Override
-    public ArrayList<DishModel> getAll(String token) throws GetDishFailException {
+    public ArrayList<DishModel> getAll(String token, Integer length, Integer offset) throws GetDishFailException {
         HttpConnection http = new HttpConnection();
         BasicHeader header = new BasicHeader("Authorization", token);
 
         try {
-            String response = http.get("/api/dishes", new Header[]{header});
-
-            ArrayList<DishModel> result = new ArrayList<>();
-            JSONArray jsonArray = new JSONArray(response);
-            for (Object json : jsonArray) {
-                result.add(new DishModel((JSONObject) json));
-            }
-            return result;
-        } catch (IOException | RequestFailException e) {
-            throw new GetDishFailException(e.getMessage());
-        }
-    }
-
-    @Override
-    public ArrayList<DishModel> getAll(String token, int length, int offset) throws GetDishFailException {
-        HttpConnection http = new HttpConnection();
-        BasicHeader header = new BasicHeader("Authorization", token);
-
-        try {
-            String uri = "/api/dishes?length=" + length + "&offset=" + offset;
+            String uri = "/api/dishes?";
+            if (length != null) uri += "length=" + length;
+            if (offset != null) uri += "&offset=" + offset;
             String response = http.get(uri, new Header[]{header});
 
             ArrayList<DishModel> result = new ArrayList<>();

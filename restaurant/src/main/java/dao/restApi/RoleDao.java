@@ -5,15 +5,16 @@ import dao.exceptions.AddPermissionFailException;
 import dao.exceptions.RemovePermissionFailException;
 import dao.exceptions.RequestFailException;
 import dao.exceptions.dishExceptions.EditDishFailException;
-import dao.exceptions.roleException.CreateRoleFailException;
-import dao.exceptions.roleException.DeleteRoleFailException;
-import dao.exceptions.roleException.GetRoleFailException;
+import dao.exceptions.roleExceptions.CreateRoleFailException;
+import dao.exceptions.roleExceptions.DeleteRoleFailException;
+import dao.exceptions.roleExceptions.GetRoleFailException;
 import model.RoleModel;
 import model.enums.Permission;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -76,6 +77,27 @@ public class RoleDao implements IRoleDao {
         try {
             String response = http.get("/api/roles/" + slug, new Header[]{header});
             return new RoleModel(new JSONObject(response));
+        } catch (IOException | RequestFailException e) {
+            throw new GetRoleFailException(e.getMessage());
+        }
+    }
+
+    @Override
+    public ArrayList<RoleModel> getAllRole(String token, Integer length, Integer offset) throws GetRoleFailException {
+        HttpConnection http = new HttpConnection();
+        BasicHeader header = new BasicHeader("Authorization", token);
+        String uri = "/api/roles?";
+        if (length != null) uri += "length=" + length;
+        if (offset != null) uri += "&offset=" + offset;
+        try {
+            String response = http.get(uri, new Header[]{header});
+
+            ArrayList<RoleModel> result = new ArrayList<>();
+            JSONArray jsonArray = new JSONArray(response);
+            for (Object json : jsonArray) {
+                result.add(new RoleModel((JSONObject) json));
+            }
+            return result;
         } catch (IOException | RequestFailException e) {
             throw new GetRoleFailException(e.getMessage());
         }
