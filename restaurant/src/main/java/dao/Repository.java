@@ -56,7 +56,7 @@ public class Repository {
     private void fetchCurrentUserProfile() throws FetchUserFailException {
         System.out.println("Fetching user profile...");
         String username = _prefs.get(PREF_CURRENT_USER, "");
-        String token = _prefs.get(PREF_TOKEN, "");
+        String token = getToken();
         if (!username.equals("")) {
             _currentUser = _userDao.getProfileByUsername(token, username);
         }
