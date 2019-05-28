@@ -6,10 +6,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -18,15 +15,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-public class HttpConnection {
+class HttpConnection {
     private static String url = "https://restaurant-management-server.herokuapp.com";
     private HttpClient client;
 
-    public HttpConnection() {
+    HttpConnection() {
         client = HttpClientBuilder.create().build();
     }
 
-    public String post(final String uri, final Header[] headers, final List<NameValuePair> body) throws IOException, RequestFailException {
+    String post(final String uri, final Header[] headers, final List<NameValuePair> body) throws IOException, RequestFailException {
         System.out.print("POST " + uri);
         HttpPost request = new HttpPost(url + uri);
         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -37,7 +34,7 @@ public class HttpConnection {
         return handleResponse(request);
     }
 
-    public String get(final String uri, final Header[] headers) throws IOException, RequestFailException {
+    String get(final String uri, final Header[] headers) throws IOException, RequestFailException {
         System.out.print("GET " + uri);
         HttpGet request = new HttpGet(url + uri);
         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -47,7 +44,7 @@ public class HttpConnection {
         return handleResponse(request);
     }
 
-    public String put(final String uri, final Header[] headers, final List<NameValuePair> body) throws IOException, RequestFailException {
+    String put(final String uri, final Header[] headers, final List<NameValuePair> body) throws IOException, RequestFailException {
         System.out.print("PUT " + uri);
         HttpPut request = new HttpPut(url + uri);
         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -55,6 +52,16 @@ public class HttpConnection {
             request.addHeader(header);
         }
         request.setEntity(new UrlEncodedFormEntity(body));
+        return handleResponse(request);
+    }
+
+    String delete(final String uri, final Header[] headers) throws IOException, RequestFailException {
+        System.out.print("DELETE " + uri);
+        HttpDelete request = new HttpDelete(url + uri);
+        request.addHeader("Content-Type", "application/x-www-form-urlencoded");
+        for (Header header : headers) {
+            request.addHeader(header);
+        }
         return handleResponse(request);
     }
 

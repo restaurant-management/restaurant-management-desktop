@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
@@ -19,13 +20,21 @@ public class UserModel {
     public UserModel(JSONObject jsonObject) {
         _uuid = jsonObject.getString("uuid");
         _username = jsonObject.getString("userName");
-        _fullName = jsonObject.getString("fullName");
-        _avatar = jsonObject.getString("avatar");
+        try {
+            _fullName = jsonObject.getString("fullName");
+        } catch (JSONException e) {
+            _fullName = null;
+        }
+        try {
+            _avatar = jsonObject.getString("avatar");
+        } catch (JSONException e) {
+            _avatar = null;
+        }
         _email = jsonObject.getString("email");
         try {
             _birthday = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.getString("birthday"));
-        } catch (ParseException e) {
-            _birthday = new Date();
+        } catch (Exception e) {
+            _birthday = null;
         }
         _point = jsonObject.getInt("point");
         _role = jsonObject.getString("role");
@@ -46,16 +55,8 @@ public class UserModel {
         return _uuid;
     }
 
-    public void set_uuid(String _uuid) {
-        this._uuid = _uuid;
-    }
-
     public String get_username() {
         return _username;
-    }
-
-    public void set_username(String _username) {
-        this._username = _username;
     }
 
     public String get_fullName() {
