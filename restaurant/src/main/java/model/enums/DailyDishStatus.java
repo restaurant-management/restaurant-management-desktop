@@ -14,8 +14,8 @@ public enum DailyDishStatus {
     }
 
     public static DailyDishStatus get(String text) throws IsNotADailyDishStatusException {
-        for (DailyDishStatus permission : DailyDishStatus.values()) {
-            if (text.equals(permission.toString())) return permission;
+        for (DailyDishStatus dailyDishStatus : DailyDishStatus.values()) {
+            if (text.equals(dailyDishStatus.toString())) return dailyDishStatus;
         }
         throw new IsNotADailyDishStatusException();
     }

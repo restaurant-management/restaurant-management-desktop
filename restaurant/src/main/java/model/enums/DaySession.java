@@ -17,8 +17,8 @@ public enum DaySession {
     }
 
     public static DaySession get(String text) throws IsNotADaySessionException {
-        for (DaySession permission : DaySession.values()) {
-            if (text.equals(permission.toString())) return permission;
+        for (DaySession daySession : DaySession.values()) {
+            if (text.equals(daySession.toString())) return daySession;
         }
         throw new IsNotADaySessionException();
     }

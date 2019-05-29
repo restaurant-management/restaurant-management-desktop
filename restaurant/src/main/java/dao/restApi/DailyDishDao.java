@@ -103,6 +103,15 @@ public class DailyDishDao implements IDailyDishDao {
         }
     }
 
+    /**
+     * Get list daily dishes by.
+     * @param day Nullable.
+     * @param dishId Nullable.
+     * @param session Nullable.
+     * @param length Nullable.
+     * @param offset Nullable.
+     * @return List daily dishes.
+     */
     @Override
     public ArrayList<DailyDishModel> getBy(Date day, Integer dishId, DaySession session, Integer length, Integer offset) throws GetDailyDishFailException {
         try {
