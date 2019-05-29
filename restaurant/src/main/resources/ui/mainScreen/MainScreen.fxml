@@ -20,7 +20,7 @@
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label>Quản lý quán cơm</Label>
+                        <Label fx:id="titleLabel">Quản lý quán cơm</Label>
                     </leftItems>
                     <rightItems>
                         <JFXRippler onMouseClicked="#goToProfile" maskType="CIRCLE">

@@ -1,5 +1,6 @@
 package ui.mainScreen;
 
+import bus.AuthenticationBus;
 import com.jfoenix.controls.*;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
@@ -10,23 +11,25 @@ import io.datafx.controller.flow.context.ViewFlowContext;
 import io.datafx.controller.util.VetoException;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import model.UserModel;
 import ui.base.ExtendedAnimatedFlowContainer;
 import ui.mainScreen.tabs.AboutTab;
 import ui.mainScreen.tabs.ProfileTab;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 
-import static io.datafx.controller.flow.container.ContainerAnimations.*;
+import static io.datafx.controller.flow.container.ContainerAnimations.SWIPE_RIGHT;
 
 @ViewController(value = "/ui/mainScreen/MainScreen.fxml")
 public class MainScreen {
     @FXMLViewFlowContext
     private ViewFlowContext context;
+    @FXML
+    private Label titleLabel;
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -40,7 +43,9 @@ public class MainScreen {
     private JFXPopup toolbarPopup;
 
     @PostConstruct
-    public void init() throws IOException, FlowException {
+    public void init() throws FlowException {
+        UserModel user = new AuthenticationBus().getCurrentUser();
+        titleLabel.setText(user.get_fullName() != null ? user.get_fullName() : user.get_username());
         final JFXTooltip burgerTooltip = new JFXTooltip("Mở menu");
 
         drawer.setOnDrawerOpening(e -> {
