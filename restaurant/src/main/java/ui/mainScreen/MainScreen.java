@@ -71,7 +71,7 @@ public class MainScreen {
 
         // set flow for content
         context = new ViewFlowContext();
-        Flow innerFlow = new Flow(ProfileTab.class);
+        Flow innerFlow = new Flow(AboutTab.class);
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler", flowHandler);
         context.register("ContentFlow", innerFlow);
