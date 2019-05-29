@@ -6,8 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="346.0" prefWidth="600.0"
-          style="-fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);"
-          xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+          styleClass="splash-container" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          stylesheets="@../../css/splashScreen.css">
     <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="98.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@../../images/logo.png"/>

@@ -14,16 +14,14 @@ import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.util.VetoException;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import ui.mainScreen.MainScreen;
 import util.ErrorDialog;
 import util.LoadingDialog;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 
 @ViewController(value = "/ui/signInScreen/SignInScreen.fxml")
-public class SignInScreen implements Initializable {
+public class SignInScreen{
     @FXML
     private JFXTextField textUsername;
 
@@ -41,8 +39,8 @@ public class SignInScreen implements Initializable {
     private LoadingDialog _loadingDialog;
     private ErrorDialog _errorDialog;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @PostConstruct
+    public void init() {
         RequiredFieldValidator validator = new RequiredFieldValidator();
 
         textUsername.getValidators().add(validator);
@@ -73,8 +71,7 @@ public class SignInScreen implements Initializable {
         Task task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                AuthenticationBus authenticationBus = new AuthenticationBus();
-                authenticationBus.login(textUsername.getText(), textPassword.getText());
+                new AuthenticationBus().login(textUsername.getText(), textPassword.getText());
                 return null;
             }
 

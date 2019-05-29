@@ -3,6 +3,7 @@ package ui.mainScreen;
 import bus.AuthenticationBus;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPopup;
+import exceptions.NavigateFailedException;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
@@ -30,7 +31,7 @@ public class MainPopup {
     }
 
     @FXML
-    private void logout() throws VetoException, FlowException {
+    private void logout() throws NavigateFailedException {
         new AuthenticationBus().logout();
         ((JFXPopup) context.getRegisteredObject("ToolbarPopup")).hide();
     }

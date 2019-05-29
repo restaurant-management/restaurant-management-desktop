@@ -4,12 +4,10 @@ import dao.base.IUserDao;
 import dao.exceptions.AddPermissionFailException;
 import dao.exceptions.RemovePermissionFailException;
 import dao.exceptions.RequestFailException;
-import dao.exceptions.userExceptions.AuthenticationFailException;
-import dao.exceptions.userExceptions.ChangeRoleFailException;
-import dao.exceptions.userExceptions.FetchUserFailException;
-import dao.exceptions.userExceptions.SaveUserFailException;
+import dao.exceptions.userExceptions.*;
 import model.UserModel;
 import model.enums.Permission;
+import model.exceptions.IsNotAPermissionException;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicHeader;
@@ -138,6 +136,29 @@ public class UserDao implements IUserDao {
 
         JSONObject json = new JSONObject(response);
         return new UserModel(json);
+    }
+
+    @Override
+    public ArrayList<Permission> getAllPermissions(String token, String username) throws FetchPermissionFailException {
+        try {
+            HttpConnection http = new HttpConnection();
+            BasicHeader header = new BasicHeader("Authorization", token);
+
+            String response = http.get("/api/users/" + username + "/permissions/", new Header[]{header});
+
+            JSONArray jsonArray = new JSONArray(response);
+            ArrayList<Permission> result = new ArrayList<>();
+            for (Object object : jsonArray) {
+                try {
+                    result.add(Permission.get((String) object));
+                } catch (IsNotAPermissionException e) {
+                    e.printStackTrace();
+                }
+            }
+            return result;
+        } catch (IOException | RequestFailException e) {
+            throw new FetchPermissionFailException(e.getMessage());
+        }
     }
 
     @Override

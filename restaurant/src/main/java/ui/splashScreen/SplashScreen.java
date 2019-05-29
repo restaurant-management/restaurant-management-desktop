@@ -4,6 +4,8 @@ import bus.AppStartedBus;
 import bus.AuthenticationBus;
 import com.jfoenix.controls.JFXProgressBar;
 import dao.exceptions.userExceptions.FetchUserFailException;
+import exceptions.DontHavePermissionException;
+import exceptions.NavigateFailedException;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.context.ActionHandler;
@@ -82,6 +84,13 @@ public class SplashScreen {
             @Override
             protected void failed() {
                 String title;
+                if (getException() instanceof DontHavePermissionException) {
+                    ErrorDialog dialog = new ErrorDialog("Lỗi tài khoản",
+                            "Tài khoản không có quyền truy cập. Nhấn đóng để đăng xuất.", null);
+                    dialog.setOnDialogClosed(event -> logout());
+                    dialog.show();
+                    return;
+                }
                 if (getException() instanceof FetchUserFailException) {
                     title = "Lỗi tải thông tin người dùng";
                 } else {
@@ -94,5 +103,15 @@ public class SplashScreen {
         };
 
         new Thread(task).start();
+    }
+
+    private void logout() {
+        try {
+            new AuthenticationBus().logout();
+        } catch (NavigateFailedException e) {
+            ErrorDialog dialog = new ErrorDialog("Lỗi chuyển màn hình", e.getMessage(), null);
+            dialog.setOnDialogClosed(event -> logout());
+            dialog.show();
+        }
     }
 }

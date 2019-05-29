@@ -1,10 +1,7 @@
 package dao.base;
 
 import dao.exceptions.*;
-import dao.exceptions.userExceptions.AuthenticationFailException;
-import dao.exceptions.userExceptions.ChangeRoleFailException;
-import dao.exceptions.userExceptions.FetchUserFailException;
-import dao.exceptions.userExceptions.SaveUserFailException;
+import dao.exceptions.userExceptions.*;
 import model.UserModel;
 import model.enums.Permission;
 
@@ -49,6 +46,8 @@ public interface IUserDao {
     UserModel addPermission(String token, String username, Permission permission) throws AddPermissionFailException;
 
     UserModel removePermission(String token, String username, Permission permission) throws RemovePermissionFailException;
+
+    ArrayList<Permission> getAllPermissions(String token, String username) throws FetchPermissionFailException;
 
     UserModel changeRole(String token, String username, String role) throws ChangeRoleFailException;
 }

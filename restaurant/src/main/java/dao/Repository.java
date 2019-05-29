@@ -1,10 +1,13 @@
 package dao;
 
 import dao.exceptions.userExceptions.AuthenticationFailException;
+import dao.exceptions.userExceptions.FetchPermissionFailException;
 import dao.exceptions.userExceptions.FetchUserFailException;
 import dao.restApi.UserDao;
 import model.UserModel;
+import model.enums.Permission;
 
+import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
 public class Repository {
@@ -18,6 +21,7 @@ public class Repository {
     private Preferences _prefs;
     private UserDao _userDao;
     private UserModel _currentUser;
+    private ArrayList<Permission> _currentUserPermissions;
 
     private Repository() {
         _prefs = Preferences.userRoot();
@@ -29,7 +33,7 @@ public class Repository {
         return _ourInstance;
     }
 
-    public static void initializeRepository() throws FetchUserFailException {
+    public static void initializeRepository() throws FetchUserFailException, FetchPermissionFailException {
         if (_ourInstance == null) {
             _ourInstance = new Repository();
         }
@@ -41,7 +45,7 @@ public class Repository {
         return !_prefs.get(PREF_TOKEN, "").equals("");
     }
 
-    public void login(String username, String password) throws AuthenticationFailException, FetchUserFailException {
+    public void login(String username, String password) throws AuthenticationFailException, FetchUserFailException, FetchPermissionFailException {
         String token = _userDao.authenticate(username, password);
 
         System.out.println("Storing token...");
@@ -53,12 +57,14 @@ public class Repository {
         deleteToken();
     }
 
-    private void fetchCurrentUserProfile() throws FetchUserFailException {
+    private void fetchCurrentUserProfile() throws FetchUserFailException, FetchPermissionFailException {
         System.out.println("Fetching user profile...");
         String username = _prefs.get(PREF_CURRENT_USER, "");
         String token = getToken();
         if (!username.equals("")) {
             _currentUser = _userDao.getProfileByUsername(token, username);
+            System.out.println("Fetching user permissions...");
+            _currentUserPermissions = _userDao.getAllPermissions(token, username);
         }
     }
 
@@ -75,9 +81,14 @@ public class Repository {
         _prefs.remove(PREF_TOKEN);
         _prefs.remove(PREF_CURRENT_USER);
         _currentUser = null;
+        _currentUserPermissions = null;
     }
 
     public UserModel get_currentUser() {
         return _currentUser;
+    }
+
+    public ArrayList<Permission> get_currentUserPermissions() {
+        return _currentUserPermissions;
     }
 }
