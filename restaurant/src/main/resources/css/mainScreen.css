@@ -1,3 +1,27 @@
 .jfx-rippler {
     -fx-ripple-color:linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
 }
+
+.about-tab {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+}
+
+.about-tab .information-card {
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+}
+
+.about-tab .about-tab-avatar {
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 5;
+}
+
+.about-tab .information-card .card-title {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.about-tab .label {
+    -fx-text-fill: white;
+}

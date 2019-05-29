@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<FlowPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" styleClass="about-tab"
+      stylesheets="@../../../css/mainScreen.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <HBox fx:id="card1" alignment="CENTER_LEFT" prefHeight="100" styleClass="information-card">
+        <FlowPane.margin>
+            <Insets bottom="20" left="20" right="20" top="20"/>
+        </FlowPane.margin>
+        <ImageView fx:id="avatar1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="https://avatars0.githubusercontent.com/u/36978155?s=460"/>
+            <HBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+        </ImageView>
+        <VBox spacing="8">
+            <HBox.margin>
+                <Insets bottom="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+            <Label styleClass="card-title">Phan Thanh Duy</Label>
+            <Label>MSSV: 16520303</Label>
+            <Label>Email: 16520303@gm.uit.com</Label>
+            <Label>Github: ThanhDuyPhan</Label>
+        </VBox>
+    </HBox>
+    <HBox fx:id="card2" alignment="CENTER_LEFT" prefHeight="100" styleClass="information-card">
+        <FlowPane.margin>
+            <Insets bottom="20" left="20" right="20" top="20"/>
+        </FlowPane.margin>
+        <ImageView fx:id="avatar2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="https://avatars1.githubusercontent.com/u/36977998?s=460"/>
+            <HBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+        </ImageView>
+        <VBox spacing="8">
+            <HBox.margin>
+                <Insets bottom="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+            <Label styleClass="card-title">Lê Hồng Hiển</Label>
+            <Label alignment="CENTER">MSSV: 16520361</Label>
+            <Label>Email: hienlh1298@gmail.com</Label>
+            <Label>Github: hienlh</Label>
+        </VBox>
+    </HBox>
+    <HBox fx:id="card3" alignment="CENTER_LEFT" prefHeight="100" styleClass="information-card">
+        <FlowPane.margin>
+            <Insets bottom="20" left="20" right="20" top="20"/>
+        </FlowPane.margin>
+        <ImageView fx:id="avatar3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="https://avatars2.githubusercontent.com/u/48937704?s=460"/>
+            <HBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+        </ImageView>
+        <VBox spacing="8">
+            <HBox.margin>
+                <Insets bottom="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+            <Label styleClass="card-title">Nguyễn Trung Nguyên</Label>
+            <Label>MSSV: 16520848</Label>
+            <Label>Email: 16520848@gm.uit.com</Label>
+            <Label>Github: Nguyennt98</Label>
+        </VBox>
+    </HBox>
+</FlowPane>
