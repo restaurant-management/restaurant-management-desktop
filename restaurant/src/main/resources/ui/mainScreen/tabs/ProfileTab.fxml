@@ -80,7 +80,7 @@
             </StackPane>
         </VBox>
     </VBox>
-    <JFXButton fx:id="editButton" styleClass="edit-button">
+    <JFXButton fx:id="editButton" onAction="#editAction" styleClass="edit-button">
         <VBox.margin>
             <Insets top="20" />
         </VBox.margin>

@@ -5,30 +5,36 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.StackPane;
 import ui.base.StageManager;
 
-public class ErrorDialog {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class CustomDialog {
     private JFXDialog _alert;
 
-    public ErrorDialog(String title, String message, String closeButtonText) {
+    public CustomDialog(String title, Node content, boolean showCloseButton, Node... actions) {
         JFXDialogLayout body = new JFXDialogLayout();
         body.setHeading(new Label(title));
-        body.setBody(new Label(message));
+        body.setBody(content);
+
         JFXButton closeButton = new JFXButton();
         closeButton.setButtonType(JFXButton.ButtonType.RAISED);
-        closeButton.setText(closeButtonText != null ? closeButtonText : "Đóng");
+        closeButton.setText("Đóng");
         closeButton.setOnAction(action -> _alert.close());
-        body.setActions(closeButton);
 
+        ArrayList<Node> listActions = new ArrayList<>();
+        if (showCloseButton) listActions.add(closeButton);
+        listActions.addAll(Arrays.asList(actions));
+        body.setActions(listActions);
 
         _alert = new JFXDialog();
-        _alert.setTransitionType(JFXDialog.DialogTransition.CENTER);
+        _alert.setTransitionType(JFXDialog.DialogTransition.BOTTOM);
         _alert.setDialogContainer((StackPane) StageManager.getInstance().getCurrent().getScene().getRoot());
         _alert.setOverlayClose(false);
-        _alert.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, null, new BorderWidths(5))));
         _alert.setContent(body);
     }
 
@@ -38,6 +44,10 @@ public class ErrorDialog {
 
     public void close() {
         _alert.close();
+    }
+
+    public void setTransitionType(JFXDialog.DialogTransition transitionType) {
+        _alert.setTransitionType(transitionType);
     }
 
     public void setOnDialogClosed(EventHandler<? super JFXDialogEvent> handler) {
