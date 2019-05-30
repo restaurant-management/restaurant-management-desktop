@@ -41,9 +41,8 @@
 
         <!-- Content Area -->
         <center>
-            <JFXDrawer fx:id="drawer" defaultDrawerSize="100" direction="LEFT" resizableOnDrag="true"
-                       resizeContent="true" />
-            <JFXDrawer fx:id="profileDrawer" defaultDrawerSize="400" direction="RIGHT" resizableOnDrag="true" />
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="100" direction="LEFT" />
+            <JFXDrawer fx:id="profileDrawer" defaultDrawerSize="400" direction="RIGHT" />
         </center>
     </BorderPane>
 </StackPane>

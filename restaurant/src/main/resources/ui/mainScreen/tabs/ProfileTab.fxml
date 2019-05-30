@@ -22,7 +22,7 @@
                 <Insets left="10.0" top="70.0"/>
             </StackPane.margin>
         </Circle>
-        <Label text="Lê Hồng Hiển" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+        <Label fx:id="bigFullName" text="Lê Hồng Hiển" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
             <StackPane.margin>
                 <Insets bottom="50.0" left="150.0"/>
             </StackPane.margin>
@@ -80,7 +80,7 @@
             </StackPane>
         </VBox>
     </VBox>
-    <JFXButton styleClass="edit-button">
+    <JFXButton fx:id="editButton" styleClass="edit-button">
         <VBox.margin>
             <Insets top="20" />
         </VBox.margin>
