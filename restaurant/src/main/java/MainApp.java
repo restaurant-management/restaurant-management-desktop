@@ -2,6 +2,7 @@ import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.flow.FlowException;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import ui.base.StageManager;
@@ -23,6 +24,7 @@ public class MainApp extends Application {
             try {
                 SVGGlyphLoader.loadGlyphsFont(MainApp.class.getResourceAsStream("/fonts/icomoon.svg"),
                         "icomoon.svg");
+                Font.loadFont(MainApp.class.getResource("/fonts/HussarBd.otf").toExternalForm(), 12);
             } catch (IOException ioExc) {
                 ioExc.printStackTrace();
             }
@@ -33,10 +35,10 @@ public class MainApp extends Application {
         double height = 600;
         try {
             Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
-            width = bounds.getWidth() / 1.5;
-            height = bounds.getHeight() / 1.5;
+            width = bounds.getWidth() / 1.1;
+            height = bounds.getHeight() / 1.1;
         } catch (Exception ignored) {
         }
-        StageManager.getInstance().push(SplashScreen.class, width, height, "Phần mềm quản lý quán cơm", null);
+        StageManager.getInstance().push(SplashScreen.class, width, height, "Phần mềm quản lý quán cơm", primaryStage);
     }
 }

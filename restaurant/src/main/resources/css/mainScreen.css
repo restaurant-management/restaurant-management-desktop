@@ -2,6 +2,12 @@
     -fx-ripple-color:linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
 }
 
+.title-label {
+    -fx-font-family: 'Hussar Bold';
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+
 .about-tab {
     -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
 }
@@ -24,4 +30,43 @@
 
 .about-tab .label {
     -fx-text-fill: white;
+}
+
+.profile-tab {
+    -fx-background-color: antiquewhite;
+}
+
+.profile-tab .profile-box {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-border-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+    -fx-border-width: 4 0 0 0;
+}
+
+.profile-tab .profile-box .box-title {
+    -fx-font-family: 'Hussar Bold';
+    -fx-font-size: 16;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: gray;
+    -fx-label-padding: 5 0 5 0;
+}
+
+.profile-tab .profile-box .detail-box .property-name {
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-font-family: "Segoe UI";
+}
+
+.profile-tab .profile-box .detail-box {
+    -fx-font-size: 14;
+    -fx-font-family: "Segoe UI Light";
+}
+
+.profile-tab .edit-button {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-label-padding: 5 30 5 30;
 }

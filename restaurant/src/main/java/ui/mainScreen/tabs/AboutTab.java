@@ -3,8 +3,11 @@ package ui.mainScreen.tabs;
 import animatefx.animation.LightSpeedIn;
 import animatefx.animation.ZoomIn;
 import io.datafx.controller.ViewController;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.fxml.FXML;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
@@ -16,6 +19,8 @@ import javax.annotation.PostConstruct;
 
 @ViewController(value = "/ui/mainScreen/tabs/AboutTab.fxml")
 public class AboutTab {
+    @FXMLViewFlowContext
+    private ViewFlowContext context;
     @FXML
     private ImageView avatar1;
     @FXML
@@ -31,6 +36,7 @@ public class AboutTab {
 
     @PostConstruct
     void init() {
+        ((Label) context.getRegisteredObject("TitleLabel")).setText("Nhóm phát triển");
         roundedImage(avatar1);
         roundedImage(avatar2);
         roundedImage(avatar3);

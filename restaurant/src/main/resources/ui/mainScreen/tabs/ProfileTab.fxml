@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="400.0" styleClass="profile-tab"
+      stylesheets="@../../../css/mainScreen.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <StackPane>
+        <Rectangle fx:id="cover" fill="DODGERBLUE" height="200.0" width="400.0" StackPane.alignment="TOP_CENTER">
+            <effect>
+                <ColorAdjust brightness="-0.5"/>
+            </effect>
+        </Rectangle>
+        <Circle fx:id="avatar" centerX="250" centerY="250" radius="80" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets left="10.0" top="70.0"/>
+            </StackPane.margin>
+        </Circle>
+        <Label text="Lê Hồng Hiển" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+            <StackPane.margin>
+                <Insets bottom="50.0" left="150.0"/>
+            </StackPane.margin>
+            <font>
+                <Font name="Segoe UI Light" size="25.0"/>
+            </font>
+        </Label>
+    </StackPane>
+    <VBox fx:id="profileBox" alignment="TOP_CENTER" maxWidth="350.0"
+          styleClass="profile-box">
+        <VBox.margin>
+            <Insets top="20"/>
+        </VBox.margin>
+        <Label alignment="CENTER" minWidth="300.0" styleClass="box-title">
+            <VBox.margin>
+                <Insets left="10" right="10"/>
+            </VBox.margin>
+            THÔNG TIN
+        </Label>
+        <VBox styleClass="detail-box">
+            <StackPane>
+                <VBox.margin>
+                    <Insets left="25" right="25" top="10"/>
+                </VBox.margin>
+                <Label StackPane.alignment="CENTER_LEFT" styleClass="property-name">Tên đăng nhập:</Label>
+                <Label fx:id="username" StackPane.alignment="CENTER_RIGHT">admin</Label>
+            </StackPane>
+            <StackPane>
+                <VBox.margin>
+                    <Insets left="25" right="25" top="10"/>
+                </VBox.margin>
+                <Label StackPane.alignment="CENTER_LEFT" styleClass="property-name">Tên:</Label>
+                <Label fx:id="fullName" StackPane.alignment="CENTER_RIGHT">admin</Label>
+            </StackPane>
+            <StackPane>
+                <VBox.margin>
+                    <Insets left="25" right="25" top="10"/>
+                </VBox.margin>
+                <Label StackPane.alignment="CENTER_LEFT" styleClass="property-name">Email:</Label>
+                <Label fx:id="email" StackPane.alignment="CENTER_RIGHT">hienlh1298@gmail.com</Label>
+            </StackPane>
+            <StackPane>
+                <VBox.margin>
+                    <Insets left="25" right="25" top="10"/>
+                </VBox.margin>
+                <Label StackPane.alignment="CENTER_LEFT" styleClass="property-name">Ngày sinh:</Label>
+                <Label fx:id="birthday" StackPane.alignment="CENTER_RIGHT">1/2/1998</Label>
+            </StackPane>
+            <StackPane>
+                <VBox.margin>
+                    <Insets left="25" right="25" top="10" bottom="10"/>
+                </VBox.margin>
+                <Label StackPane.alignment="CENTER_LEFT" styleClass="property-name">Vai trò:</Label>
+                <Label fx:id="role" StackPane.alignment="CENTER_RIGHT">Administrator</Label>
+            </StackPane>
+        </VBox>
+    </VBox>
+    <JFXButton styleClass="edit-button">
+        <VBox.margin>
+            <Insets top="20" />
+        </VBox.margin>
+        Sửa thông tin
+    </JFXButton>
+</VBox>

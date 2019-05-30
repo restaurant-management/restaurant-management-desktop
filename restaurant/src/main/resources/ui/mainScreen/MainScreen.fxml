@@ -20,7 +20,7 @@
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label fx:id="titleLabel">Quản lý quán cơm</Label>
+                        <Label fx:id="titleLabel" styleClass="title-label" />
                     </leftItems>
                     <rightItems>
                         <JFXRippler onMouseClicked="#goToProfile" maskType="CIRCLE">
@@ -42,7 +42,8 @@
         <!-- Content Area -->
         <center>
             <JFXDrawer fx:id="drawer" defaultDrawerSize="100" direction="LEFT" resizableOnDrag="true"
-                       resizeContent="true"/>
+                       resizeContent="true" />
+            <JFXDrawer fx:id="profileDrawer" defaultDrawerSize="400" direction="RIGHT" resizableOnDrag="true" />
         </center>
     </BorderPane>
 </StackPane>

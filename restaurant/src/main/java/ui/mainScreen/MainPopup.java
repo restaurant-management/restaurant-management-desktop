@@ -39,5 +39,6 @@ public class MainPopup {
     @FXML
     public void goToAbout(MouseEvent mouseEvent) throws VetoException, FlowException {
         ((FlowHandler) context.getRegisteredObject("ContentFlowHandler")).navigateTo(AboutTab.class);
+        ((JFXPopup) context.getRegisteredObject("ToolbarPopup")).hide();
     }
 }

@@ -8,7 +8,6 @@ import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
-import io.datafx.controller.util.VetoException;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -32,6 +31,8 @@ public class MainScreen {
     private Label titleLabel;
     @FXML
     private JFXDrawer drawer;
+    @FXML
+    private JFXDrawer profileDrawer;
     @FXML
     private JFXHamburger titleBurger;
     @FXML
@@ -68,15 +69,16 @@ public class MainScreen {
             }
         });
 
-
         // set flow for content
         context = new ViewFlowContext();
         Flow innerFlow = new Flow(AboutTab.class);
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler", flowHandler);
         context.register("ContentFlow", innerFlow);
+        context.register("TitleLabel", titleLabel);
         final Duration containerAnimationDuration = Duration.millis(320);
         drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_RIGHT)));
+        profileDrawer.setContent(drawer);
 
         // set flow for popup
         Flow popupFlow = new Flow(MainPopup.class);
@@ -94,17 +96,21 @@ public class MainScreen {
 
         // set flow for drawer
         Flow sideMenuFlow = new Flow(MainDrawer.class);
-        final FlowHandler sideMenuFlowHandler = sideMenuFlow.createHandler(context);
-        drawer.setSidePane(sideMenuFlowHandler.start());
+        Flow profileFlow = new Flow(ProfileTab.class);
+        drawer.setSidePane(sideMenuFlow.createHandler(context).start());
+        profileDrawer.setSidePane(profileFlow.createHandler(context).start());
 
         //Add tab not in drawer to flow
-        innerFlow.withGlobalLink("profileTab", ProfileTab.class);
         innerFlow.withGlobalLink("aboutTab", AboutTab.class);
     }
 
     @FXML
-    private void goToProfile() throws VetoException, FlowException {
-        ((FlowHandler) context.getRegisteredObject("ContentFlowHandler")).navigateTo(ProfileTab.class);
+    private void goToProfile() {
+        if (profileDrawer.isClosed() || profileDrawer.isClosing()) {
+            profileDrawer.open();
+        } else {
+            profileDrawer.close();
+        }
     }
 
 }
