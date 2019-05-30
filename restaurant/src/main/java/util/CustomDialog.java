@@ -36,6 +36,7 @@ public class CustomDialog {
         _alert.setDialogContainer((StackPane) StageManager.getInstance().getCurrent().getScene().getRoot());
         _alert.setOverlayClose(false);
         _alert.setContent(body);
+        _alert.getContent().getStyleClass().add("custom-dialog");
     }
 
     public void show() {

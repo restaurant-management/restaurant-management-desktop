@@ -79,4 +79,9 @@ public class RoleModel {
     public void set_permissions(ArrayList<Permission> _permissions) {
         this._permissions = _permissions;
     }
+
+    @Override
+    public String toString() {
+        return _name;
+    }
 }

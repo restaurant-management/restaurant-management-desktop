@@ -1,0 +1,12 @@
+.custom-dialog {
+    -fx-border-width: 4 0 0 0;
+    -fx-border-color: #FC5C7D;
+}
+
+.jfx-date-picker {
+    -jfx-default-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+}
+
+.jfx-combo-box {
+    -jfx-focus-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+}

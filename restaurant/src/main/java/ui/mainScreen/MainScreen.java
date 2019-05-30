@@ -17,7 +17,8 @@ import javafx.util.Duration;
 import model.UserModel;
 import ui.base.ExtendedAnimatedFlowContainer;
 import ui.mainScreen.tabs.AboutTab;
-import ui.mainScreen.tabs.ProfileTab;
+import ui.mainScreen.tabs.StatisticsTab;
+import ui.mainScreen.tabs.profileTab.ProfileTab;
 
 import javax.annotation.PostConstruct;
 
@@ -71,7 +72,7 @@ public class MainScreen {
 
         // set flow for content
         context = new ViewFlowContext();
-        Flow innerFlow = new Flow(AboutTab.class);
+        Flow innerFlow = new Flow(StatisticsTab.class);
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler", flowHandler);
         context.register("ContentFlow", innerFlow);

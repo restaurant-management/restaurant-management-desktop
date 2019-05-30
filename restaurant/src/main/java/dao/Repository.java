@@ -1,9 +1,12 @@
 package dao;
 
+import dao.exceptions.roleExceptions.GetRoleFailException;
 import dao.exceptions.userExceptions.AuthenticationFailException;
 import dao.exceptions.userExceptions.FetchPermissionFailException;
 import dao.exceptions.userExceptions.FetchUserFailException;
-import dao.restApi.UserDao;
+import dao.exceptions.userExceptions.SaveUserFailException;
+import dao.restApi.*;
+import model.RoleModel;
 import model.UserModel;
 import model.enums.Permission;
 
@@ -20,12 +23,20 @@ public class Repository {
     //endregion
     private Preferences _prefs;
     private UserDao _userDao;
+    private RoleDao _roleDao;
+    private BillDao _billDao;
+    private DishDao _dishDao;
+    private DailyDishDao _dailyDishDao;
     private UserModel _currentUser;
     private ArrayList<Permission> _currentUserPermissions;
 
     private Repository() {
         _prefs = Preferences.userRoot();
         _userDao = new UserDao();
+        _roleDao = new RoleDao();
+        _billDao = new BillDao();
+        _dishDao = new DishDao();
+        _dailyDishDao = new DailyDishDao();
     }
 
     //region Singleton
@@ -90,5 +101,13 @@ public class Repository {
 
     public ArrayList<Permission> get_currentUserPermissions() {
         return _currentUserPermissions;
+    }
+
+    public void updateProfile(UserModel user) throws SaveUserFailException {
+        _userDao.editProfile(getToken(), user);
+    }
+
+    public ArrayList<RoleModel> getAllRole() throws GetRoleFailException {
+        return _roleDao.getAllRole(getToken(), null, null);
     }
 }

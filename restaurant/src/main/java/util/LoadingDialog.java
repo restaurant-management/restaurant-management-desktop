@@ -26,11 +26,13 @@ public class LoadingDialog {
         _dialog.setContent(body);
     }
 
-    public void show() {
+    public LoadingDialog show() {
         _dialog.show();
+        return this;
     }
 
-    public void close() {
+    public LoadingDialog close() {
         _dialog.close();
+        return this;
     }
 }

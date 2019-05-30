@@ -32,15 +32,18 @@ public class ErrorDialog {
         _alert.setContent(body);
     }
 
-    public void show() {
+    public ErrorDialog show() {
         _alert.show();
+        return this;
     }
 
-    public void close() {
+    public ErrorDialog close() {
         _alert.close();
+        return this;
     }
 
-    public void setOnDialogClosed(EventHandler<? super JFXDialogEvent> handler) {
+    public ErrorDialog setOnDialogClosed(EventHandler<? super JFXDialogEvent> handler) {
         _alert.setOnDialogClosed(handler);
+        return this;
     }
 }
