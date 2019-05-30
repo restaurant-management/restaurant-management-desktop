@@ -3,7 +3,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ui.base.StageManager;
-import ui.mainScreen.MainScreen;
+import ui.createDishScreen.CreateDishScreen;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Scene scene = new Scene(new MainScreen());
+        Scene scene = new Scene(new CreateDishScreen());
 
         primaryStage.setTitle("Quản lý quán cơm");
         primaryStage.setScene(scene);

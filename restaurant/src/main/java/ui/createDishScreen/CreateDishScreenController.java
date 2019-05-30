@@ -1,11 +1,11 @@
-package ui.dishManagementScreen;
+package ui.createDishScreen;
 
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DishManagemnetScreenController implements Initializable {
+public class CreateDishScreenController implements Initializable {
 
 
     @Override
