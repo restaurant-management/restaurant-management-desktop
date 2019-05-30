@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.mainScreen.MainScreenController">
+  <children>
+      <FlowPane>
+         <children>
+          <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0">
+            <items>
+              <AnchorPane prefHeight="551.0" prefWidth="57.0">
+                     <children>
+                        <JFXTabPane layoutX="-2.0" prefHeight="551.0" prefWidth="222.0" side="LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <tabs>
+                              <Tab text="Thực đơn">
+                                 <content>
+                                    <FlowPane prefHeight="551.0" prefWidth="227.0">
+                                       <children>
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Xem thực đơn hôm nay" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Cập nhật thực đơn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Chỉnh sửa thực đơn" />
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Món ăn">
+                                 <content>
+                                    <FlowPane prefHeight="551.0" prefWidth="33.0">
+                                       <children>
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Xem danh sách món ăn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Cập nhật món ăn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thêm món ăn mới" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Xoá món ăn" />
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Hoá đơn">
+                                 <content>
+                                    <FlowPane prefHeight="551.0" prefWidth="33.0">
+                                       <children>
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thống kê chi tiết món ăn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thống kê tất cả món ăn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thống kê doanh thu" />
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Nhà bếp">
+                                 <content>
+                                    <FlowPane prefHeight="551.0" prefWidth="33.0">
+                                       <children>
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Xem trạng thái bếp" />
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Thống kê">
+                                 <content>
+                                    <FlowPane prefHeight="551.0" prefWidth="33.0">
+                                       <children>
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thống kê từng món ăn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thống kê tất cả món ăn" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thống kê doanh thu" />
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Tài khoản">
+                                 <content>
+                                    <FlowPane prefHeight="551.0" prefWidth="33.0">
+                                       <children>
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Xem tài khoản" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Chỉnh sửa tài khoản" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Xoá tài khoản" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Quản lý danh sách tài khoản" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Thêm tài khoản mới" />
+                                          <JFXButton prefHeight="25.0" prefWidth="190.0" text="Đăng xuất" />
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXTabPane>
+                     </children>
+              </AnchorPane>
+                  <FlowPane columnHalignment="CENTER" rowValignment="TOP">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="49.0" prefWidth="443.0" style="-fx-background-color: linear-gradient(to right, #AB47BC , #7B1FA2);" text="THỰC ĐƠN HÀNG NGÀY" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Label>
+                        <FlowPane prefHeight="40.0" prefWidth="443.0">
+                           <children>
+                              <JFXButton fx:id="prevButton" prefHeight="39.0" prefWidth="52.0" text="&lt;" />
+                              <Label fx:id="dateLabel" alignment="CENTER" onMouseClicked="#openDatePicker" prefHeight="40.0" prefWidth="339.0" text="09/10/2019" textAlignment="CENTER" />
+                              <JFXButton fx:id="nextButton" layoutX="10.0" layoutY="11.0" prefHeight="39.0" prefWidth="52.0" text="&gt;" />
+                           </children>
+                        </FlowPane>
+                    <ScrollPane prefHeight="502.0" prefWidth="443.0" style="-fx-fit-to-height: true; -fx-fit-to-width: true;">
+                           <content>
+                              <TableView fx:id="tbData" prefHeight="430.0" prefWidth="441.0" tableMenuButtonVisible="true">
+                                <columns>
+                                  <TableColumn fx:id="dishId" prefWidth="75.0" text="Mã món ăn" />
+                                  <TableColumn fx:id="dishName" prefWidth="75.0" text="Tên" />
+                                    <TableColumn fx:id="dishPrice" prefWidth="75.0" text="Giá tiền" />
+                                    <TableColumn fx:id="dishStatus" prefWidth="75.0" text="Trạng thái" />
+                                    <TableColumn fx:id="dishSession" prefWidth="75.0" text="Buổi" />
+                                </columns>
+                              </TableView>
+                           </content>
+                    </ScrollPane>
+                        <FlowPane alignment="CENTER" prefHeight="45.0" prefWidth="443.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="293.0" style="-fx-background-radius: 90; -fx-border-color: BLUE; -fx-border-radius: 90; -fx-border-width: 2;" text="Cập nhật menu hằng ngày" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </FlowPane>
+                  <FlowPane>
+                     <children>
+                  <Label alignment="CENTER" prefHeight="49.0" prefWidth="248.0" style="-fx-background-color: linear-gradient(to right, #AB47BC , #7B1FA2);" text="Thông tin chi tiết" textAlignment="CENTER" wrapText="false">
+                           <font>
+                      <Font size="18.0" fx:id="x1" />
+                           </font>
+                           <textFill>
+                      <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
+                           </textFill>
+                        </Label>
+                        <TableView prefHeight="503.0" prefWidth="248.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Thông tin" />
+                            <TableColumn prefWidth="172.0" text="Giá trị" />
+                          </columns>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TableView>
+                        <FlowPane prefHeight="47.0" prefWidth="247.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="127.0" style="-fx-background-radius: 90; -fx-border-color: BLUE; -fx-border-radius: 90; -fx-border-width: 2;" text="Tạo mới" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="120.0" style="-fx-background-radius: 90; -fx-border-radius: 90; -fx-border-color: GREEN; -fx-border-width: 2;" text="Cập nhật" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </FlowPane>
+            </items>
+          </SplitPane>
+          <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0">
+            <children>
+              <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+                <font>
+                  <Font size="11.0" fx:id="x3" />
+                </font>
+                <textFill>
+                  <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+                </textFill>
+              </Label>
+              <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+              <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+            </children>
+            <padding>
+              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+            </padding>
+          </HBox>
+         </children>
+      </FlowPane>
+  </children>
+</VBox>
