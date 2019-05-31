@@ -2,9 +2,13 @@ package ui.mainScreen.tabs.profileTab;
 
 import bus.UserProfileBus;
 import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
-import io.datafx.controller.flow.action.*;
+import io.datafx.controller.flow.action.ActionMethod;
+import io.datafx.controller.flow.action.ActionTrigger;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -15,9 +19,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.UserModel;
+import ui.compenents.CustomDialog;
+import ui.compenents.ErrorDialog;
+import ui.compenents.IconButton;
+import ui.compenents.LoadingDialog;
 import ui.mainScreen.tabs.profileTab.popups.EditProfilePopup;
-import util.CustomDialog;
-import util.ErrorDialog;
 
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
@@ -46,21 +52,30 @@ public class ProfileTab {
     private Label role;
     @FXML
     private Label birthday;
+    @FXML
+    private IconButton reloadButton;
 
     private UserModel _currentUser = new UserProfileBus().getCurrentUser();
 
     @PostConstruct
     void init() {
+        reloadButton.setIcon(FontAwesomeIcon.UNDO, null);
+        reloadButton.setOnAction(event -> fetchCurrentUser());
 
         //region avatar
+
+        cover.setFill(new ImagePattern(new Image("/images/cover.jpg")));
+        //endregion
+
+        initData();
+    }
+
+    private void initData(){
         avatar.setStroke(Color.SEAGREEN);
         String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar() : "/ui/images/default-avatar.jpg";
         Image im = new Image(url, false);
         avatar.setFill(new ImagePattern(im));
         avatar.setEffect(new DropShadow(+25d, 0d, +2d, Color.valueOf("#9c27b0")));
-
-        cover.setFill(new ImagePattern(new Image("/images/cover.jpg")));
-        //endregion
 
         //region fullName
         bigFullName.setText(_currentUser.get_fullName() != null ? _currentUser.get_fullName() : _currentUser.get_username());
@@ -75,13 +90,41 @@ public class ProfileTab {
                 new SimpleDateFormat("dd/MM/yyyy").format(_currentUser.get_birthday()) : "");
     }
 
+    private void fetchCurrentUser() {
+        UserProfileBus bus = new UserProfileBus();
+        LoadingDialog loadingDialog = new LoadingDialog(null).show();
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                bus.updateCurrentUser();
+                _currentUser = bus.getCurrentUser();
+                return null;
+            }
+
+            @Override
+            protected void succeeded() {
+                initData();
+                loadingDialog.close();
+            }
+
+            @Override
+            protected void failed() {
+                getException().printStackTrace();
+                loadingDialog.close();
+                new ErrorDialog("Lỗi khi cập nhật thông tin", getException().getMessage()).show();
+            }
+        };
+        new Thread(task).start();
+    }
+
     @FXML
     @ActionMethod("editAction")
     void editAction() {
         try {
-            new CustomDialog("Sửa thông tin", EditProfilePopup.create(_currentUser), true).show();
+            new CustomDialog("Sửa thông tin", EditProfilePopup.class, _currentUser).show();
         } catch (FlowException e) {
-            new ErrorDialog("Lỗi tạo popup", e.getMessage(), "đóng").show();
+            e.printStackTrace();
+            new ErrorDialog("Lỗi tạo popup", e.getMessage()).show();
         }
     }
 }

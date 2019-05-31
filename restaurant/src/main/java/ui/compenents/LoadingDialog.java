@@ -1,4 +1,4 @@
-package util;
+package ui.compenents;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -13,7 +13,7 @@ public class LoadingDialog {
 
     public LoadingDialog(String title) {
         JFXDialogLayout body = new JFXDialogLayout();
-        body.setHeading(new Label(title));
+        body.setHeading(new Label(title != null ? title : "Đang tải..."));
         body.setBody(new JFXSpinner());
         JFXButton closeButton = new JFXButton();
         closeButton.setOnAction(action -> _dialog.close());

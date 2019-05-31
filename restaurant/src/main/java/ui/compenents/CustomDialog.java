@@ -1,39 +1,36 @@
-package util;
+package ui.compenents;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
+import io.datafx.controller.flow.FlowException;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import ui.base.Popupable;
 import ui.base.StageManager;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CustomDialog {
     private JFXDialog _alert;
 
-    public CustomDialog(String title, Node content, boolean showCloseButton, Node... actions) {
+    public CustomDialog(String title, Class<? extends Popupable> content, Object... parameters) throws FlowException {
+        StackPane container = (StackPane) StageManager.getInstance().getCurrent().getScene().getRoot();
         JFXDialogLayout body = new JFXDialogLayout();
-        body.setHeading(new Label(title));
-        body.setBody(content);
 
-        JFXButton closeButton = new JFXButton();
-        closeButton.setButtonType(JFXButton.ButtonType.RAISED);
-        closeButton.setText("Đóng");
+        body.setBody(Popupable.create(content, parameters));
+
+        Label _title = new Label(title);
+        JFXButton closeButton = new CloseButton();
         closeButton.setOnAction(action -> _alert.close());
-
-        ArrayList<Node> listActions = new ArrayList<>();
-        if (showCloseButton) listActions.add(closeButton);
-        listActions.addAll(Arrays.asList(actions));
-        body.setActions(listActions);
+        StackPane.setAlignment(_title, Pos.CENTER_LEFT);
+        StackPane.setAlignment(closeButton, Pos.CENTER_RIGHT);
+        body.setHeading(_title, closeButton);
 
         _alert = new JFXDialog();
         _alert.setTransitionType(JFXDialog.DialogTransition.BOTTOM);
-        _alert.setDialogContainer((StackPane) StageManager.getInstance().getCurrent().getScene().getRoot());
+        _alert.setDialogContainer(container);
         _alert.setOverlayClose(false);
         _alert.setContent(body);
         _alert.getContent().getStyleClass().add("custom-dialog");

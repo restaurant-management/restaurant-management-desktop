@@ -1,10 +1,7 @@
 package dao;
 
 import dao.exceptions.roleExceptions.GetRoleFailException;
-import dao.exceptions.userExceptions.AuthenticationFailException;
-import dao.exceptions.userExceptions.FetchPermissionFailException;
-import dao.exceptions.userExceptions.FetchUserFailException;
-import dao.exceptions.userExceptions.SaveUserFailException;
+import dao.exceptions.userExceptions.*;
 import dao.restApi.*;
 import model.RoleModel;
 import model.UserModel;
@@ -68,7 +65,7 @@ public class Repository {
         deleteToken();
     }
 
-    private void fetchCurrentUserProfile() throws FetchUserFailException, FetchPermissionFailException {
+    public void fetchCurrentUserProfile() throws FetchUserFailException, FetchPermissionFailException {
         System.out.println("Fetching user profile...");
         String username = _prefs.get(PREF_CURRENT_USER, "");
         String token = getToken();
@@ -107,7 +104,11 @@ public class Repository {
         _userDao.editProfile(getToken(), user);
     }
 
-    public ArrayList<RoleModel> getAllRole() throws GetRoleFailException {
+    public ArrayList<RoleModel> getAllRoles() throws GetRoleFailException {
         return _roleDao.getAllRole(getToken(), null, null);
+    }
+
+    public void changeRole(UserModel userModel) throws ChangeRoleFailException {
+        _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role());
     }
 }

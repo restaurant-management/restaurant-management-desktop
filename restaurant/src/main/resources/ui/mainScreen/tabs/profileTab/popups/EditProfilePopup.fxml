@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
+<?import ui.compenents.PrimaryButton?>
 <GridPane alignment="CENTER" hgap="10.0" prefWidth="500.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
           xmlns:fx="http://javafx.com/fxml/1">
     <Label alignment="CENTER_RIGHT" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
@@ -20,6 +21,9 @@
 
     <Label alignment="CENTER_RIGHT" text="Vai trò:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
     <JFXComboBox fx:id="roleField" prefWidth="180" promptText="Vai trò" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <PrimaryButton fx:id="submitButton" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+        Lưu
+    </PrimaryButton>
     <columnConstraints>
         <ColumnConstraints prefWidth="200.0"/>
         <ColumnConstraints prefWidth="300.0"/>

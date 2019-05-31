@@ -1,33 +1,39 @@
 package ui.mainScreen.tabs.profileTab.popups;
 
 
+import bus.AuthorizationBus;
 import bus.RoleBus;
+import bus.UserProfileBus;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import dao.exceptions.userExceptions.FetchPermissionFailException;
+import dao.exceptions.userExceptions.FetchUserFailException;
 import io.datafx.controller.ViewController;
-import io.datafx.controller.flow.Flow;
-import io.datafx.controller.flow.FlowException;
-import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.layout.StackPane;
 import model.RoleModel;
 import model.UserModel;
-import util.ErrorDialog;
+import model.enums.Permission;
+import ui.base.Popupable;
+import ui.compenents.ErrorDialog;
+import ui.compenents.LoadingDialog;
+import ui.compenents.PrimaryButton;
 
 import javax.annotation.PostConstruct;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @ViewController(value = "/ui/mainScreen/tabs/profileTab/popups/EditProfilePopup.fxml")
-public class EditProfilePopup {
-    ArrayList<RoleModel> listRoles;
+public class EditProfilePopup extends Popupable {
+    private ArrayList<RoleModel> listRoles;
     @FXMLViewFlowContext
     private ViewFlowContext context;
     @FXML
@@ -37,45 +43,96 @@ public class EditProfilePopup {
     @FXML
     private JFXDatePicker birthdayField;
     @FXML
-    private JFXComboBox roleField;
+    private JFXComboBox<RoleModel> roleField;
+    @FXML
+    private PrimaryButton submitButton;
 
-    public static StackPane create(UserModel user) throws FlowException {
-        Flow popupFlow = new Flow(EditProfilePopup.class);
-        ViewFlowContext popupContext = new ViewFlowContext();
-        popupContext.register("user", user);
-        FlowHandler handler = popupFlow.createHandler(popupContext);
-        return handler.start();
+    private UserModel _user;
+    private UserProfileBus _userProfileBus = new UserProfileBus();
+    private AuthorizationBus _authorizationBus = new AuthorizationBus();
+
+    @Override
+    protected void get() {
+        _user = (UserModel) context.getRegisteredObject("Object0");
     }
 
     @PostConstruct
     void init() {
         Objects.requireNonNull(context, "context");
+        get();
 
+        if (!_authorizationBus.checkPermission(Permission.USER_MANAGEMENT)) {
+            roleField.setPromptText(_user.get_role());
+            roleField.setDisable(true);
+        } else loadRole();
+
+        emailField.setText(_user.get_email());
+        fullNameField.setText(_user.get_fullName());
+        if (_user.get_birthday() != null)
+            birthdayField.setValue(_user.get_birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        submitButton.setOnAction(event -> Platform.runLater(this::commitChange));
+    }
+
+    private void commitChange() {
+        LoadingDialog _loadingDialog = new LoadingDialog("Đang cập nhật").show();
+        Task<Void> commitChangeTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                if (emailField.getText() != null && !emailField.getText().isEmpty())
+                    _user.set_email(emailField.getText());
+                if (fullNameField.getText() != null && !fullNameField.getText().isEmpty())
+                    _user.set_fullName(fullNameField.getText());
+                if (birthdayField.getValue() != null)
+                    _user.set_birthday(Date.from(birthdayField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                if (roleField.getValue() != null)
+                    _user.set_role(roleField.getValue().get_slug());
+                _userProfileBus.updateProfile(_user);
+                if (_authorizationBus.checkPermission(Permission.USER_MANAGEMENT))
+                    _userProfileBus.changeRole(_user);
+
+                _userProfileBus.updateCurrentUser();
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                _loadingDialog.close();
+            }
+
+            @Override
+            protected void failed() {
+                getException().printStackTrace();
+                new ErrorDialog("Lỗi cập nhật", getException().getMessage()).show();
+            }
+        };
+        new Thread(commitChangeTask).start();
+    }
+
+    private void loadRole() {
         Task<Void> loadRoleTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                roleField.setItems(FXCollections.observableArrayList("Loading..."));
-                listRoles = new RoleBus().getAll();
+                roleField.setPromptText("Đang tải");
+                listRoles = RoleBus.get_instance().getListRoles();
                 return null;
             }
 
             @Override
             protected void succeeded() {
+                roleField.setPromptText("Vai trò");
                 roleField.setItems(FXCollections.observableArrayList(listRoles));
+                for (RoleModel role : listRoles) {
+                    if (role.get_slug().equals(_user.get_role()))
+                        roleField.setValue(role);
+                }
             }
 
             @Override
             protected void failed() {
-                new ErrorDialog("Lỗi tải danh sách vai trò", getException().getMessage(), null).show();
+                new ErrorDialog("Lỗi tải danh sách vai trò", getException().getMessage()).show();
             }
         };
         new Thread(loadRoleTask).start();
-
-        UserModel user = (UserModel) context.getRegisteredObject("user");
-
-        emailField.setText(user.get_email());
-        fullNameField.setText(user.get_fullName());
-        birthdayField.setValue(user.get_birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
     }
 
     private ArrayList<String> getRoleName(ArrayList<RoleModel> listRoles) {

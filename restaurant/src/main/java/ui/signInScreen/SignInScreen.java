@@ -15,8 +15,8 @@ import io.datafx.controller.util.VetoException;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import ui.mainScreen.MainScreen;
-import util.ErrorDialog;
-import util.LoadingDialog;
+import ui.compenents.ErrorDialog;
+import ui.compenents.LoadingDialog;
 
 import javax.annotation.PostConstruct;
 
@@ -87,7 +87,7 @@ public class SignInScreen{
 
             @Override
             protected void failed() {
-                _errorDialog = new ErrorDialog("Đăng nhập thất bại", getException().getMessage(), null);
+                _errorDialog = new ErrorDialog("Đăng nhập thất bại", getException().getMessage());
                 _errorDialog.show();
                 loginFail();
             }

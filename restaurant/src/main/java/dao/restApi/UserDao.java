@@ -90,10 +90,14 @@ public class UserDao implements IUserDao {
 
         // Create body for request
         List<NameValuePair> body = new ArrayList<>();
-        body.add(new BasicNameValuePair("email", user.get_email()));
-        body.add(new BasicNameValuePair("fullName", user.get_fullName()));
-        body.add(new BasicNameValuePair("birthday", new SimpleDateFormat("yyyy-MM-dd").format(user.get_birthday())));
-        body.add(new BasicNameValuePair("avatar", user.get_avatar()));
+        if (user.get_email() != null)
+            body.add(new BasicNameValuePair("email", user.get_email()));
+        if (user.get_fullName() != null)
+            body.add(new BasicNameValuePair("fullName", user.get_fullName()));
+        if (user.get_birthday() != null)
+            body.add(new BasicNameValuePair("birthday", new SimpleDateFormat("yyyy-MM-dd").format(user.get_birthday())));
+        if (user.get_avatar() != null)
+            body.add(new BasicNameValuePair("avatar", user.get_avatar()));
 
         String response;
         try {

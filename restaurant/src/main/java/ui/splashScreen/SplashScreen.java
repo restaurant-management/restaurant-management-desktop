@@ -13,16 +13,15 @@ import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.util.VetoException;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import ui.compenents.ErrorDialog;
 import ui.mainScreen.MainScreen;
 import ui.signInScreen.SignInScreen;
-import util.ErrorDialog;
 
 import javax.annotation.PostConstruct;
 
@@ -68,13 +67,11 @@ public class SplashScreen {
             @Override
             protected void succeeded() {
                 if (new AuthenticationBus().checkLoggedIn()) {
-                    Platform.runLater(() -> {
-                        try {
-                            actionHandler.navigate(MainScreen.class);
-                        } catch (VetoException | FlowException e) {
-                            handleError(e);
-                        }
-                    });
+                    try {
+                        actionHandler.navigate(MainScreen.class);
+                    } catch (VetoException | FlowException e) {
+                        handleError(e);
+                    }
                 } else {
                     try {
                         actionHandler.navigate(SignInScreen.class);
@@ -96,7 +93,7 @@ public class SplashScreen {
         try {
             new AuthenticationBus().logout();
         } catch (NavigateFailedException e) {
-            ErrorDialog dialog = new ErrorDialog("Lỗi chuyển màn hình", e.getMessage(), null);
+            ErrorDialog dialog = new ErrorDialog("Lỗi chuyển màn hình", e.getMessage());
             dialog.setOnDialogClosed(event -> logout());
             dialog.show();
         }
@@ -107,7 +104,7 @@ public class SplashScreen {
         String title;
         if (exception instanceof DontHavePermissionException) {
             ErrorDialog dialog = new ErrorDialog("Lỗi tài khoản",
-                    "Tài khoản không có quyền truy cập. Nhấn đóng để đăng xuất.", null);
+                    "Tài khoản không có quyền truy cập. Nhấn đóng để đăng xuất.");
             dialog.setOnDialogClosed(event -> logout());
             dialog.show();
             return;
@@ -117,7 +114,7 @@ public class SplashScreen {
         } else {
             title = "Lỗi khởi tạo ứng dụng";
         }
-        ErrorDialog dialog = new ErrorDialog(title, exception.getMessage(), null);
+        ErrorDialog dialog = new ErrorDialog(title, exception.getMessage());
         dialog.setOnDialogClosed(event -> appStarted());
         dialog.show();
     }
