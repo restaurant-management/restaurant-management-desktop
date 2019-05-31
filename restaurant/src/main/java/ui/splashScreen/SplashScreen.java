@@ -19,13 +19,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import ui.compenents.ErrorDialog;
 import ui.mainScreen.MainScreen;
 import ui.signInScreen.SignInScreen;
-import util.ErrorDialog;
 
 import javax.annotation.PostConstruct;
 
-@ViewController(value = "/ui/splashScreen/SplashScreen.fxml", title = "Phần mềm quản lý quán cơm Ver 1.0")
+@ViewController(value = "/ui/splashScreen/SplashScreen.fxml")
 public class SplashScreen {
     @FXML
     private ImageView logo;
@@ -70,38 +70,22 @@ public class SplashScreen {
                     try {
                         actionHandler.navigate(MainScreen.class);
                     } catch (VetoException | FlowException e) {
-                        e.printStackTrace();
+                        handleError(e);
                     }
                 } else {
                     try {
                         actionHandler.navigate(SignInScreen.class);
                     } catch (VetoException | FlowException e) {
-                        e.printStackTrace();
+                        handleError(e);
                     }
                 }
             }
 
             @Override
             protected void failed() {
-                String title;
-                if (getException() instanceof DontHavePermissionException) {
-                    ErrorDialog dialog = new ErrorDialog("Lỗi tài khoản",
-                            "Tài khoản không có quyền truy cập. Nhấn đóng để đăng xuất.", null);
-                    dialog.setOnDialogClosed(event -> logout());
-                    dialog.show();
-                    return;
-                }
-                if (getException() instanceof FetchUserFailException) {
-                    title = "Lỗi tải thông tin người dùng";
-                } else {
-                    title = "Lỗi khởi tạo ứng dụng";
-                }
-                ErrorDialog dialog = new ErrorDialog(title, getException().getMessage(), null);
-                dialog.setOnDialogClosed(event -> appStarted());
-                dialog.show();
+                handleError(getException());
             }
         };
-
         new Thread(task).start();
     }
 
@@ -109,9 +93,29 @@ public class SplashScreen {
         try {
             new AuthenticationBus().logout();
         } catch (NavigateFailedException e) {
-            ErrorDialog dialog = new ErrorDialog("Lỗi chuyển màn hình", e.getMessage(), null);
+            ErrorDialog dialog = new ErrorDialog("Lỗi chuyển màn hình", e.getMessage());
             dialog.setOnDialogClosed(event -> logout());
             dialog.show();
         }
+    }
+
+    private void handleError(Throwable exception) {
+        exception.printStackTrace();
+        String title;
+        if (exception instanceof DontHavePermissionException) {
+            ErrorDialog dialog = new ErrorDialog("Lỗi tài khoản",
+                    "Tài khoản không có quyền truy cập. Nhấn đóng để đăng xuất.");
+            dialog.setOnDialogClosed(event -> logout());
+            dialog.show();
+            return;
+        }
+        if (exception instanceof FetchUserFailException) {
+            title = "Lỗi tải thông tin người dùng";
+        } else {
+            title = "Lỗi khởi tạo ứng dụng";
+        }
+        ErrorDialog dialog = new ErrorDialog(title, exception.getMessage());
+        dialog.setOnDialogClosed(event -> appStarted());
+        dialog.show();
     }
 }

@@ -8,7 +8,6 @@ import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
-import io.datafx.controller.util.VetoException;
 import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -18,7 +17,8 @@ import javafx.util.Duration;
 import model.UserModel;
 import ui.base.ExtendedAnimatedFlowContainer;
 import ui.mainScreen.tabs.AboutTab;
-import ui.mainScreen.tabs.ProfileTab;
+import ui.mainScreen.tabs.StatisticsTab;
+import ui.mainScreen.tabs.profileTab.ProfileTab;
 
 import javax.annotation.PostConstruct;
 
@@ -33,6 +33,8 @@ public class MainScreen {
     @FXML
     private JFXDrawer drawer;
     @FXML
+    private JFXDrawer profileDrawer;
+    @FXML
     private JFXHamburger titleBurger;
     @FXML
     private StackPane titleBurgerContainer;
@@ -45,7 +47,7 @@ public class MainScreen {
     @PostConstruct
     public void init() throws FlowException {
         UserModel user = new AuthenticationBus().getCurrentUser();
-        titleLabel.setText(user.get_fullName() != null ? user.get_fullName() : user.get_username());
+        titleLabel.setText(user.get_fullName() != null ? user.get_fullName().get_value() : user.get_username());
         final JFXTooltip burgerTooltip = new JFXTooltip("Mở menu");
 
         drawer.setOnDrawerOpening(e -> {
@@ -68,15 +70,16 @@ public class MainScreen {
             }
         });
 
-
         // set flow for content
         context = new ViewFlowContext();
-        Flow innerFlow = new Flow(AboutTab.class);
+        Flow innerFlow = new Flow(StatisticsTab.class);
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler", flowHandler);
         context.register("ContentFlow", innerFlow);
+        context.register("TitleLabel", titleLabel);
         final Duration containerAnimationDuration = Duration.millis(320);
         drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_RIGHT)));
+        profileDrawer.setContent(drawer);
 
         // set flow for popup
         Flow popupFlow = new Flow(MainPopup.class);
@@ -94,17 +97,21 @@ public class MainScreen {
 
         // set flow for drawer
         Flow sideMenuFlow = new Flow(MainDrawer.class);
-        final FlowHandler sideMenuFlowHandler = sideMenuFlow.createHandler(context);
-        drawer.setSidePane(sideMenuFlowHandler.start());
+        Flow profileFlow = new Flow(ProfileTab.class);
+        drawer.setSidePane(sideMenuFlow.createHandler(context).start());
+        profileDrawer.setSidePane(profileFlow.createHandler(context).start());
 
         //Add tab not in drawer to flow
-        innerFlow.withGlobalLink("profileTab", ProfileTab.class);
         innerFlow.withGlobalLink("aboutTab", AboutTab.class);
     }
 
     @FXML
-    private void goToProfile() throws VetoException, FlowException {
-        ((FlowHandler) context.getRegisteredObject("ContentFlowHandler")).navigateTo(ProfileTab.class);
+    private void goToProfile() {
+        if (profileDrawer.isClosed() || profileDrawer.isClosing()) {
+            profileDrawer.open();
+        } else {
+            profileDrawer.close();
+        }
     }
 
 }

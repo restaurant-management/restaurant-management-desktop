@@ -1,9 +1,9 @@
 package dao;
 
-import dao.exceptions.userExceptions.AuthenticationFailException;
-import dao.exceptions.userExceptions.FetchPermissionFailException;
-import dao.exceptions.userExceptions.FetchUserFailException;
-import dao.restApi.UserDao;
+import dao.exceptions.roleExceptions.GetRoleFailException;
+import dao.exceptions.userExceptions.*;
+import dao.restApi.*;
+import model.RoleModel;
 import model.UserModel;
 import model.enums.Permission;
 
@@ -20,12 +20,20 @@ public class Repository {
     //endregion
     private Preferences _prefs;
     private UserDao _userDao;
+    private RoleDao _roleDao;
+    private BillDao _billDao;
+    private DishDao _dishDao;
+    private DailyDishDao _dailyDishDao;
     private UserModel _currentUser;
     private ArrayList<Permission> _currentUserPermissions;
 
     private Repository() {
         _prefs = Preferences.userRoot();
         _userDao = new UserDao();
+        _roleDao = new RoleDao();
+        _billDao = new BillDao();
+        _dishDao = new DishDao();
+        _dailyDishDao = new DailyDishDao();
     }
 
     //region Singleton
@@ -57,7 +65,7 @@ public class Repository {
         deleteToken();
     }
 
-    private void fetchCurrentUserProfile() throws FetchUserFailException, FetchPermissionFailException {
+    public void fetchCurrentUserProfile() throws FetchUserFailException, FetchPermissionFailException {
         System.out.println("Fetching user profile...");
         String username = _prefs.get(PREF_CURRENT_USER, "");
         String token = getToken();
@@ -90,5 +98,18 @@ public class Repository {
 
     public ArrayList<Permission> get_currentUserPermissions() {
         return _currentUserPermissions;
+    }
+
+    public void updateProfile(UserModel user) throws SaveUserFailException {
+        _userDao.editProfile(getToken(), user);
+    }
+
+    public ArrayList<RoleModel> getAllRoles() throws GetRoleFailException {
+        return _roleDao.getAllRole(getToken(), null, null);
+    }
+
+    public void changeRole(UserModel userModel) throws ChangeRoleFailException {
+        if(!userModel.get_role().isChanged()) return;
+        _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role().get_value());
     }
 }

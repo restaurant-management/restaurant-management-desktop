@@ -12,7 +12,7 @@
             <Insets bottom="20" left="20" right="20" top="20"/>
         </FlowPane.margin>
         <ImageView fx:id="avatar1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="https://avatars0.githubusercontent.com/u/36978155?s=460"/>
+            <Image url="@../../../images/default-avatar.jpg"/>
             <HBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </HBox.margin>
@@ -32,7 +32,7 @@
             <Insets bottom="20" left="20" right="20" top="20"/>
         </FlowPane.margin>
         <ImageView fx:id="avatar2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="https://avatars1.githubusercontent.com/u/36977998?s=460"/>
+            <Image url="@../../../images/default-avatar.jpg"/>
             <HBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </HBox.margin>
@@ -52,7 +52,7 @@
             <Insets bottom="20" left="20" right="20" top="20"/>
         </FlowPane.margin>
         <ImageView fx:id="avatar3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="https://avatars2.githubusercontent.com/u/48937704?s=460"/>
+            <Image url="@../../../images/default-avatar.jpg"/>
             <HBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </HBox.margin>

@@ -20,6 +20,6 @@
 .login-title {
     -fx-text-fill: black;
     -fx-font-weight: bold;
-    -fx-font: 30px Arial-Black;
-    -fx-font-family: 'Arial Black'
+    -fx-font-size: 30;
+    -fx-font-family: 'Hussar Bold'
 }

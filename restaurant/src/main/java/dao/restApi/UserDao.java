@@ -1,5 +1,6 @@
 package dao.restApi;
 
+import dao.FirebaseDao;
 import dao.base.IUserDao;
 import dao.exceptions.AddPermissionFailException;
 import dao.exceptions.RemovePermissionFailException;
@@ -15,9 +16,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserDao implements IUserDao {
@@ -90,10 +93,23 @@ public class UserDao implements IUserDao {
 
         // Create body for request
         List<NameValuePair> body = new ArrayList<>();
-        body.add(new BasicNameValuePair("email", user.get_email()));
-        body.add(new BasicNameValuePair("fullName", user.get_fullName()));
-        body.add(new BasicNameValuePair("birthday", new SimpleDateFormat("yyyy-MM-dd").format(user.get_birthday())));
-        body.add(new BasicNameValuePair("avatar", user.get_avatar()));
+        if (user.get_email() != null && user.get_email().isChanged())
+            body.add(new BasicNameValuePair("email", user.get_email().get_value()));
+        if (user.get_fullName() != null && user.get_fullName().isChanged())
+            body.add(new BasicNameValuePair("fullName", user.get_fullName().get_value()));
+        if (user.get_birthday() != null && user.get_birthday().isChanged())
+            body.add(new BasicNameValuePair("birthday",
+                    new SimpleDateFormat("yyyy-MM-dd").format(user.get_birthday().get_value())));
+        if (user.get_avatar() != null && user.get_avatar().isChanged()) {
+            try {
+                String fileName = user.get_username() + "-" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                body.add(new BasicNameValuePair("avatar",
+                        FirebaseDao.getInstance().create(fileName, user.get_avatar().get_value())));
+            } catch (FileNotFoundException ignored) {
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         String response;
         try {

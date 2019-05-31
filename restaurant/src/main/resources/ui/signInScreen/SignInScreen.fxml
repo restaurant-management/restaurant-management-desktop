@@ -13,7 +13,7 @@
           stylesheets="@../../css/signInScreen.css">
     <FlowPane styleClass="login-box" alignment="CENTER" columnHalignment="CENTER">
         <FlowPane columnHalignment="CENTER" alignment="CENTER">
-            <Label text="LOGIN" styleClass="login-title">
+            <Label text="ĐĂNG NHẬP" styleClass="login-title">
                 <FlowPane.margin>
                     <Insets top="40" bottom="40"/>
                 </FlowPane.margin>

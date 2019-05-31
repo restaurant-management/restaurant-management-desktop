@@ -123,7 +123,8 @@ public class StageManager {
         stage.setTitle(title);
         Scene scene = new Scene(new StackPane(decorator), width, height);
         final ObservableList<String> stylesheets = scene.getStylesheets();
-        stylesheets.addAll(StageManager.class.getResource("../../css/jfoenix-main-demo.css").toExternalForm());
+        stylesheets.addAll(StageManager.class.getResource("../../css/jfoenix-main-demo.css").toExternalForm(),
+                StageManager.class.getResource("../../css/mainStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.setMinHeight(400);
         stage.setMinWidth(400);
