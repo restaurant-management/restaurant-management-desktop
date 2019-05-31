@@ -65,21 +65,21 @@ public class ProfileTab {
 
     private void initData(){
         avatar.setStroke(Color.SEAGREEN);
-        String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar() : "/images/default-avatar.jpg";
+        String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar().get_value() : "/images/default-avatar.jpg";
         new LoadingImage(url, "/images/default-avatar.jpg").start(avatar);
         avatar.setEffect(new DropShadow(+25d, 0d, +2d, Color.valueOf("#9c27b0")));
 
         //region fullName
-        bigFullName.setText(_currentUser.get_fullName() != null ? _currentUser.get_fullName() : _currentUser.get_username());
-        fullName.setText(_currentUser.get_fullName() != null ? _currentUser.get_fullName() : "");
+        bigFullName.setText(_currentUser.get_fullName() != null ? _currentUser.get_fullName().get_value() : _currentUser.get_username());
+        fullName.setText(_currentUser.get_fullName() != null ? _currentUser.get_fullName().get_value() : "");
         //endregion
 
         username.setText(_currentUser.get_username());
-        email.setText(_currentUser.get_email());
-        role.setText(_currentUser.get_role());
+        email.setText(_currentUser.get_email().get_value());
+        role.setText(_currentUser.get_role().get_value());
 
         birthday.setText(_currentUser.get_birthday() != null ?
-                new SimpleDateFormat("dd/MM/yyyy").format(_currentUser.get_birthday()) : "");
+                new SimpleDateFormat("dd/MM/yyyy").format(_currentUser.get_birthday().get_value()) : "");
     }
 
     private void fetchCurrentUser() {

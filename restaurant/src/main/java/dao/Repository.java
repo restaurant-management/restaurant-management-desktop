@@ -109,6 +109,7 @@ public class Repository {
     }
 
     public void changeRole(UserModel userModel) throws ChangeRoleFailException {
-        _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role());
+        if(!userModel.get_role().isChanged()) return;
+        _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role().get_value());
     }
 }

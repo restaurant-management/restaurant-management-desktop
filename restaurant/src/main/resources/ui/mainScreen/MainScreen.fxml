@@ -41,7 +41,7 @@
 
         <!-- Content Area -->
         <center>
-            <JFXDrawer fx:id="drawer" defaultDrawerSize="100" direction="LEFT" />
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="100" direction="LEFT" resizeContent="true"/>
             <JFXDrawer fx:id="profileDrawer" defaultDrawerSize="400" direction="RIGHT" />
         </center>
     </BorderPane>

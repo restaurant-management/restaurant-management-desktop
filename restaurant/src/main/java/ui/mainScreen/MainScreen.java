@@ -47,7 +47,7 @@ public class MainScreen {
     @PostConstruct
     public void init() throws FlowException {
         UserModel user = new AuthenticationBus().getCurrentUser();
-        titleLabel.setText(user.get_fullName() != null ? user.get_fullName() : user.get_username());
+        titleLabel.setText(user.get_fullName() != null ? user.get_fullName().get_value() : user.get_username());
         final JFXTooltip burgerTooltip = new JFXTooltip("Mở menu");
 
         drawer.setOnDrawerOpening(e -> {

@@ -17,9 +17,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FirebaseDao {
+    private static FirebaseDao _singleton;
+
+    public static FirebaseDao getInstance() throws IOException {
+        if(_singleton == null)
+            _singleton = new FirebaseDao();
+        return _singleton;
+    }
+
     private Bucket _bucket;
 
-    public FirebaseDao() throws IOException {
+    private FirebaseDao() throws IOException {
         FileInputStream serviceAccount =
                 new FileInputStream(FirebaseConstants.KEY_PATH);
 

@@ -7,7 +7,6 @@ import bus.UserProfileBus;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-import dao.FirebaseDao;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
@@ -73,17 +72,17 @@ public class EditProfilePopup extends Popupable {
         get();
 
         if (!_authorizationBus.checkPermission(Permission.USER_MANAGEMENT)) {
-            roleField.setPromptText(_user.get_role());
+            roleField.setPromptText(_user.get_role().get_value());
             roleField.setDisable(true);
         } else loadRole();
 
-        emailField.setText(_user.get_email());
-        fullNameField.setText(_user.get_fullName());
+        emailField.setText(_user.get_email().get_value());
+        fullNameField.setText(_user.get_fullName().get_value());
         if (_user.get_birthday() != null)
-            birthdayField.setValue(_user.get_birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            birthdayField.setValue(_user.get_birthday().get_value().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         submitButton.setOnAction(event -> Platform.runLater(this::commitChange));
         if (_user.get_avatar() != null) {
-            new LoadingImage(_user.get_avatar(), "/images/default-avatar.jpg").start(avatarField);
+            new LoadingImage(_user.get_avatar().get_value(), "/images/default-avatar.jpg").start(avatarField);
         }
 
 
@@ -99,6 +98,7 @@ public class EditProfilePopup extends Popupable {
                 BufferedImage bufferedImage = ImageIO.read(file);
                 Image image = SwingFXUtils.toFXImage(bufferedImage, null);
                 avatarField.setImage(image);
+                _user.get_avatar().set_value(file.getPath());
             } catch (IOException e) {
                 new ErrorDialog("Lỗi tải hình", e.getMessage()).show();
             }
@@ -111,13 +111,13 @@ public class EditProfilePopup extends Popupable {
             @Override
             protected Void call() throws Exception {
                 if (emailField.getText() != null && !emailField.getText().isEmpty())
-                    _user.set_email(emailField.getText());
+                    _user.get_email().set_value(emailField.getText());
                 if (fullNameField.getText() != null && !fullNameField.getText().isEmpty())
-                    _user.set_fullName(fullNameField.getText());
+                    _user.get_fullName().set_value(fullNameField.getText());
                 if (birthdayField.getValue() != null)
-                    _user.set_birthday(Date.from(birthdayField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                    _user.get_birthday().set_value(Date.from(birthdayField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 if (roleField.getValue() != null)
-                    _user.set_role(roleField.getValue().get_slug());
+                    _user.get_role().set_value(roleField.getValue().get_slug());
                 _userProfileBus.updateProfile(_user);
                 if (_authorizationBus.checkPermission(Permission.USER_MANAGEMENT))
                     _userProfileBus.changeRole(_user);
@@ -154,7 +154,7 @@ public class EditProfilePopup extends Popupable {
                 roleField.setPromptText("Vai trò");
                 roleField.setItems(FXCollections.observableArrayList(listRoles));
                 for (RoleModel role : listRoles) {
-                    if (role.get_slug().equals(_user.get_role()))
+                    if (role.get_slug().equals(_user.get_role().get_value()))
                         roleField.setValue(role);
                 }
             }
