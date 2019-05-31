@@ -7,24 +7,33 @@ import bus.UserProfileBus;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-import dao.exceptions.userExceptions.FetchPermissionFailException;
-import dao.exceptions.userExceptions.FetchUserFailException;
+import dao.FirebaseDao;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Task;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import model.RoleModel;
 import model.UserModel;
 import model.enums.Permission;
 import ui.base.Popupable;
+import ui.base.StageManager;
 import ui.compenents.ErrorDialog;
 import ui.compenents.LoadingDialog;
+import ui.compenents.LoadingImage;
 import ui.compenents.PrimaryButton;
 
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,6 +53,8 @@ public class EditProfilePopup extends Popupable {
     private JFXDatePicker birthdayField;
     @FXML
     private JFXComboBox<RoleModel> roleField;
+    @FXML
+    private ImageView avatarField;
     @FXML
     private PrimaryButton submitButton;
 
@@ -71,6 +82,27 @@ public class EditProfilePopup extends Popupable {
         if (_user.get_birthday() != null)
             birthdayField.setValue(_user.get_birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         submitButton.setOnAction(event -> Platform.runLater(this::commitChange));
+        if (_user.get_avatar() != null) {
+            new LoadingImage(_user.get_avatar(), "/images/default-avatar.jpg").start(avatarField);
+        }
+
+
+        final FileChooser fileChooser = new FileChooser();
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        avatarField.setOnMouseClicked(event -> {
+            File file = fileChooser.showOpenDialog(StageManager.getInstance().getCurrent());
+            try {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                avatarField.setImage(image);
+            } catch (IOException e) {
+                new ErrorDialog("Lỗi tải hình", e.getMessage()).show();
+            }
+        });
     }
 
     private void commitChange() {

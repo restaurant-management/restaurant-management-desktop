@@ -7,7 +7,6 @@ import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.action.ActionMethod;
 import io.datafx.controller.flow.action.ActionTrigger;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,10 +18,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.UserModel;
-import ui.compenents.CustomDialog;
-import ui.compenents.ErrorDialog;
-import ui.compenents.IconButton;
-import ui.compenents.LoadingDialog;
+import ui.compenents.*;
 import ui.mainScreen.tabs.profileTab.popups.EditProfilePopup;
 
 import javax.annotation.PostConstruct;
@@ -62,19 +58,15 @@ public class ProfileTab {
         reloadButton.setIcon(FontAwesomeIcon.UNDO, null);
         reloadButton.setOnAction(event -> fetchCurrentUser());
 
-        //region avatar
-
         cover.setFill(new ImagePattern(new Image("/images/cover.jpg")));
-        //endregion
 
         initData();
     }
 
     private void initData(){
         avatar.setStroke(Color.SEAGREEN);
-        String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar() : "/ui/images/default-avatar.jpg";
-        Image im = new Image(url, false);
-        avatar.setFill(new ImagePattern(im));
+        String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar() : "/images/default-avatar.jpg";
+        new LoadingImage(url, "/images/default-avatar.jpg").start(avatar);
         avatar.setEffect(new DropShadow(+25d, 0d, +2d, Color.valueOf("#9c27b0")));
 
         //region fullName

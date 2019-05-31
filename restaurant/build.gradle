@@ -22,6 +22,9 @@ dependencies {
     compile 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
     compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
     compile 'io.github.typhon0:AnimateFX:1.2.1'
+
+    implementation 'com.google.firebase:firebase-admin:6.8.1'
+
 }
 
 compileJava.options.encoding = 'UTF-8'

@@ -100,7 +100,7 @@ public class SplashScreen {
     }
 
     private void handleError(Throwable exception) {
-
+        exception.printStackTrace();
         String title;
         if (exception instanceof DontHavePermissionException) {
             ErrorDialog dialog = new ErrorDialog("Lỗi tài khoản",
