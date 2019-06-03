@@ -12,6 +12,7 @@ import io.datafx.controller.util.VetoException;
 import javafx.fxml.FXML;
 import model.enums.Permission;
 import ui.mainScreen.tabs.*;
+import ui.mainScreen.tabs.userTab.UserTab;
 
 import javax.annotation.PostConstruct;
 import java.util.Objects;

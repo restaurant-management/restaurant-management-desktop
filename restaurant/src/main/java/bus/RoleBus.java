@@ -19,7 +19,7 @@ public class RoleBus {
         return _instance;
     }
 
-    public ArrayList<RoleModel> getAll() throws GetRoleFailException {
+    private ArrayList<RoleModel> getAll() throws GetRoleFailException {
         return _repository.getAllRoles();
     }
 

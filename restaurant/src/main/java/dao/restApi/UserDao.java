@@ -1,5 +1,6 @@
 package dao.restApi;
 
+import com.google.firebase.database.annotations.NotNull;
 import dao.FirebaseDao;
 import dao.base.IUserDao;
 import dao.exceptions.AddPermissionFailException;
@@ -70,20 +71,24 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws RequestFailException, IOException {
-        HttpConnection http = new HttpConnection();
-        BasicHeader header = new BasicHeader("Authorization", token);
-        String uri = "/api/users?";
-        if (length != null) uri += "length=" + length;
-        if (offset != null) uri += "&offset=" + offset;
-        String response = http.get(uri, new Header[]{header});
+    public ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws FetchUserFailException {
+        try {
+            HttpConnection http = new HttpConnection();
+            BasicHeader header = new BasicHeader("Authorization", token);
+            String uri = "/api/users?";
+            if (length != null) uri += "length=" + length;
+            if (offset != null) uri += "&offset=" + offset;
+            String response = http.get(uri, new Header[]{header});
 
-        ArrayList<UserModel> result = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(response);
-        for (Object json : jsonArray) {
-            result.add(new UserModel((JSONObject) json));
+            ArrayList<UserModel> result = new ArrayList<>();
+            JSONArray jsonArray = new JSONArray(response);
+            for (Object json : jsonArray) {
+                result.add(new UserModel((JSONObject) json));
+            }
+            return result;
+        } catch (IOException | RequestFailException e) {
+            throw new FetchUserFailException(e.getMessage());
         }
-        return result;
     }
 
     @Override
@@ -194,10 +199,7 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public void changePassword(String token, String username, String oldPassword, String newPassword) throws ChangePasswordFailException {
-        if (oldPassword == null || newPassword == null)
-            throw new ChangePasswordFailException("Thiếu mật khẩu cũ hoặc mật khẩu mới");
-
+    public void changePassword(@NotNull String token, @NotNull String username, @NotNull String oldPassword, @NotNull String newPassword) throws ChangePasswordFailException {
         HttpConnection http = new HttpConnection();
         BasicHeader header = new BasicHeader("Authorization", token);
         // Create body for request

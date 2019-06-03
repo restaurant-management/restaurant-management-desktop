@@ -39,7 +39,7 @@ public interface IUserDao {
      */
     UserModel getProfileByEmail(String token, String email) throws FetchUserFailException;
 
-    ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws RequestFailException, IOException;
+    ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws FetchUserFailException;
 
     UserModel editProfile(String token, UserModel user) throws SaveUserFailException;
 
