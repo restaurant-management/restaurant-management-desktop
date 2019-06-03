@@ -1,10 +1,7 @@
 package bus;
 
 import dao.Repository;
-import dao.exceptions.userExceptions.ChangeRoleFailException;
-import dao.exceptions.userExceptions.FetchPermissionFailException;
-import dao.exceptions.userExceptions.FetchUserFailException;
-import dao.exceptions.userExceptions.SaveUserFailException;
+import dao.exceptions.userExceptions.*;
 import model.UserModel;
 
 public class UserProfileBus {
@@ -24,5 +21,9 @@ public class UserProfileBus {
 
     public void changeRole(UserModel userModel) throws ChangeRoleFailException {
         _repository.changeRole(userModel);
+    }
+
+    public void changePassword(UserModel userModel, String oldPassword, String newPassword) throws ChangePasswordFailException {
+        _repository.changePassword(userModel, oldPassword, newPassword);
     }
 }

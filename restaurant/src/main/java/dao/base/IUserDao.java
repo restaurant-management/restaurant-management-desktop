@@ -50,4 +50,6 @@ public interface IUserDao {
     ArrayList<Permission> getAllPermissions(String token, String username) throws FetchPermissionFailException;
 
     UserModel changeRole(String token, String username, String role) throws ChangeRoleFailException;
+
+    void changePassword(String token, String username, String oldPassword, String newPassword) throws ChangePasswordFailException;
 }

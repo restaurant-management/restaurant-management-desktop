@@ -19,6 +19,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.UserModel;
 import ui.compenents.*;
+import ui.mainScreen.tabs.profileTab.popups.ChangePasswordPopup;
 import ui.mainScreen.tabs.profileTab.popups.EditProfilePopup;
 
 import javax.annotation.PostConstruct;
@@ -30,6 +31,9 @@ public class ProfileTab {
     @FXML
     @ActionTrigger("editAction")
     private JFXButton editButton;
+    @FXML
+    @ActionTrigger("changePassAction")
+    private JFXButton changePassButton;
     @FXML
     private Circle avatar;
     @FXML
@@ -114,6 +118,17 @@ public class ProfileTab {
     void editAction() {
         try {
             new CustomDialog("Sửa thông tin", EditProfilePopup.class, _currentUser).show();
+        } catch (FlowException e) {
+            e.printStackTrace();
+            new ErrorDialog("Lỗi tạo popup", e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    @ActionMethod("changePassAction")
+    void changePassAction() {
+        try {
+            new CustomDialog("Đổi mật khẩu", ChangePasswordPopup.class, _currentUser).show();
         } catch (FlowException e) {
             e.printStackTrace();
             new ErrorDialog("Lỗi tạo popup", e.getMessage()).show();

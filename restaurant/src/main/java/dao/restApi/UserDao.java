@@ -192,4 +192,23 @@ public class UserDao implements IUserDao {
         JSONObject json = new JSONObject(response);
         return new UserModel(json);
     }
+
+    @Override
+    public void changePassword(String token, String username, String oldPassword, String newPassword) throws ChangePasswordFailException {
+        if (oldPassword == null || newPassword == null)
+            throw new ChangePasswordFailException("Thiếu mật khẩu cũ hoặc mật khẩu mới");
+
+        HttpConnection http = new HttpConnection();
+        BasicHeader header = new BasicHeader("Authorization", token);
+        // Create body for request
+        List<NameValuePair> body = new ArrayList<>();
+        body.add(new BasicNameValuePair("oldPassword", oldPassword));
+        body.add(new BasicNameValuePair("newPassword", newPassword));
+
+        try {
+            http.put("/api/users/" + username + "/password/", new Header[]{header}, body);
+        } catch (IOException | RequestFailException e) {
+            throw new ChangePasswordFailException(e.getMessage());
+        }
+    }
 }
