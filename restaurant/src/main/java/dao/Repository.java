@@ -109,7 +109,11 @@ public class Repository {
     }
 
     public void changeRole(UserModel userModel) throws ChangeRoleFailException {
-        if(!userModel.get_role().isChanged()) return;
+        if (!userModel.get_role().isChanged()) return;
         _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role().get_value());
+    }
+
+    public void changePassword(UserModel userModel, String oldPassword, String newPassword) throws ChangePasswordFailException {
+        _userDao.changePassword(getToken(), userModel.get_username(), oldPassword, newPassword);
     }
 }
