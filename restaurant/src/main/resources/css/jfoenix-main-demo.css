@@ -346,6 +346,8 @@
 
 .jfx-check-box {
     -fx-font-weight: BOLD;
+    -jfx-checked-color: #9c27b0;
+    -jfx-unchecked-color: #FC5C7D;
 }
 
 .custom-jfx-check-box {

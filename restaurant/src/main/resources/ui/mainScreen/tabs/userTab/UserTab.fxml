@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
+<?import ui.compenents.IconButton?>
 <?import ui.compenents.PrimaryButton?>
 <VBox xmlns="http://javafx.com/javafx" stylesheets="@../../../../css/mainScreen.css"
       xmlns:fx="http://javafx.com/fxml"
@@ -11,18 +12,20 @@
         <VBox.margin>
             <Insets top="10" bottom="10" left="20" right="20"/>
         </VBox.margin>
-        <PrimaryButton text="Thêm"
+        <PrimaryButton fx:id="addButton" text="Thêm"
                        style="-fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #5a94fc, #0000ff)"/>
-        <PrimaryButton text="Xoá"
+        <PrimaryButton fx:id="deleteButton" text="Xoá"
                        style="-fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #fc695a, #ff0a00)"/>
-        <PrimaryButton text="Sửa"/>
+        <PrimaryButton fx:id="editButton" text="Sửa"/>
+        <IconButton fx:id="reloadButton"
+                    style="-fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #00fc00, #007a00); -fx-label-padding: 5 5 5 5"/>
         <StackPane HBox.hgrow="ALWAYS">
             <StackPane StackPane.alignment="CENTER_RIGHT" maxWidth="200">
                 <JFXTextField fx:id="searchField" promptText="Tìm kiếm..."/>
             </StackPane>
         </StackPane>
     </HBox>
-    <JFXTreeTableView fx:id="mainTableView" styleClass="table-view" VBox.vgrow="ALWAYS">
+    <JFXTreeTableView fx:id="mainTableView" VBox.vgrow="ALWAYS">
         <columns>
             <JFXTreeTableColumn fx:id="usernameColumn"
                                 minWidth="133" text="Tên đăng nhập" prefWidth="133"

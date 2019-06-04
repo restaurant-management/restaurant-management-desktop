@@ -1,12 +1,12 @@
 package ui.mainScreen.tabs.userTab;
 
+import bus.AuthenticationBus;
 import bus.UserBus;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import io.datafx.controller.ViewController;
+import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.beans.property.IntegerProperty;
@@ -20,10 +20,12 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeTableColumn;
 import model.UserModel;
-import ui.compenents.ErrorDialog;
-import ui.compenents.LoadingDialog;
+import ui.compenents.*;
+import ui.mainScreen.tabs.userTab.popups.AddUserPopup;
+import ui.mainScreen.tabs.userTab.popups.EditUserPopup;
 
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
@@ -49,6 +51,14 @@ public class UserTab {
     private JFXTreeTableColumn<User, String> roleColumn;
     @FXML
     private JFXTextField searchField;
+    @FXML
+    private JFXButton addButton;
+    @FXML
+    private JFXButton editButton;
+    @FXML
+    private JFXButton deleteButton;
+    @FXML
+    private IconButton reloadButton;
 
     public UserTab() {
     }
@@ -61,6 +71,67 @@ public class UserTab {
         getData();
         setupTableView();
         searchField.textProperty().addListener(setupSearchField(mainTableView));
+        mainTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        addButton.setOnAction(event -> {
+            try {
+                new CustomDialog("Thêm người dùng mới", AddUserPopup.class).show();
+            } catch (FlowException e) {
+                new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();
+            }
+        });
+        editButton.setOnAction(event -> {
+            if (mainTableView.getSelectionModel().getSelectedItem() == null) {
+                new ErrorDialog("Lỗi", "Vui lòng chọn người dùng cần sửa!").show();
+                return;
+            }
+            try {
+                new CustomDialog("Sửa thông tin", EditUserPopup.class,
+                        mainTableView.getSelectionModel().getSelectedItem().getValue()._username.getValue()).show();
+            } catch (FlowException e) {
+                e.printStackTrace();
+                new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();
+            }
+        });
+        deleteButton.setOnAction(event -> deleteUser());
+        reloadButton.setIcon(FontAwesomeIcon.UNDO, null).setOnAction(event -> getData());
+    }
+
+    private void deleteUser() {
+        if (mainTableView.getSelectionModel().getSelectedItem() == null) {
+            new ErrorDialog("Lỗi", "Vui lòng chọn người dùng cần xoá!").show();
+            return;
+        } else if (new AuthenticationBus().getCurrentUser().get_username().equals(mainTableView.getSelectionModel().getSelectedItem().getValue()._username.getValue())) {
+            new ErrorDialog("Lỗi", "Không thể xoá bản thân!").show();
+            return;
+        }
+
+        LoadingDialog _loadingDialog = new LoadingDialog("Đang xoá").show();
+        Task<Void> deleteUserTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                new UserBus().deleteUser(mainTableView.getSelectionModel().getSelectedItem().getValue()._username.getValue());
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                _loadingDialog.close();
+            }
+
+            @Override
+            protected void succeeded() {
+//                new SuccessDialog("Xoá thành công", "Hãy tải lại để cập nhật").show();
+                getData();
+            }
+
+            @Override
+            protected void failed() {
+                getException().printStackTrace();
+                new ErrorDialog("Lỗi xoá người dùng", getException().getMessage());
+            }
+        };
+        new Thread(deleteUserTask).start();
     }
 
     private void setupTableView() {
@@ -78,6 +149,7 @@ public class UserTab {
         Task<Void> getDataTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
+                _dummyData.clear();
                 ArrayList<UserModel> listUserModel = new UserBus().getAll();
                 for (UserModel userModel : listUserModel) {
                     _dummyData.add(new User(userModel));
@@ -137,13 +209,13 @@ public class UserTab {
 
         User(UserModel userModel) {
             _username = new SimpleStringProperty(userModel.get_username());
-            _fullName = new SimpleStringProperty(userModel.get_fullName().get_value());
-            _avatar = new SimpleStringProperty(userModel.get_avatar().get_value());
-            _email = new SimpleStringProperty(userModel.get_email().get_value());
-            _role = new SimpleStringProperty(userModel.get_role().get_value());
-            _birthday = new SimpleStringProperty(new SimpleDateFormat("dd/MM/yyyy")
-                    .format(userModel.get_birthday().get_value()));
-            _point = new SimpleIntegerProperty(userModel.get_point().get_value());
+            _fullName = new SimpleStringProperty(userModel.get_fullName() != null ? userModel.get_fullName() : "");
+            _avatar = new SimpleStringProperty(userModel.get_avatar() != null ? userModel.get_avatar() : "");
+            _email = new SimpleStringProperty(userModel.get_email() != null ? userModel.get_email() : "");
+            _role = new SimpleStringProperty(userModel.get_role() != null ? userModel.get_role() : "");
+            _birthday = new SimpleStringProperty(userModel.get_birthday() != null ? new SimpleDateFormat("dd/MM/yyyy")
+                    .format(userModel.get_birthday()) : "");
+            _point = new SimpleIntegerProperty(userModel.get_point() != null ? userModel.get_point() : 0);
         }
 
         StringProperty usernameProperty() {

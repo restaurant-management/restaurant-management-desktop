@@ -22,6 +22,8 @@ public interface IRoleDao {
 
     void deleteRole(String token, String slug) throws DeleteRoleFailException;
 
+    RoleModel setPermission(String token, String slug, ArrayList<Permission> permissions) throws AddPermissionFailException;
+
     RoleModel addPermission(String token, String slug, Permission permission) throws AddPermissionFailException;
 
     RoleModel removePermission(String token, String slug, Permission permission) throws RemovePermissionFailException;

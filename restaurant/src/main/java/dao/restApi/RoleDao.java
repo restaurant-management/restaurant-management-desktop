@@ -116,6 +116,27 @@ public class RoleDao implements IRoleDao {
     }
 
     @Override
+    public RoleModel setPermission(String token, String slug, ArrayList<Permission> permissions) throws AddPermissionFailException {
+        try {
+            // Create body for request
+            List<NameValuePair> body = new ArrayList<>();
+            for (int i = 0; i < permissions.size(); i++) {
+                body.add(new BasicNameValuePair("permissions[" + i + "]", permissions.get(i).toString()));
+            }
+
+            HttpConnection http = new HttpConnection();
+            BasicHeader header = new BasicHeader("Authorization", token);
+
+            String response = http.post("/api/roles/" + slug + "/permissions/set", new Header[]{header}, body);
+
+            JSONObject json = new JSONObject(response);
+            return new RoleModel(json);
+        } catch (IOException | RequestFailException e) {
+            throw new AddPermissionFailException(e.getMessage());
+        }
+    }
+
+    @Override
     public RoleModel addPermission(String token, String slug, Permission permission) throws AddPermissionFailException {
         HttpConnection http = new HttpConnection();
         BasicHeader header = new BasicHeader("Authorization", token);

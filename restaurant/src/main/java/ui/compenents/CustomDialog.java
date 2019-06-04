@@ -12,6 +12,8 @@ import javafx.scene.layout.StackPane;
 import ui.base.Popupable;
 import ui.base.StageManager;
 
+import java.util.Random;
+
 public class CustomDialog {
     private JFXDialog _alert;
 
@@ -29,7 +31,26 @@ public class CustomDialog {
         body.setHeading(_title, closeButton);
 
         _alert = new JFXDialog();
-        _alert.setTransitionType(JFXDialog.DialogTransition.BOTTOM);
+        int random = new Random().nextInt((4) + 1);
+        JFXDialog.DialogTransition transition;
+        switch (random){
+            case 0:
+                transition = JFXDialog.DialogTransition.BOTTOM;
+                break;
+            case 1:
+                transition = JFXDialog.DialogTransition.CENTER;
+                break;
+            case 2:
+                transition = JFXDialog.DialogTransition.LEFT;
+                break;
+            case 3:
+                transition = JFXDialog.DialogTransition.RIGHT;
+                break;
+            default:
+                transition = JFXDialog.DialogTransition.TOP;
+                break;
+        }
+        _alert.setTransitionType(transition);
         _alert.setDialogContainer(container);
         _alert.setOverlayClose(false);
         _alert.setContent(body);
