@@ -1,5 +1,6 @@
 package dao.restApi;
 
+import com.google.firebase.database.annotations.NotNull;
 import dao.base.IRoleDao;
 import dao.exceptions.AddPermissionFailException;
 import dao.exceptions.RemovePermissionFailException;
@@ -23,8 +24,7 @@ import java.util.List;
 
 public class RoleDao implements IRoleDao {
     @Override
-    public RoleModel createRole(String token, String name, String slug, String description, ArrayList<Permission> permissions) throws CreateRoleFailException {
-        if (name == null) throw new CreateRoleFailException("Tên vai trò là bắt buộc.");
+    public RoleModel createRole(String token, @NotNull String name, String slug, String description, ArrayList<Permission> permissions) throws CreateRoleFailException {
         HttpConnection http = new HttpConnection();
         BasicHeader header = new BasicHeader("Authorization", token);
 
@@ -57,7 +57,7 @@ public class RoleDao implements IRoleDao {
         List<NameValuePair> body = new ArrayList<>();
         if (name != null)
             body.add(new BasicNameValuePair("name", name));
-        if (newSlug != null)
+        if (newSlug != null && !newSlug.equals(slug))
             body.add(new BasicNameValuePair("slug", newSlug));
         if (description != null)
             body.add(new BasicNameValuePair("description", description));

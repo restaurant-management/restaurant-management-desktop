@@ -1,6 +1,10 @@
 package dao;
 
 import com.google.firebase.database.annotations.NotNull;
+import dao.exceptions.AddPermissionFailException;
+import dao.exceptions.dishExceptions.EditDishFailException;
+import dao.exceptions.roleExceptions.CreateRoleFailException;
+import dao.exceptions.roleExceptions.DeleteRoleFailException;
 import dao.exceptions.roleExceptions.GetRoleFailException;
 import dao.exceptions.userExceptions.*;
 import dao.restApi.*;
@@ -107,6 +111,23 @@ public class Repository {
 
     public ArrayList<RoleModel> getAllRoles() throws GetRoleFailException {
         return _roleDao.getAllRole(getToken(), null, null);
+    }
+
+    public RoleModel getRole(String slug) throws GetRoleFailException {
+        return _roleDao.getRole(getToken(), slug);
+    }
+
+    public void addRole(RoleModel roleModel) throws CreateRoleFailException {
+        _roleDao.createRole(getToken(), roleModel.get_name(), roleModel.get_slug(), roleModel.get_description(), roleModel.get_permissions());
+    }
+
+    public void editRole(RoleModel roleModel) throws EditDishFailException, AddPermissionFailException {
+        RoleModel newRole = _roleDao.editRole(getToken(), roleModel.get_baseSlug(), roleModel.get_slug(), roleModel.get_name(), roleModel.get_description());
+        _roleDao.setPermission(getToken(), newRole.get_slug(), roleModel.get_permissions());
+    }
+
+    public void deleteRole(@NotNull String slug) throws DeleteRoleFailException {
+        _roleDao.deleteRole(getToken(), slug);
     }
 
     public void changeRole(@NotNull UserModel userModel) throws ChangeRoleFailException {
