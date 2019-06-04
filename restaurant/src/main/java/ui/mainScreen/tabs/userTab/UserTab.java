@@ -172,7 +172,6 @@ public class UserTab {
         new Thread(getDataTask).start();
     }
 
-
     private ChangeListener<String> setupSearchField(final JFXTreeTableView<UserTab.User> tableView) {
         return (o, oldVal, newVal) ->
                 tableView.setPredicate(userProp -> {

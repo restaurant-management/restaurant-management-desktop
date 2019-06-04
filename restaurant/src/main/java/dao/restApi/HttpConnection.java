@@ -13,6 +13,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -38,7 +39,8 @@ class HttpConnection {
     String get(final String uri, final Header[] headers) throws IOException, RequestFailException {
         System.out.print("GET " + uri);
         HttpGet request = new HttpGet(url + uri);
-        request.addHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.addHeader("Content-Type", "text/plain;charset=UTF-8");
+
         for (Header header : headers) {
             request.addHeader(header);
         }
@@ -70,7 +72,7 @@ class HttpConnection {
         HttpResponse response = client.execute(request);
 
         BufferedReader rd = new BufferedReader(
-                new InputStreamReader(response.getEntity().getContent()));
+                new InputStreamReader(response.getEntity().getContent(), StandardCharsets.UTF_8));
 
         StringBuilder result = new StringBuilder();
         String line;
@@ -81,7 +83,7 @@ class HttpConnection {
         System.out.println(" " + responseCode);
         if (responseCode != HttpsURLConnection.HTTP_OK)
             throw new RequestFailException(responseCode, result.toString());
-        return new String(result.toString().getBytes(), StandardCharsets.UTF_8);
+        return new String(result.toString());
     }
 
 }

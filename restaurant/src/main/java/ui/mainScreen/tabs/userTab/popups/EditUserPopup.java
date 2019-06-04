@@ -1,6 +1,5 @@
 package ui.mainScreen.tabs.userTab.popups;
 
-import bus.AuthorizationBus;
 import bus.RoleBus;
 import bus.UserProfileBus;
 import com.jfoenix.controls.*;

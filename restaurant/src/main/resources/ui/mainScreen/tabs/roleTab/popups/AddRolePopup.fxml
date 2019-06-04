@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import ui.compenents.PrimaryButton?>
+<GridPane alignment="CENTER" hgap="10.0" prefWidth="500.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1">
+    <Label alignment="CENTER_RIGHT" text="Tên*:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <JFXTextField fx:id="nameField" prefWidth="180" promptText="Tên" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <validators>
+            <RequiredFieldValidator message="Cần nhập tên vai trò!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXTextField>
+
+    <Label alignment="CENTER_RIGHT" text="Slug:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <JFXTextField fx:id="slugField" prefWidth="180" promptText="Slug" GridPane.columnIndex="1"
+                      GridPane.rowIndex="1" />
+
+    <Label alignment="CENTER_RIGHT" text="Mô tả:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <JFXTextField fx:id="descriptionField" prefWidth="180" promptText="Mô tả" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label alignment="CENTER_RIGHT" text="Quyền:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <JFXListView fx:id="permissionField" prefWidth="180" maxHeight="150" GridPane.columnIndex="1"
+                 GridPane.rowIndex="3"/>
+
+    <PrimaryButton fx:id="submitButton" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"
+                   GridPane.halignment="CENTER" defaultButton="true">
+        Tạo
+    </PrimaryButton>
+    <columnConstraints>
+        <ColumnConstraints prefWidth="200.0"/>
+        <ColumnConstraints prefWidth="300.0"/>
+    </columnConstraints>
+</GridPane>

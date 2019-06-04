@@ -27,17 +27,15 @@
     </HBox>
     <JFXTreeTableView fx:id="mainTableView" VBox.vgrow="ALWAYS">
         <columns>
-            <JFXTreeTableColumn fx:id="usernameColumn"
-                                minWidth="133" text="Tên đăng nhập" prefWidth="133"
+            <JFXTreeTableColumn fx:id="slugColumn"
+                                minWidth="133" text="Slug"
             />
-            <JFXTreeTableColumn fx:id="fullNameColumn" text="Tên hiển thị"
+            <JFXTreeTableColumn fx:id="nameColumn" text="Tên"
                                 minWidth="133"/>
-            <JFXTreeTableColumn fx:id="emailColumn" text="Email"
+            <JFXTreeTableColumn fx:id="descriptionColumn" text="Mô tả"
                                 minWidth="200"/>
-            <JFXTreeTableColumn fx:id="birthdayColumn" text="Ngày sinh"
-                                minWidth="133"/>
-            <JFXTreeTableColumn fx:id="roleColumn" text="Vai trò"
-                                minWidth="133"/>
+            <JFXTreeTableColumn fx:id="permissionsColumn" text="Quyền"
+                                minWidth="300"/>
         </columns>
         <columnResizePolicy>
             <JFXTreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -1,5 +1,6 @@
 package model;
 
+import model.base.ChangeableProperty;
 import model.enums.Permission;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,14 +9,14 @@ import java.util.ArrayList;
 
 public class RoleModel {
     private int _roleId;
-    private String _slug;
+    private ChangeableProperty<String> _slug;
     private String _name;
     private String _description;
     private ArrayList<Permission> _permissions;
 
     public RoleModel(JSONObject jsonObject) {
         _roleId = jsonObject.getInt("roleId");
-        _slug = jsonObject.getString("slug");
+        _slug = new ChangeableProperty<>(jsonObject.getString("slug"));
         _name = jsonObject.getString("name");
         try {
             _description = jsonObject.getString("description");
@@ -44,16 +45,27 @@ public class RoleModel {
         _roleId = role._roleId;
     }
 
+    public RoleModel(String slug, String name, String description, ArrayList<Permission> permissions) {
+        _name = name;
+        _slug = new ChangeableProperty<>(slug);
+        _description = description;
+        _permissions = permissions;
+    }
+
     public int get_roleId() {
         return _roleId;
     }
 
     public String get_slug() {
-        return _slug;
+        return _slug.get_value();
     }
 
     public void set_slug(String _slug) {
-        this._slug = _slug;
+        this._slug.set_value(_slug);
+    }
+
+    public String get_baseSlug() {
+        return _slug.get_base();
     }
 
     public String get_name() {
