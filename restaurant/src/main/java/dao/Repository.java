@@ -1,5 +1,6 @@
 package dao;
 
+import com.google.firebase.database.annotations.NotNull;
 import dao.exceptions.roleExceptions.GetRoleFailException;
 import dao.exceptions.userExceptions.*;
 import dao.restApi.*;
@@ -108,12 +109,27 @@ public class Repository {
         return _roleDao.getAllRole(getToken(), null, null);
     }
 
-    public void changeRole(UserModel userModel) throws ChangeRoleFailException {
-        if (!userModel.get_role().isChanged()) return;
-        _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role().get_value());
+    public void changeRole(@NotNull UserModel userModel) throws ChangeRoleFailException {
+        _userDao.changeRole(getToken(), userModel.get_username(), userModel.get_role());
     }
 
-    public void changePassword(UserModel userModel, String oldPassword, String newPassword) throws ChangePasswordFailException {
+    public void changePassword(@NotNull UserModel userModel, String oldPassword, @NotNull String newPassword) throws ChangePasswordFailException {
         _userDao.changePassword(getToken(), userModel.get_username(), oldPassword, newPassword);
+    }
+
+    public ArrayList<UserModel> getAllUser() throws FetchUserFailException {
+        return _userDao.getAllUser(getToken(), null, null);
+    }
+
+    public UserModel createUser(@NotNull UserModel userModel, @NotNull String password) throws CreateUserFailException {
+        return _userDao.createUser(getToken(), userModel, password);
+    }
+
+    public UserModel getUserProfile(@NotNull String username) throws FetchUserFailException {
+        return _userDao.getProfileByUsername(getToken(), username);
+    }
+
+    public void deleteUser(@NotNull String username) throws DeleteUserFailException {
+        _userDao.deleteUser(getToken(), username);
     }
 }

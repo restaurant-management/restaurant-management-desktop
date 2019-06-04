@@ -26,4 +26,8 @@ public class UserProfileBus {
     public void changePassword(UserModel userModel, String oldPassword, String newPassword) throws ChangePasswordFailException {
         _repository.changePassword(userModel, oldPassword, newPassword);
     }
+
+    public UserModel getUserProfile(String username) throws FetchUserFailException {
+        return _repository.getUserProfile(username);
+    }
 }

@@ -1,5 +1,6 @@
 package dao.restApi;
 
+import com.google.firebase.database.annotations.NotNull;
 import dao.FirebaseDao;
 import dao.base.IUserDao;
 import dao.exceptions.AddPermissionFailException;
@@ -70,20 +71,76 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws RequestFailException, IOException {
-        HttpConnection http = new HttpConnection();
-        BasicHeader header = new BasicHeader("Authorization", token);
-        String uri = "/api/users?";
-        if (length != null) uri += "length=" + length;
-        if (offset != null) uri += "&offset=" + offset;
-        String response = http.get(uri, new Header[]{header});
+    public ArrayList<UserModel> getAllUser(String token, Integer length, Integer offset) throws FetchUserFailException {
+        try {
+            HttpConnection http = new HttpConnection();
+            BasicHeader header = new BasicHeader("Authorization", token);
+            String uri = "/api/users?";
+            if (length != null) uri += "length=" + length;
+            if (offset != null) uri += "&offset=" + offset;
+            String response = http.get(uri, new Header[]{header});
 
-        ArrayList<UserModel> result = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(response);
-        for (Object json : jsonArray) {
-            result.add(new UserModel((JSONObject) json));
+            ArrayList<UserModel> result = new ArrayList<>();
+            JSONArray jsonArray = new JSONArray(response);
+            for (Object json : jsonArray) {
+                result.add(new UserModel((JSONObject) json));
+            }
+            return result;
+        } catch (IOException | RequestFailException e) {
+            throw new FetchUserFailException(e.getMessage());
         }
-        return result;
+    }
+
+    @Override
+    public UserModel createUser(String token, UserModel userModel, String password) throws CreateUserFailException {
+        // Create body for request
+        List<NameValuePair> body = new ArrayList<>();
+        if (userModel.get_username() != null)
+            body.add(new BasicNameValuePair("username", userModel.get_username()));
+        if (password.length() < 6) throw new CreateUserFailException("Mật khẩu phải lớn hơn 5 ký tự");
+        body.add(new BasicNameValuePair("password", password));
+        if (userModel.get_email() == null) throw new CreateUserFailException("Email là bắt buộc");
+        body.add(new BasicNameValuePair("email", userModel.get_email()));
+        if (userModel.get_fullName() != null)
+            body.add(new BasicNameValuePair("fullName", userModel.get_fullName()));
+        if (userModel.get_birthday() != null)
+            body.add(new BasicNameValuePair("birthday",
+                    new SimpleDateFormat("yyyy-MM-dd").format(userModel.get_birthday())));
+        body.add(new BasicNameValuePair("role", userModel.get_role()));
+        if (userModel.get_avatar() != null) {
+            try {
+                String fileName = userModel.get_username() + "-" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                body.add(new BasicNameValuePair("avatar",
+                        FirebaseDao.getInstance().create(fileName, userModel.get_avatar())));
+            } catch (FileNotFoundException ignored) {
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            HttpConnection http = new HttpConnection();
+            BasicHeader header = new BasicHeader("Authorization", token);
+            String response = http.post("/api/users", new Header[]{header}, body);
+
+            setPermission(token, userModel.get_username(), userModel.get_permissions());
+
+            JSONObject json = new JSONObject(response);
+            return new UserModel(json);
+        } catch (IOException | RequestFailException | AddPermissionFailException e) {
+            throw new CreateUserFailException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void deleteUser(String token, String username) throws DeleteUserFailException {
+        try {
+            HttpConnection http = new HttpConnection();
+            BasicHeader header = new BasicHeader("Authorization", token);
+            http.delete("/api/users/" + username, new Header[]{header});
+        } catch (IOException | RequestFailException e) {
+            throw new DeleteUserFailException(e.getMessage());
+        }
     }
 
     @Override
@@ -93,18 +150,18 @@ public class UserDao implements IUserDao {
 
         // Create body for request
         List<NameValuePair> body = new ArrayList<>();
-        if (user.get_email() != null && user.get_email().isChanged())
-            body.add(new BasicNameValuePair("email", user.get_email().get_value()));
-        if (user.get_fullName() != null && user.get_fullName().isChanged())
-            body.add(new BasicNameValuePair("fullName", user.get_fullName().get_value()));
-        if (user.get_birthday() != null && user.get_birthday().isChanged())
+        if (user.get_email() != null)
+            body.add(new BasicNameValuePair("email", user.get_email()));
+        if (user.get_fullName() != null)
+            body.add(new BasicNameValuePair("fullName", user.get_fullName()));
+        if (user.get_birthday() != null)
             body.add(new BasicNameValuePair("birthday",
-                    new SimpleDateFormat("yyyy-MM-dd").format(user.get_birthday().get_value())));
-        if (user.get_avatar() != null && user.get_avatar().isChanged()) {
+                    new SimpleDateFormat("yyyy-MM-dd").format(user.get_birthday())));
+        if (user.get_avatar() != null) {
             try {
                 String fileName = user.get_username() + "-" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
                 body.add(new BasicNameValuePair("avatar",
-                        FirebaseDao.getInstance().create(fileName, user.get_avatar().get_value())));
+                        FirebaseDao.getInstance().create(fileName, user.get_avatar())));
             } catch (FileNotFoundException ignored) {
             } catch (IOException e) {
                 e.printStackTrace();
@@ -114,12 +171,35 @@ public class UserDao implements IUserDao {
         String response;
         try {
             response = http.put("/api/users/" + user.get_username(), new Header[]{header}, body);
-        } catch (IOException | RequestFailException e) {
+            if (user.get_permissions() != null)
+                setPermission(token, user.get_username(), user.get_permissions());
+        } catch (IOException | RequestFailException | AddPermissionFailException e) {
             throw new SaveUserFailException(e.getMessage());
         }
 
         JSONObject json = new JSONObject(response);
         return new UserModel(json);
+    }
+
+    @Override
+    public UserModel setPermission(String token, String username, ArrayList<Permission> permissions) throws AddPermissionFailException {
+        HttpConnection http = new HttpConnection();
+        BasicHeader header = new BasicHeader("Authorization", token);
+
+        // Create body for request
+        List<NameValuePair> body = new ArrayList<>();
+        for (int i = 0; i < permissions.size(); i++) {
+            body.add(new BasicNameValuePair("permissions[" + i + "]", permissions.get(i).toString()));
+        }
+
+        try {
+            String response = http.post("/api/users/" + username + "/permissions/set", new Header[]{header}, body);
+
+            JSONObject json = new JSONObject(response);
+            return new UserModel(json);
+        } catch (IOException | RequestFailException e) {
+            throw new AddPermissionFailException(e.getMessage());
+        }
     }
 
     @Override
@@ -194,15 +274,13 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public void changePassword(String token, String username, String oldPassword, String newPassword) throws ChangePasswordFailException {
-        if (oldPassword == null || newPassword == null)
-            throw new ChangePasswordFailException("Thiếu mật khẩu cũ hoặc mật khẩu mới");
-
+    public void changePassword(@NotNull String token, @NotNull String username, String oldPassword, @NotNull String newPassword) throws ChangePasswordFailException {
         HttpConnection http = new HttpConnection();
         BasicHeader header = new BasicHeader("Authorization", token);
         // Create body for request
         List<NameValuePair> body = new ArrayList<>();
-        body.add(new BasicNameValuePair("oldPassword", oldPassword));
+        if (oldPassword != null)
+            body.add(new BasicNameValuePair("oldPassword", oldPassword));
         body.add(new BasicNameValuePair("newPassword", newPassword));
 
         try {

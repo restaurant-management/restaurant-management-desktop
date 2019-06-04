@@ -59,7 +59,7 @@ public class SignInScreen{
     @FXML
     @ActionMethod("loginAction")
     void loginAction() {
-        if (!textUsername.validate() && !textPassword.validate()) return;
+        if (!textUsername.validate() || !textPassword.validate()) return;
         loginButton.setDisable(true);
         _loadingDialog = new LoadingDialog("Đang đăng nhập");
         _loadingDialog.show();

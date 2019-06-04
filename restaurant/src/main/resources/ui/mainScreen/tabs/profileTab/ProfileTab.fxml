@@ -85,12 +85,12 @@
         <VBox.margin>
             <Insets top="20"/>
         </VBox.margin>
-        <PrimaryButton fx:id="editButton" onAction="#editAction" styleClass="edit-button">
+        <PrimaryButton fx:id="editButton" onAction="#editAction" styleClass="drop-shadow">
             Sửa thông tin
         </PrimaryButton>
-        <PrimaryButton fx:id="changePassButton" onAction="#changePassAction" styleClass="edit-button">
+        <PrimaryButton fx:id="changePassButton" onAction="#changePassAction" styleClass="drop-shadow">
             Đổi mật khẩu
         </PrimaryButton>
-        <IconButton fx:id="reloadButton" styleClass="edit-button"/>
+        <IconButton fx:id="reloadButton" styleClass="drop-shadow"/>
     </VBox>
 </VBox>

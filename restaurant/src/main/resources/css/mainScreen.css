@@ -1,5 +1,5 @@
 .jfx-rippler {
-    -fx-ripple-color:linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+    -fx-ripple-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
 }
 
 .title-label {
@@ -38,7 +38,7 @@
 
 .profile-tab .profile-box {
     -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
     -fx-border-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
     -fx-border-width: 4 0 0 0;
 }
@@ -62,6 +62,31 @@
     -fx-font-family: "Segoe UI Light";
 }
 
-.profile-tab .edit-button {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+.drop-shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.tree-table-row-cell:odd {
+    -fx-background-color: #ebebeb;
+}
+
+.tree-table-row-cell:even {
+    -fx-background-color: white;
+}
+
+.tree-table-row-cell:selected {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+}
+
+.tree-table-row-cell:selected > .tree-table-cell{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tree-table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 2; /* 2px, plus border adds 1px */
+    -fx-border-color: transparent -fx-table-cell-border-color transparent transparent;
+    -fx-border-width: 1; /* 1 */
 }

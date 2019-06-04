@@ -1,44 +1,61 @@
 package model;
 
-import model.base.ChangeableProperty;
+import model.enums.Permission;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class UserModel {
     private String _uuid;
     private String _username;
-    private ChangeableProperty<String> _fullName;
-    private ChangeableProperty<String> _avatar;
-    private ChangeableProperty<String> _email;
-    private ChangeableProperty<Date> _birthday;
-    private ChangeableProperty<String> _role;
-    private ChangeableProperty<Integer> _point;
+    private String _fullName;
+    private String _avatar;
+    private String _email;
+    private Date _birthday;
+    private String _role;
+    private Integer _point;
+    private ArrayList<Permission> _permissions;
+
     public UserModel(JSONObject jsonObject) {
         _uuid = jsonObject.getString("uuid");
         _username = jsonObject.getString("userName");
         try {
-            _fullName = new ChangeableProperty<>(jsonObject.getString("fullName"));
+            _fullName = jsonObject.getString("fullName");
         } catch (JSONException e) {
             _fullName = null;
         }
         try {
-            _avatar = new ChangeableProperty<>(jsonObject.getString("avatar"));
+            _avatar = jsonObject.getString("avatar");
         } catch (JSONException e) {
             _avatar = null;
         }
-        _email = new ChangeableProperty<>(jsonObject.getString("email"));
+        _email = jsonObject.getString("email");
         try {
-            _birthday = new ChangeableProperty<>(new SimpleDateFormat("yyyy-MM-dd")
-                    .parse(jsonObject.getString("birthday")));
+            _birthday = new SimpleDateFormat("yyyy-MM-dd")
+                    .parse(jsonObject.getString("birthday"));
         } catch (Exception e) {
             _birthday = null;
         }
-        _point = new ChangeableProperty<>(jsonObject.getInt("point"));
-        _role = new ChangeableProperty<>(jsonObject.getString("role"));
+        _point = jsonObject.getInt("point");
+        _role = jsonObject.getString("role");
+        try {
+            JSONArray jsonPermissions = jsonObject.getJSONArray("permissions");
+            _permissions = new ArrayList<>();
+            for (Object object : jsonPermissions) {
+                try {
+                    _permissions.add(Permission.get((String) object));
+                } catch (Exception ignore) {
+                }
+            }
+        } catch (Exception e) {
+            _permissions = null;
+        }
     }
+
     public UserModel(UserModel user) {
         _uuid = user._uuid;
         _username = user._username;
@@ -48,6 +65,26 @@ public class UserModel {
         _birthday = user._birthday;
         _point = user._point;
         _role = user._role;
+        _permissions = user._permissions;
+    }
+
+    public UserModel(String username, String fullName, String avatar, String email, Date birthday, String role, Integer point, ArrayList<Permission> permissions) {
+        _username = username;
+        _fullName = fullName;
+        _avatar = avatar;
+        _email = email;
+        _birthday = birthday;
+        _role = role;
+        _point = point;
+        _permissions = permissions;
+    }
+
+    public ArrayList<Permission> get_permissions() {
+        return _permissions;
+    }
+
+    public void set_permissions(ArrayList<Permission> _permissions) {
+        this._permissions = _permissions;
     }
 
     public String get_uuid() {
@@ -58,27 +95,51 @@ public class UserModel {
         return _username;
     }
 
-    public ChangeableProperty<String> get_fullName() {
+    public String get_fullName() {
         return _fullName;
     }
 
-    public ChangeableProperty<String> get_avatar() {
+    public void set_fullName(String _fullName) {
+        this._fullName = _fullName;
+    }
+
+    public String get_avatar() {
         return _avatar;
     }
 
-    public ChangeableProperty<String> get_email() {
+    public void set_avatar(String _avatar) {
+        this._avatar = _avatar;
+    }
+
+    public String get_email() {
         return _email;
     }
 
-    public ChangeableProperty<Date> get_birthday() {
+    public void set_email(String _email) {
+        this._email = _email;
+    }
+
+    public Date get_birthday() {
         return _birthday;
     }
 
-    public ChangeableProperty<String> get_role() {
+    public void set_birthday(Date _birthday) {
+        this._birthday = _birthday;
+    }
+
+    public String get_role() {
         return _role;
     }
 
-    public ChangeableProperty<Integer> get_point() {
+    public void set_role(String _role) {
+        this._role = _role;
+    }
+
+    public Integer get_point() {
         return _point;
+    }
+
+    public void set_point(Integer _point) {
+        this._point = _point;
     }
 }
