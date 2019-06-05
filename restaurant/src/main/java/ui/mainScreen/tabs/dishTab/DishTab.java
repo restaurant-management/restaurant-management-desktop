@@ -24,6 +24,7 @@ import ui.compenents.ErrorDialog;
 import ui.compenents.IconButton;
 import ui.compenents.LoadingDialog;
 import ui.mainScreen.tabs.dishTab.popups.AddDishPopup;
+import ui.mainScreen.tabs.dishTab.popups.EditDishPopup;
 import ui.mainScreen.tabs.userTab.popups.AddUserPopup;
 import ui.mainScreen.tabs.userTab.popups.EditUserPopup;
 
@@ -79,7 +80,7 @@ public class DishTab {
                 return;
             }
             try {
-                new CustomDialog("Sửa thông tin", EditUserPopup.class,
+                new CustomDialog("Sửa thông tin", EditDishPopup.class,
                         mainTableView.getSelectionModel().getSelectedItem().getValue().dishId.getValue()).show();
             } catch (FlowException e) {
                 e.printStackTrace();

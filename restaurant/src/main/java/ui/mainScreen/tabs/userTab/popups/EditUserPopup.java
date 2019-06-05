@@ -6,6 +6,7 @@ import com.jfoenix.controls.*;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -60,7 +61,7 @@ public class EditUserPopup extends Popupable {
     @Override
     protected void get() {
         String username = (String) context.getRegisteredObject("Object0");
-        loadUser(username);
+        Platform.runLater(() -> loadUser(username));
     }
 
     @PostConstruct
@@ -92,7 +93,7 @@ public class EditUserPopup extends Popupable {
 
                 _userProfileBus.updateProfile(_user);
                 _userProfileBus.changeRole(_user);
-                if(passwordField.getText() != null && !passwordField.getText().isEmpty())
+                if (passwordField.getText() != null && !passwordField.getText().isEmpty())
                     _userProfileBus.changePassword(_user, null, passwordField.getText());
                 return null;
             }

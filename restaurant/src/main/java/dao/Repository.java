@@ -166,7 +166,15 @@ public class Repository {
         _dishDao.createDish(getToken(), dishModel.get_name(), dishModel.get_description(), dishModel.get_images(), dishModel.get_defaultPrice());
     }
 
+    public void editDish(DishModel dishModel) throws EditDishFailException {
+        _dishDao.editDish(getToken(), dishModel.get_dishId(), dishModel.get_name(), dishModel.get_description(), dishModel.get_images(), dishModel.get_defaultPrice());
+    }
+
     public void deleteDish(int dishId) throws DeleteDishFailException {
         _dishDao.deleteDish(getToken(), dishId);
+    }
+
+    public DishModel getDishDetail(int dishId) throws GetDishFailException {
+        return _dishDao.getDish(getToken(), dishId);
     }
 }

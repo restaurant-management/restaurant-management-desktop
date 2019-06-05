@@ -3,6 +3,7 @@ package bus;
 import dao.Repository;
 import dao.exceptions.dishExceptions.CreateDishFailException;
 import dao.exceptions.dishExceptions.DeleteDishFailException;
+import dao.exceptions.dishExceptions.EditDishFailException;
 import dao.exceptions.dishExceptions.GetDishFailException;
 import model.DishModel;
 
@@ -30,7 +31,15 @@ public class DishBus {
         _repository.createDish(dishModel);
     }
 
+    public void editDish(DishModel dishModel) throws EditDishFailException {
+        _repository.editDish(dishModel);
+    }
+
     public void deleteDish(int dishId) throws DeleteDishFailException {
         _repository.deleteDish(dishId);
+    }
+
+    public DishModel getDishDetail(int dishId) throws GetDishFailException {
+        return _repository.getDishDetail(dishId);
     }
 }

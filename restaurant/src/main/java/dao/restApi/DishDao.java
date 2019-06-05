@@ -87,10 +87,19 @@ public class DishDao implements IDishDao {
         if (description != null)
             body.add(new BasicNameValuePair("description", description));
         body.add(new BasicNameValuePair("defaultPrice", Integer.toString(defaultPrice)));
-        if (images != null)
-            for (int i = 0; i < images.size(); i++) {
-                body.add(new BasicNameValuePair("images[" + i + "]", images.get(i)));
-            }
+        if (images != null) {
+            if (images.size() == 0) {
+                body.add(new BasicNameValuePair("images", null));
+            } else
+                for (int i = 0; i < images.size(); i++) {
+                    try {
+                        String uploadPath = "dishImages/" + name + i + "-" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                        String url = FirebaseDao.getInstance().create(uploadPath, images.get(i));
+                        body.add(new BasicNameValuePair("images[" + i + "]", url));
+                    } catch (IOException ignored) {
+                    }
+                }
+        }
 
         try {
             String response = http.put("/api/dishes/" + dishId, new Header[]{header}, body);

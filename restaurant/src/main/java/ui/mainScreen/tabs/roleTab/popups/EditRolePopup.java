@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -44,11 +45,11 @@ public class EditRolePopup extends Popupable {
     @Override
     protected void get() {
         String roleSlug = (String) context.getRegisteredObject("Object0");
-        loadRole(roleSlug);
+        Platform.runLater(() -> loadRole(roleSlug));
     }
 
     @PostConstruct
-    private void init(){
+    private void init() {
         Objects.requireNonNull(context, "context");
         get();
         setupPermissionField();
