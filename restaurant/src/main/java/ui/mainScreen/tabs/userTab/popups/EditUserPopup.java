@@ -170,7 +170,7 @@ public class EditUserPopup extends Popupable {
                 }
                 for (JFXCheckBox permissionCheckBox : permissionField.getItems()) {
                     try {
-                        if (_user.get_permissions().contains(Permission.get(permissionCheckBox.getText()))) {
+                        if (_user.get_permissions() != null && _user.get_permissions().contains(Permission.get(permissionCheckBox.getText()))) {
                             permissionCheckBox.setSelected(true);
                         }
                     } catch (IsNotAPermissionException e) {

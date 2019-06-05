@@ -93,10 +93,11 @@ public class DishDao implements IDishDao {
             } else
                 for (int i = 0; i < images.size(); i++) {
                     try {
-                        String uploadPath = "dishImages/" + name + i + "-" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                        String uploadPath = "dishImages/" + name + "-" + i;
                         String url = FirebaseDao.getInstance().create(uploadPath, images.get(i));
                         body.add(new BasicNameValuePair("images[" + i + "]", url));
                     } catch (IOException ignored) {
+                        body.add(new BasicNameValuePair("images[" + i + "]", images.get(i)));
                     }
                 }
         }

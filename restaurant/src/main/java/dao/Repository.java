@@ -2,6 +2,10 @@ package dao;
 
 import com.google.firebase.database.annotations.NotNull;
 import dao.exceptions.AddPermissionFailException;
+import dao.exceptions.dailyDishExceptions.CreateDailyDishFailException;
+import dao.exceptions.dailyDishExceptions.DeleteDailyDishFailException;
+import dao.exceptions.dailyDishExceptions.EditDailyDishFailException;
+import dao.exceptions.dailyDishExceptions.GetDailyDishFailException;
 import dao.exceptions.dishExceptions.CreateDishFailException;
 import dao.exceptions.dishExceptions.DeleteDishFailException;
 import dao.exceptions.dishExceptions.EditDishFailException;
@@ -11,12 +15,15 @@ import dao.exceptions.roleExceptions.DeleteRoleFailException;
 import dao.exceptions.roleExceptions.GetRoleFailException;
 import dao.exceptions.userExceptions.*;
 import dao.restApi.*;
+import model.DailyDishModel;
 import model.DishModel;
 import model.RoleModel;
 import model.UserModel;
+import model.enums.DaySession;
 import model.enums.Permission;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.prefs.Preferences;
 
 public class Repository {
@@ -176,5 +183,25 @@ public class Repository {
 
     public DishModel getDishDetail(int dishId) throws GetDishFailException {
         return _dishDao.getDish(getToken(), dishId);
+    }
+
+    public ArrayList<DailyDishModel> getDailyDish(Date date) throws GetDailyDishFailException {
+        return _dailyDishDao.getBy(date, null, null, null, null);
+    }
+
+    public DailyDishModel getDailyDish(Date day, DaySession session, int dishId) throws GetDailyDishFailException {
+        return _dailyDishDao.getBy(day, dishId, session, null, null).get(0);
+    }
+
+    public void createDailyDish(DailyDishModel dailyDish) throws CreateDailyDishFailException {
+        _dailyDishDao.createDailyDish(getToken(), dailyDish.get_day(), dailyDish.get_session(), dailyDish.get_dish().get_dishId(), dailyDish.get_status(), dailyDish.get_price());
+    }
+
+    public void deleteDailyDish(Date day, DaySession session, int dishId) throws DeleteDailyDishFailException {
+        _dailyDishDao.deleteDailyDish(getToken(), day, session, dishId);
+    }
+
+    public void editDailyDish(DailyDishModel dailyDish) throws EditDailyDishFailException {
+        _dailyDishDao.editDailyDish(getToken(), dailyDish.get_day(), dailyDish.get_session(), dailyDish.get_dish().get_dishId(), dailyDish.get_status(), dailyDish.get_price());
     }
 }

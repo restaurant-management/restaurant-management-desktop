@@ -27,4 +27,21 @@ public enum DaySession {
     public String toString() {
         return _value;
     }
+
+    public String toDisplayString() {
+        switch (_value) {
+            case "morning":
+                return "Buổi sáng";
+            case "noon":
+                return "Buổi trưa";
+            case "afternoon":
+                return "Buổi chiều";
+            case "evening":
+                return "Buổi tối";
+            case "none":
+                return "Cả ngày";
+            default:
+                return "Lỗi";
+        }
+    }
 }

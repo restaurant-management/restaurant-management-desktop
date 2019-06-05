@@ -22,6 +22,11 @@ public class DishBus {
         return _instance;
     }
 
+    public ArrayList<DishModel> get_listDishes() throws GetDishFailException {
+        if (_listDishes == null) return getAll();
+        return _listDishes;
+    }
+
     public ArrayList<DishModel> getAll() throws GetDishFailException {
         _listDishes = _repository.getAllDish();
         return _listDishes;

@@ -52,22 +52,22 @@ public class ProfileTab {
     private Label role;
     @FXML
     private Label birthday;
-    @FXML
-    private IconButton reloadButton;
+//    @FXML
+//    private IconButton reloadButton;
 
     private UserModel _currentUser = new UserProfileBus().getCurrentUser();
 
     @PostConstruct
     void init() {
-        reloadButton.setIcon(FontAwesomeIcon.UNDO, null);
-        reloadButton.setOnAction(event -> fetchCurrentUser());
+//        reloadButton.setIcon(FontAwesomeIcon.UNDO, null);
+//        reloadButton.setOnAction(event -> fetchCurrentUser());
 
         cover.setFill(new ImagePattern(new Image("/images/cover.jpg")));
 
         initData();
     }
 
-    private void initData(){
+    private void initData() {
         avatar.setStroke(Color.SEAGREEN);
         String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar() : "/images/default-avatar.jpg";
         new LoadingImage(url, "/images/default-avatar.jpg").start(avatar);
@@ -117,7 +117,8 @@ public class ProfileTab {
     @ActionMethod("editAction")
     void editAction() {
         try {
-            new CustomDialog("Sửa thông tin", EditProfilePopup.class, _currentUser).show();
+            new CustomDialog("Sửa thông tin", EditProfilePopup.class, _currentUser)
+                    .setOnDialogClosed(event -> initData()).show();
         } catch (FlowException e) {
             e.printStackTrace();
             new ErrorDialog("Lỗi tạo popup", e.getMessage()).show();
