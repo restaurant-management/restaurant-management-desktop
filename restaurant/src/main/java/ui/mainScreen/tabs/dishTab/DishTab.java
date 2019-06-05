@@ -25,8 +25,6 @@ import ui.compenents.IconButton;
 import ui.compenents.LoadingDialog;
 import ui.mainScreen.tabs.dishTab.popups.AddDishPopup;
 import ui.mainScreen.tabs.dishTab.popups.EditDishPopup;
-import ui.mainScreen.tabs.userTab.popups.AddUserPopup;
-import ui.mainScreen.tabs.userTab.popups.EditUserPopup;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -69,7 +67,7 @@ public class DishTab {
 
         addButton.setOnAction(event -> {
             try {
-                new CustomDialog("Thêm món ăn mới", AddDishPopup.class).show();
+                new CustomDialog("Thêm món ăn mới", AddDishPopup.class).setOnDialogClosed(event1 -> getData()).show();
             } catch (FlowException e) {
                 new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();
             }
@@ -81,7 +79,8 @@ public class DishTab {
             }
             try {
                 new CustomDialog("Sửa thông tin", EditDishPopup.class,
-                        mainTableView.getSelectionModel().getSelectedItem().getValue().dishId.getValue()).show();
+                        mainTableView.getSelectionModel().getSelectedItem().getValue().dishId.getValue())
+                        .setOnDialogClosed(event1 -> getData()).show();
             } catch (FlowException e) {
                 e.printStackTrace();
                 new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();
@@ -112,14 +111,13 @@ public class DishTab {
 
             @Override
             protected void succeeded() {
-//                new SuccessDialog("Xoá thành công", "Hãy tải lại để cập nhật").show();
                 getData();
             }
 
             @Override
             protected void failed() {
                 getException().printStackTrace();
-                new ErrorDialog("Lỗi xoá người dùng", getException().getMessage());
+                new ErrorDialog("Lỗi xoá người dùng", getException().getMessage()).show();
             }
         };
         new Thread(deleteUserTask).start();

@@ -24,4 +24,15 @@ public enum DailyDishStatus {
     public String toString() {
         return _value;
     }
+
+    public String toDisplayString() {
+        switch (_value) {
+            case "in-stock":
+                return "Còn hàng";
+            case "out-of-stock":
+                return "Hết hàng";
+            default:
+                return "Lỗi";
+        }
+    }
 }

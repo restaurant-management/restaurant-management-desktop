@@ -91,6 +91,6 @@
         <PrimaryButton fx:id="changePassButton" onAction="#changePassAction" styleClass="drop-shadow">
             Đổi mật khẩu
         </PrimaryButton>
-        <IconButton fx:id="reloadButton" styleClass="drop-shadow"/>
+<!--        <IconButton fx:id="reloadButton" styleClass="drop-shadow"/>-->
     </VBox>
 </VBox>

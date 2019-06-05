@@ -82,4 +82,9 @@ public class DishModel {
     public void set_defaultPrice(int _defaultPrice) {
         this._defaultPrice = _defaultPrice;
     }
+
+    @Override
+    public String toString() {
+        return _name + " - " + _defaultPrice;
+    }
 }

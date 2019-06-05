@@ -68,7 +68,7 @@ public class RoleTab {
 
         addButton.setOnAction(event -> {
             try {
-                new CustomDialog("Thêm vai trò mới", AddRolePopup.class).show();
+                new CustomDialog("Thêm vai trò mới", AddRolePopup.class).setOnDialogClosed(event1 -> getData()).show();
             } catch (FlowException e) {
                 new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();
             }
@@ -80,7 +80,8 @@ public class RoleTab {
             }
             try {
                 new CustomDialog("Sửa thông tin", EditRolePopup.class,
-                        mainTableView.getSelectionModel().getSelectedItem().getValue().slug.getValue()).show();
+                        mainTableView.getSelectionModel().getSelectedItem().getValue().slug.getValue())
+                        .setOnDialogClosed(event1 -> getData()).show();
             } catch (FlowException e) {
                 e.printStackTrace();
                 new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();

@@ -33,6 +33,14 @@ public class DailyDishModel {
         _day = dailyDish._day;
     }
 
+    public DailyDishModel(Date day, DaySession session, DailyDishStatus status, int price, DishModel dish) {
+        _day = day;
+        _session = session;
+        _status = status;
+        _price = price;
+        _dish = dish;
+    }
+
     public Date get_day() {
         return _day;
     }

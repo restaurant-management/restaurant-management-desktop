@@ -75,7 +75,7 @@ public class UserTab {
 
         addButton.setOnAction(event -> {
             try {
-                new CustomDialog("Thêm người dùng mới", AddUserPopup.class).show();
+                new CustomDialog("Thêm người dùng mới", AddUserPopup.class).setOnDialogClosed(event1 -> getData()).show();
             } catch (FlowException e) {
                 new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();
             }
@@ -87,7 +87,8 @@ public class UserTab {
             }
             try {
                 new CustomDialog("Sửa thông tin", EditUserPopup.class,
-                        mainTableView.getSelectionModel().getSelectedItem().getValue()._username.getValue()).show();
+                        mainTableView.getSelectionModel().getSelectedItem().getValue()._username.getValue())
+                        .setOnDialogClosed(event1 -> getData()).show();
             } catch (FlowException e) {
                 e.printStackTrace();
                 new ErrorDialog("Lỗi khi tạo của sổ mới", e.getMessage()).show();

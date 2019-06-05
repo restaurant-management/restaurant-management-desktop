@@ -119,7 +119,7 @@ public class EditProfilePopup extends Popupable {
                 if (roleField.getValue() != null)
                     _user.set_role(roleField.getValue().get_slug());
                 _userProfileBus.updateProfile(_user);
-                if (_authorizationBus.checkPermission(Permission.USER_MANAGEMENT))
+                if (_authorizationBus.checkPermission(Permission.USER_MANAGEMENT) && !_user.get_username().equals("admin"))
                     _userProfileBus.changeRole(_user);
 
                 _userProfileBus.updateCurrentUser();

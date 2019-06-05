@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import model.enums.Permission;
 import ui.mainScreen.tabs.*;
 import ui.mainScreen.tabs.dishTab.DishTab;
+import ui.mainScreen.tabs.menuTab.MenuTab;
 import ui.mainScreen.tabs.roleTab.RoleTab;
 import ui.mainScreen.tabs.userTab.UserTab;
 

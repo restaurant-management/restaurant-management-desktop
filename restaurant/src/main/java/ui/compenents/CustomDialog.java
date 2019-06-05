@@ -33,7 +33,7 @@ public class CustomDialog {
         _alert = new JFXDialog();
         int random = new Random().nextInt((4) + 1);
         JFXDialog.DialogTransition transition;
-        switch (random){
+        switch (random) {
             case 0:
                 transition = JFXDialog.DialogTransition.BOTTOM;
                 break;
@@ -57,19 +57,23 @@ public class CustomDialog {
         _alert.getContent().getStyleClass().add("custom-dialog");
     }
 
-    public void show() {
+    public CustomDialog show() {
         _alert.show();
+        return this;
     }
 
-    public void close() {
+    public CustomDialog close() {
         _alert.close();
+        return this;
     }
 
-    public void setTransitionType(JFXDialog.DialogTransition transitionType) {
+    public CustomDialog setTransitionType(JFXDialog.DialogTransition transitionType) {
         _alert.setTransitionType(transitionType);
+        return this;
     }
 
-    public void setOnDialogClosed(EventHandler<? super JFXDialogEvent> handler) {
+    public CustomDialog setOnDialogClosed(EventHandler<? super JFXDialogEvent> handler) {
         _alert.setOnDialogClosed(handler);
+        return this;
     }
 }
