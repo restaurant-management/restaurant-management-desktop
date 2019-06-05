@@ -1,5 +1,6 @@
 package dao.restApi;
 
+import dao.FirebaseDao;
 import dao.base.IDishDao;
 import dao.exceptions.RequestFailException;
 import dao.exceptions.dishExceptions.CreateDishFailException;
@@ -15,7 +16,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DishDao implements IDishDao {
@@ -31,7 +34,12 @@ public class DishDao implements IDishDao {
             body.add(new BasicNameValuePair("description", description));
         if (images != null)
             for (int i = 0; i < images.size(); i++) {
-                body.add(new BasicNameValuePair("images[" + i + "]", images.get(i)));
+                try {
+                    String uploadPath = "dishImages/" + name + i + "-" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+                    String url = FirebaseDao.getInstance().create(uploadPath, images.get(i));
+                    body.add(new BasicNameValuePair("images[" + i + "]", url));
+                } catch (IOException ignored) {
+                }
             }
         body.add(new BasicNameValuePair("defaultPrice", Integer.toString(defaultPrice)));
 

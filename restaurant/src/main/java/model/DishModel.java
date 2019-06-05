@@ -40,6 +40,13 @@ public class DishModel {
         _name = dish._name;
     }
 
+    public DishModel(String name, String description, int defaultPrice, ArrayList<String> images) {
+        _name = name;
+        _description = description;
+        _defaultPrice = defaultPrice;
+        _images = images;
+    }
+
     public int get_dishId() {
         return _dishId;
     }
