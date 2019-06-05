@@ -2,12 +2,16 @@ package dao;
 
 import com.google.firebase.database.annotations.NotNull;
 import dao.exceptions.AddPermissionFailException;
+import dao.exceptions.dishExceptions.CreateDishFailException;
+import dao.exceptions.dishExceptions.DeleteDishFailException;
 import dao.exceptions.dishExceptions.EditDishFailException;
+import dao.exceptions.dishExceptions.GetDishFailException;
 import dao.exceptions.roleExceptions.CreateRoleFailException;
 import dao.exceptions.roleExceptions.DeleteRoleFailException;
 import dao.exceptions.roleExceptions.GetRoleFailException;
 import dao.exceptions.userExceptions.*;
 import dao.restApi.*;
+import model.DishModel;
 import model.RoleModel;
 import model.UserModel;
 import model.enums.Permission;
@@ -152,5 +156,25 @@ public class Repository {
 
     public void deleteUser(@NotNull String username) throws DeleteUserFailException {
         _userDao.deleteUser(getToken(), username);
+    }
+
+    public ArrayList<DishModel> getAllDish() throws GetDishFailException {
+        return _dishDao.getAll(getToken(), null, null);
+    }
+
+    public void createDish(DishModel dishModel) throws CreateDishFailException {
+        _dishDao.createDish(getToken(), dishModel.get_name(), dishModel.get_description(), dishModel.get_images(), dishModel.get_defaultPrice());
+    }
+
+    public void editDish(DishModel dishModel) throws EditDishFailException {
+        _dishDao.editDish(getToken(), dishModel.get_dishId(), dishModel.get_name(), dishModel.get_description(), dishModel.get_images(), dishModel.get_defaultPrice());
+    }
+
+    public void deleteDish(int dishId) throws DeleteDishFailException {
+        _dishDao.deleteDish(getToken(), dishId);
+    }
+
+    public DishModel getDishDetail(int dishId) throws GetDishFailException {
+        return _dishDao.getDish(getToken(), dishId);
     }
 }

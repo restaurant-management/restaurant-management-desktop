@@ -7,25 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96381cca-3fb4-43db-b932-2392a21367ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/roleTab/RoleTab.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/EditDishPopup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/bus/RoleBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/bus/RoleBus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/bus/DishBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/bus/DishBus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/HttpConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/HttpConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/model/RoleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/model/RoleModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/MainDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/MainDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/RoleTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/RoleTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/DishDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/DishDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/DishTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/DishTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/UserTab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/UserTab.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/AddUserPermissionPopup.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/EditUserPopup.fxml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/restaurant/.gradle/" />
@@ -63,45 +52,78 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="DockManager">
-    <window id="1">
+    <window id="3">
       <content type="file-editors">
         <state>
           <leaf>
             <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/UserTab.fxml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="143">
+                    <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+                  </state>
+                </provider>
+                <provider editor-type-id="JavaFX-Scene-Builder" />
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="256">
+                    <caret line="148" column="51" lean-forward="true" selection-start-line="148" selection-start-column="51" selection-end-line="148" selection-end-column="51" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/AddUserPopup.fxml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="183">
+                    <caret line="52" column="98" lean-forward="true" selection-start-line="52" selection-start-column="98" selection-end-line="54" selection-end-column="40" />
+                  </state>
+                </provider>
+                <provider editor-type-id="JavaFX-Scene-Builder" />
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/AddUserPopup.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="157">
-                    <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+                  <state relative-caret-position="225">
+                    <caret line="99" column="37" lean-forward="true" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="method#submit#0;class#AddUserPopup#0" />
-                      <element signature="method#setupPermissionField#0;class#AddUserPopup#0" />
                       <element signature="method#loadRole#0;class#AddUserPopup#0" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java">
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="153">
-                    <caret line="81" column="11" lean-forward="true" selection-start-line="81" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
+                  <state relative-caret-position="136">
+                    <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
                     <folding>
                       <element signature="imports" expanded="true" />
+                      <element signature="e#2752#2753#0" expanded="true" />
+                      <element signature="e#2806#2807#0" expanded="true" />
+                      <element signature="method#getPermissionsSelected#0;class#EditRolePopup#0" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="false">
+            <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="480">
-                    <caret line="235" column="4" selection-start-line="235" selection-start-column="4" selection-end-line="248" selection-end-column="5" />
+                  <state relative-caret-position="231">
+                    <caret line="73" column="41" lean-forward="true" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
                     <folding>
                       <element signature="method#loadUser#0;class#EditUserPopup#0" />
-                      <element signature="method#getPermissionsSelected#0;class#EditUserPopup#0" />
                     </folding>
                   </state>
                 </provider>
@@ -153,106 +175,141 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/RoleTab.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/DishTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="79" column="23" lean-forward="true" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
+            <state relative-caret-position="259">
+              <caret line="82" column="63" selection-start-line="82" selection-start-column="63" selection-end-line="82" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3643#3644#0" expanded="true" />
-                <element signature="e#3684#3685#0" expanded="true" />
-                <element signature="e#2553#2554#0" expanded="true" />
-                <element signature="e#2606#2607#0" expanded="true" />
-                <element signature="e#1036#1037#0" expanded="true" />
-                <element signature="e#1072#1073#0" expanded="true" />
-                <element signature="e#1199#1200#0" expanded="true" />
-                <element signature="e#1235#1236#0" expanded="true" />
-                <element signature="e#1383#1384#0" expanded="true" />
-                <element signature="e#1426#1427#0" expanded="true" />
-                <element signature="e#1574#1575#0" expanded="true" />
-                <element signature="e#1617#1618#0" expanded="true" />
+                <element signature="e#4057#4058#0" expanded="true" />
+                <element signature="e#4110#4111#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <element signature="e#901#902#0" expanded="true" />
+                <element signature="e#1026#1027#0" expanded="true" />
+                <element signature="e#1062#1063#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.java">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="38" selection-end-column="39" />
+            <state relative-caret-position="108">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
+              <folding>
+                <element signature="e#2949#2950#0" expanded="true" />
+                <element signature="e#2998#2999#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/model/DishModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+              <folding>
+                <element signature="e#1415#1416#0" expanded="true" />
+                <element signature="e#1445#1446#0" expanded="true" />
+                <element signature="e#1477#1478#0" expanded="true" />
+                <element signature="e#1505#1506#0" expanded="true" />
+                <element signature="e#1620#1621#0" expanded="true" />
+                <element signature="e#1655#1656#0" expanded="true" />
+                <element signature="e#1804#1805#0" expanded="true" />
+                <element signature="e#1834#1835#0" expanded="true" />
+                <element signature="e#1891#1892#0" expanded="true" />
+                <element signature="e#1929#1930#0" expanded="true" />
+                <element signature="e#2002#2003#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/DishDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/AddDishPopup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2232#2233#0" expanded="true" />
-                <element signature="e#2339#2340#0" expanded="true" />
-                <element signature="method#setupPermissionField#0;class#AddRolePopup#0" />
+                <element signature="e#2644#2645#0" expanded="true" />
+                <element signature="e#2751#2752#0" expanded="true" />
+                <element signature="method#createNewImageItem#0;class#AddDishPopup#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/DishBus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="84" column="13" lean-forward="true" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+            <state relative-caret-position="108">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getPermissionsSelected#0;class#EditRolePopup#0" />
+                <element signature="e#472#473#0" expanded="true" />
+                <element signature="e#504#505#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/model/RoleModel.java">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/dishTab/popups/AddDishPopup.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-              <folding>
-                <element signature="e#1572#1573#0" expanded="true" />
-                <element signature="e#1615#1616#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/RoleDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/HttpConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="83" column="55" lean-forward="true" selection-start-line="83" selection-start-column="55" selection-end-line="83" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+            <state relative-caret-position="289">
+              <caret line="26" column="35" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="35" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/EditDishPopup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="59" selection-end-column="56" />
+              <folding>
+                <element signature="e#1671#1672#0" expanded="true" />
+                <element signature="e#1752#1753#0" expanded="true" />
+                <element signature="e#2908#2909#0" expanded="true" />
+                <element signature="e#3633#3657#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/RoleBus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+            <state relative-caret-position="119">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/dishTab/DishTab.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -284,13 +341,14 @@
       <find>check</find>
       <find>Succ</find>
       <find>ar</find>
+      <find>default</find>
     </findStrings>
     <replaceStrings>
       <replace>180</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src</dir>
       <dir>C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\java</dir>
+      <dir>C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -299,14 +357,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/restaurant/build.gradle" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/constants/FirebaseConstants.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/FirebaseDao.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/model/base/ChangableProperty.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/model/base/ChangeableProperty.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/exceptions/userExceptions/ChangePasswordFailException.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/compenents/SuccessDialog.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/profileTab/popups/ChangePasswordPopup.fxml" />
         <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/profileTab/popups/EditProfilePopup.fxml" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/profileTab/popups/ChangePasswordPopup.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/UserTab/UserTab.fxml" />
@@ -336,20 +386,28 @@
         <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/exceptions/userExceptions/DeleteUserFailException.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/base/IUserDao.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/UserDao.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/bus/UserBus.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/roleTab/RoleTab.fxml" />
         <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/UserTab.fxml" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/model/RoleModel.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.fxml" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/bus/RoleBus.java" />
-        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/RoleTab.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/RoleDao.java" />
         <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/HttpConnection.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/dishTab/DishTab.fxml" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/bus/UserBus.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/dishTab/popups/AddDishPopup.fxml" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/model/DishModel.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/AddDishPopup.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/DishTab.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/bus/DishBus.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/DishDao.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/EditDishPopup.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java" />
+        <option value="$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java" />
       </list>
     </option>
   </component>
@@ -360,8 +418,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="113" />
-    <option name="y" value="-13" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="754" />
   </component>
@@ -373,7 +431,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -415,6 +472,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="restaurant-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="restaurant-management-desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="restaurant" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -448,7 +514,7 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="mainScreen" type="462c0819:PsiDirectoryNode" />
               <item name="tabs" type="462c0819:PsiDirectoryNode" />
-              <item name="roleTab" type="462c0819:PsiDirectoryNode" />
+              <item name="dishTab" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="restaurant-management" type="b2602c69:ProjectViewProjectNode" />
@@ -460,7 +526,7 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="mainScreen" type="462c0819:PsiDirectoryNode" />
               <item name="tabs" type="462c0819:PsiDirectoryNode" />
-              <item name="roleTab" type="462c0819:PsiDirectoryNode" />
+              <item name="dishTab" type="462c0819:PsiDirectoryNode" />
               <item name="popups" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -531,6 +597,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="restaurant-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="restaurant-management-desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="restaurant" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -553,48 +628,12 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="mainScreen" type="462c0819:PsiDirectoryNode" />
               <item name="tabs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurant-management" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant-management-desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="restaurant" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="mainScreen" type="462c0819:PsiDirectoryNode" />
-              <item name="tabs" type="462c0819:PsiDirectoryNode" />
-              <item name="roleTab" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurant-management" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant-management-desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="restaurant" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="mainScreen" type="462c0819:PsiDirectoryNode" />
-              <item name="tabs" type="462c0819:PsiDirectoryNode" />
-              <item name="userTab" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurant-management" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurant-management-desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="restaurant" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="mainScreen" type="462c0819:PsiDirectoryNode" />
-              <item name="tabs" type="462c0819:PsiDirectoryNode" />
-              <item name="userTab" type="462c0819:PsiDirectoryNode" />
-              <item name="popups" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -603,7 +642,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="gaphagun@gmail.com" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/restaurant/src/main/resources/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -612,29 +651,29 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\images" />
+      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\ui\mainScreen\tabs\userTab\popups" />
+      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\ui\mainScreen\tabs\profileTab\popups" />
+      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\java\firebaseKey" />
+      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\fonts" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ui.mainScreen.tabs.dishTab.popups" />
+      <recent name="dao.exceptions.userExceptions" />
+      <recent name="ui.mainScreen.tabs.userTab.popups" />
+      <recent name="ui.compenents" />
+      <recent name="exceptions" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant" />
       <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop" />
       <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources" />
       <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\ui\mainScreen\tabs\profileTab\popups" />
       <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\ui\mainScreen\tabs\profileTab" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="dao.exceptions.userExceptions" />
-      <recent name="ui.mainScreen.tabs.userTab.popups" />
-      <recent name="ui.compenents" />
-      <recent name="exceptions" />
-      <recent name="dao.exceptions.billExceptions" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\ui\mainScreen\tabs\userTab\popups" />
-      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\ui\mainScreen\tabs\profileTab\popups" />
-      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\java\firebaseKey" />
-      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\images" />
-      <recent name="C:\Users\victorlee\Desktop\javabt\restaurant-management-desktop\restaurant\src\main\resources\fonts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -719,11 +758,12 @@
       <workItem from="1559544335705" duration="214000" />
       <workItem from="1559556264641" duration="22998000" />
       <workItem from="1559618074686" duration="13166000" />
+      <workItem from="1559698574832" duration="15026000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241285000" />
+    <option name="totallyTimeSpent" value="256345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -735,7 +775,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="UI Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.22844176" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2322239" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848714" visible="true" weight="0.2979066" />
@@ -868,132 +908,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jfoenix/src/main/java/com/jfoenix/controls/JFXDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="562" column="50" selection-start-line="562" selection-start-column="34" selection-end-line="562" selection-end-column="50" />
-          <folding>
-            <element signature="e#21475#21476#0" expanded="true" />
-            <element signature="e#21526#21527#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/css/mainScreen.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/compenents/PrimaryButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/compenents/IconButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="69" lean-forward="true" selection-start-line="19" selection-start-column="69" selection-end-line="20" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/profileTab/ProfileTab.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/css/mainStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-141" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/compenents/CustomDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="37" column="63" lean-forward="true" selection-start-line="37" selection-start-column="63" selection-end-line="37" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jfoenix/src/main/java/com/jfoenix/skins/JFXListViewSkin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="58" column="64" selection-start-line="58" selection-start-column="64" selection-end-line="58" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jfoenix/src/main/java/com/jfoenix/controls/JFXCheckBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/exceptions/userExceptions/CreateUserFailException.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/base/IRoleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/scene/control/ListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="401" column="35" selection-start-line="401" selection-start-column="35" selection-end-line="401" selection-end-column="35" />
-          <folding>
-            <element signature="e#17765#17766#0" expanded="true" />
-            <element signature="e#17822#17823#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/model/enums/Permission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding>
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#851#852#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/util/EmailValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jfoenix/src/main/java/com/jfoenix/validation/RequiredFieldValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/signInScreen/SignInScreen.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/signInScreen/SignInScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1069,16 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/UserBus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/scene/control/TextInputControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1103,21 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1031">
-          <caret line="282" column="4" selection-start-line="282" selection-start-column="4" selection-end-line="282" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/UserTab.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/roleTab/RoleTab.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -1133,22 +1022,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/AddUserPermissionPopup.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/AddUserPopup.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="20" lean-forward="true" selection-end-line="70" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/AddUserPermissionPopup.fxml" />
     <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/css/jfoenix-main-demo.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1171,39 +1045,7 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/EditUserPopup.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="116" column="15" selection-start-line="116" selection-start-column="15" selection-end-line="116" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="235" column="4" selection-start-line="235" selection-start-column="4" selection-end-line="248" selection-end-column="5" />
-          <folding>
-            <element signature="method#loadUser#0;class#EditUserPopup#0" />
-            <element signature="method#getPermissionsSelected#0;class#EditUserPopup#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/RoleBus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/EditUserPopup.fxml" />
     <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/AddRolePopup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1214,65 +1056,6 @@
             <element signature="e#2339#2340#0" expanded="true" />
             <element signature="method#setupPermissionField#0;class#AddRolePopup#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/AddUserPopup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#submit#0;class#AddUserPopup#0" />
-            <element signature="method#setupPermissionField#0;class#AddUserPopup#0" />
-            <element signature="method#loadRole#0;class#AddUserPopup#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="81" column="11" lean-forward="true" selection-start-line="81" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/model/RoleModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding>
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1615#1616#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/RoleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="84" column="13" lean-forward="true" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getPermissionsSelected#0;class#EditRolePopup#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/HttpConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="83" column="55" lean-forward="true" selection-start-line="83" selection-start-column="55" selection-end-line="83" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1294,6 +1077,292 @@
             <element signature="e#1426#1427#0" expanded="true" />
             <element signature="e#1574#1575#0" expanded="true" />
             <element signature="e#1617#1618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/model/RoleModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="32" column="17" lean-forward="true" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+          <folding>
+            <element signature="e#1681#1682#0" expanded="true" />
+            <element signature="e#1711#1712#0" expanded="true" />
+            <element signature="e#1743#1744#0" expanded="true" />
+            <element signature="e#1783#1784#0" expanded="true" />
+            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="e#1868#1869#0" expanded="true" />
+            <element signature="e#1904#1905#0" expanded="true" />
+            <element signature="e#1943#1944#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/RoleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/HttpConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="83" column="55" selection-start-line="83" selection-start-column="55" selection-end-line="83" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/UserTab.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/beans/value/ObservableIntegerValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/beans/Observable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/beans/value/ObservableValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/UserBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="12" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/UserTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="148" column="51" lean-forward="true" selection-start-line="148" selection-start-column="51" selection-end-line="148" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/userTab/popups/AddUserPopup.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="52" column="98" lean-forward="true" selection-start-line="52" selection-start-column="98" selection-end-line="54" selection-end-column="40" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/awt/Image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1683">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/AboutTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="57" column="12" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/RoleBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/dishTab/DishTab.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jfoenix/src/main/java/com/jfoenix/controls/JFXListCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="375" selection-start-line="375" selection-end-line="375" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/compenents/LoadingImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding>
+            <element signature="e#482#652#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/AddDishPopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#2751#2752#0" expanded="true" />
+            <element signature="method#createNewImageItem#0;class#AddDishPopup#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="111" column="67" lean-forward="true" selection-start-line="111" selection-start-column="67" selection-end-line="111" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/FirebaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/AddUserPopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="99" column="37" lean-forward="true" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#submit#0;class#AddUserPopup#0" />
+            <element signature="method#loadRole#0;class#AddUserPopup#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/resources/ui/mainScreen/tabs/dishTab/popups/AddDishPopup.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/DishTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="82" column="63" selection-start-line="82" selection-start-column="63" selection-end-line="82" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4057#4058#0" expanded="true" />
+            <element signature="e#4110#4111#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/bus/DishBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#504#505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/model/DishModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+          <folding>
+            <element signature="e#1415#1416#0" expanded="true" />
+            <element signature="e#1445#1446#0" expanded="true" />
+            <element signature="e#1477#1478#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+            <element signature="e#1620#1621#0" expanded="true" />
+            <element signature="e#1655#1656#0" expanded="true" />
+            <element signature="e#1804#1805#0" expanded="true" />
+            <element signature="e#1834#1835#0" expanded="true" />
+            <element signature="e#1891#1892#0" expanded="true" />
+            <element signature="e#1929#1930#0" expanded="true" />
+            <element signature="e#2002#2003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/Repository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+          <folding>
+            <element signature="e#2949#2950#0" expanded="true" />
+            <element signature="e#2998#2999#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/dao/restApi/DishDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/dishTab/popups/EditDishPopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="59" selection-end-column="56" />
+          <folding>
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
+            <element signature="e#3633#3657#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/roleTab/popups/EditRolePopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2752#2753#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="method#getPermissionsSelected#0;class#EditRolePopup#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/src/main/java/ui/mainScreen/tabs/userTab/popups/EditUserPopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="73" column="41" lean-forward="true" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
+          <folding>
+            <element signature="method#loadUser#0;class#EditUserPopup#0" />
           </folding>
         </state>
       </provider>

@@ -6,7 +6,6 @@ import dao.exceptions.userExceptions.CreateUserFailException;
 import dao.exceptions.userExceptions.DeleteUserFailException;
 import dao.exceptions.userExceptions.FetchUserFailException;
 import model.UserModel;
-import model.enums.Permission;
 
 import java.util.ArrayList;
 
