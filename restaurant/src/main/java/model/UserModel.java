@@ -142,4 +142,9 @@ public class UserModel {
     public void set_point(Integer _point) {
         this._point = _point;
     }
+
+    @Override
+    public String toString() {
+        return _username;
+    }
 }

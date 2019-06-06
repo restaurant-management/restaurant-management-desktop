@@ -6,9 +6,8 @@ import dao.exceptions.billExceptions.CreateBillFailException;
 import dao.exceptions.billExceptions.DeleteBillFailException;
 import dao.exceptions.billExceptions.EditBillFailException;
 import dao.exceptions.billExceptions.GetBillFailException;
+import model.BillDetailModel;
 import model.BillModel;
-import model.DailyDishModel;
-import model.enums.BillStatus;
 import model.exceptions.IsNotABillStatusException;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
@@ -18,14 +17,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BillDao implements IBillDao {
     @Override
-    public ArrayList<BillModel> getAll(String token, Integer length, Integer offset) throws GetBillFailException {
+    public ArrayList<BillModel> getAll(String token, Date day, Integer length, Integer offset) throws GetBillFailException {
         String uri = "/api/bills?";
+        if (day != null) uri += "day=" + new SimpleDateFormat("yyyy-MM-dd").format(day);
         return getBillModels(token, length, offset, uri);
     }
 
@@ -54,24 +55,30 @@ public class BillDao implements IBillDao {
     }
 
     @Override
-    public BillModel createBill(String token, ArrayList<DailyDishModel> dishes, ArrayList<Integer> quantities, LocalDateTime day, BillStatus billStatus) throws CreateBillFailException {
+    public BillModel createBill(String token, BillModel billModel) throws CreateBillFailException {
         try {
             HttpConnection http = new HttpConnection();
             BasicHeader header = new BasicHeader("Authorization", token);
 
-            if(dishes.size() <= 0) throw new CreateBillFailException("Yêu cầu có danh sách món ăn.");
+            if (billModel.get_billDetails().size() <= 0)
+                throw new CreateBillFailException("Yêu cầu có danh sách món ăn.");
+
+            ArrayList<BillDetailModel> details = billModel.get_billDetails();
 
             // Create body for request
             List<NameValuePair> body = new ArrayList<>();
-            for (int i = 0; i < dishes.size(); i++) {
-                body.add(new BasicNameValuePair("dishIds[" + i + "]", Integer.toString(dishes.get(i).get_dish().get_dishId())));
-                body.add(new BasicNameValuePair("quantities[" + i + "]", quantities.get(i).toString()));
-                body.add(new BasicNameValuePair("prices[" + i + "]",
-                        Integer.toString(dishes.get(i).get_price() > 0 ? dishes.get(i).get_price() :
-                                dishes.get(i).get_dish().get_defaultPrice())));
+            for (int i = 0; i < details.size(); i++) {
+                body.add(new BasicNameValuePair("dishIds[" + i + "]", Integer.toString(details.get(i).get_dish().get_dishId())));
+                body.add(new BasicNameValuePair("quantities[" + i + "]", Integer.toString(details.get(i).get_quantity())));
+                body.add(new BasicNameValuePair("prices[" + i + "]", Integer.toString(details.get(i).get_price())));
             }
-            if (day != null) body.add(new BasicNameValuePair("day", day.toString()));
-            if (billStatus != null) body.add(new BasicNameValuePair("status", billStatus.toString()));
+            if (billModel.get_day() != null) body.add(new BasicNameValuePair("day", billModel.get_day().toString()));
+            if (billModel.get_status() != null)
+                body.add(new BasicNameValuePair("status", billModel.get_status().toString()));
+            if (billModel.get_user() != null)
+                body.add(new BasicNameValuePair("user", billModel.get_user().get_username()));
+            if (billModel.get_managerUsername() != null)
+                body.add(new BasicNameValuePair("manager", billModel.get_managerUsername()));
 
             String response = http.post("/api/bills/custom", new Header[]{header}, body);
             return new BillModel(new JSONObject(response));
@@ -81,16 +88,30 @@ public class BillDao implements IBillDao {
     }
 
     @Override
-    public BillModel editBill(String token, int billId, LocalDateTime day) throws EditBillFailException {
+    public BillModel editBill(String token, BillModel billModel) throws EditBillFailException {
         try {
             HttpConnection http = new HttpConnection();
             BasicHeader header = new BasicHeader("Authorization", token);
+            if (billModel.get_billDetails().size() <= 0)
+                throw new EditBillFailException("Yêu cầu có danh sách món ăn.");
 
+            ArrayList<BillDetailModel> details = billModel.get_billDetails();
             // Create body for request
             List<NameValuePair> body = new ArrayList<>();
-            body.add(new BasicNameValuePair("day", day.toString()));
+            for (int i = 0; i < details.size(); i++) {
+                body.add(new BasicNameValuePair("dishIds[" + i + "]", Integer.toString(details.get(i).get_dish().get_dishId())));
+                body.add(new BasicNameValuePair("quantities[" + i + "]", Integer.toString(details.get(i).get_quantity())));
+                body.add(new BasicNameValuePair("prices[" + i + "]", Integer.toString(details.get(i).get_price())));
+            }
+            if (billModel.get_day() != null) body.add(new BasicNameValuePair("day", billModel.get_day().toString()));
+            if (billModel.get_status() != null)
+                body.add(new BasicNameValuePair("status", billModel.get_status().toString()));
+            if (billModel.get_user() != null)
+                body.add(new BasicNameValuePair("user", billModel.get_user().get_username()));
+            if (billModel.get_managerUsername() != null)
+                body.add(new BasicNameValuePair("manager", billModel.get_managerUsername()));
 
-            String response = http.put("/api/bills/" + billId, new Header[]{header}, body);
+            String response = http.put("/api/bills/" + billModel.get_billId(), new Header[]{header}, body);
             return new BillModel(new JSONObject(response));
         } catch (IsNotABillStatusException | IOException | RequestFailException e) {
             throw new EditBillFailException(e.getMessage());
@@ -214,32 +235,33 @@ public class BillDao implements IBillDao {
     }
 
     @Override
-    public BillModel addDishToBill(String token, int billId, DailyDishModel dish) throws EditBillFailException {
+    public void addDishToBill(String token, int billId, int dishId, Integer price, Integer quantity) throws EditBillFailException {
         try {
             HttpConnection http = new HttpConnection();
             BasicHeader header = new BasicHeader("Authorization", token);
 
             // Create body for request
             List<NameValuePair> body = new ArrayList<>();
-            body.add(new BasicNameValuePair("price", Integer.toString(dish.get_price() > 0 ? dish.get_price() : dish.get_dish().get_defaultPrice())));
+            if (price != null && price > 0)
+                body.add(new BasicNameValuePair("price", Integer.toString(price)));
+            if (quantity != null)
+                body.add(new BasicNameValuePair("quantity", Integer.toString(quantity)));
 
-            String response = http.post("/api/bills/" + billId + "/dishes/" + dish.get_dish().get_dishId(), new Header[]{header}, body);
-            return new BillModel(new JSONObject(response));
-        } catch (IsNotABillStatusException | IOException | RequestFailException e) {
+            http.post("/api/bills/" + billId + "/dishes/" + dishId, new Header[]{header}, body);
+        } catch (IOException | RequestFailException e) {
             throw new EditBillFailException(e.getMessage());
         }
     }
 
     @Override
-    public BillModel removeDishToBill(String token, int billId, int dishId) throws EditBillFailException {
+    public void removeDishToBill(String token, int billId, int dishId) throws EditBillFailException {
 
         try {
             HttpConnection http = new HttpConnection();
             BasicHeader header = new BasicHeader("Authorization", token);
 
-            String response = http.delete("/api/bills/" + billId + "/dishes/" + dishId, new Header[]{header});
-            return new BillModel(new JSONObject(response));
-        } catch (IsNotABillStatusException | IOException | RequestFailException e) {
+            http.delete("/api/bills/" + billId + "/dishes/" + dishId, new Header[]{header});
+        } catch (IOException | RequestFailException e) {
             throw new EditBillFailException(e.getMessage());
         }
     }

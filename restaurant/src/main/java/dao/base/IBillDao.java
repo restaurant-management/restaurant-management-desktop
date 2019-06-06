@@ -11,15 +11,16 @@ import model.enums.BillStatus;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface IBillDao {
-    ArrayList<BillModel> getAll(String token, Integer length, Integer offset) throws GetBillFailException;
+    ArrayList<BillModel> getAll(String token, Date day, Integer length, Integer offset) throws GetBillFailException;
 
     ArrayList<BillModel> getAllUserBill(String token, String username, Integer length, Integer offset) throws GetBillFailException;
 
-    BillModel createBill(String token, ArrayList<DailyDishModel> dishes, ArrayList<Integer> quantities, LocalDateTime day, BillStatus billStatus) throws CreateBillFailException;
+    BillModel createBill(String token, BillModel billModel) throws CreateBillFailException;
 
-    BillModel editBill(String token, int billId, LocalDateTime day) throws EditBillFailException;
+    BillModel editBill(String token, BillModel billModel) throws EditBillFailException;
 
     BillModel updateBillStatusCreated(String token, int billId) throws EditBillFailException;
 
@@ -39,7 +40,7 @@ public interface IBillDao {
 
     void deleteBill(String token, int billId) throws DeleteBillFailException;
 
-    BillModel addDishToBill(String token, int billId, DailyDishModel dish) throws EditBillFailException;
+    void addDishToBill(String token, int billId, int dishId, Integer price, Integer quantity) throws EditBillFailException;
 
-    BillModel removeDishToBill(String token, int billId, int dishId) throws EditBillFailException;
+    void removeDishToBill(String token, int billId, int dishId) throws EditBillFailException;
 }

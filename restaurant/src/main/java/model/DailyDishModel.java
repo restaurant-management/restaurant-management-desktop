@@ -68,4 +68,9 @@ public class DailyDishModel {
     public DishModel get_dish() {
         return _dish;
     }
+
+    @Override
+    public String toString() {
+        return _dish.get_name() + " - " + (_price > 0 ? _price : _dish.get_defaultPrice());
+    }
 }

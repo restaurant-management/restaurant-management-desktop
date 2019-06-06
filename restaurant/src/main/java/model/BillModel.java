@@ -16,7 +16,6 @@ public class BillModel {
     private UserModel _user;
     private String _managerUsername;
     private ArrayList<BillDetailModel> _billDetails;
-
     public BillModel(JSONObject jsonObject) throws IsNotABillStatusException {
         _billId = jsonObject.getInt("billId");
         _day = LocalDateTime.parse(jsonObject.getString("day"), DateTimeFormatter.ISO_DATE_TIME);
@@ -31,7 +30,7 @@ public class BillModel {
         _billDetails = new ArrayList<>();
         for (Object object : jsonBillDetails) {
             try {
-                _billDetails.add(new BillDetailModel((JSONObject)object));
+                _billDetails.add(new BillDetailModel((JSONObject) object));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -45,6 +44,14 @@ public class BillModel {
         _status = bill._status;
         _day = bill._day;
         _billId = bill._billId;
+    }
+
+    public BillModel(LocalDateTime day, BillStatus status, UserModel user, String manager, ArrayList<BillDetailModel> billDetail) {
+        _day = day;
+        _status = status;
+        _user = user;
+        _managerUsername = manager;
+        _billDetails = billDetail;
     }
 
     public int get_billId() {
@@ -69,6 +76,10 @@ public class BillModel {
 
     public UserModel get_user() {
         return _user;
+    }
+
+    public void set_user(UserModel _user) {
+        this._user = _user;
     }
 
     public String get_managerUsername() {

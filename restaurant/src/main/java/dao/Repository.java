@@ -2,6 +2,10 @@ package dao;
 
 import com.google.firebase.database.annotations.NotNull;
 import dao.exceptions.AddPermissionFailException;
+import dao.exceptions.billExceptions.CreateBillFailException;
+import dao.exceptions.billExceptions.DeleteBillFailException;
+import dao.exceptions.billExceptions.EditBillFailException;
+import dao.exceptions.billExceptions.GetBillFailException;
 import dao.exceptions.dailyDishExceptions.CreateDailyDishFailException;
 import dao.exceptions.dailyDishExceptions.DeleteDailyDishFailException;
 import dao.exceptions.dailyDishExceptions.EditDailyDishFailException;
@@ -15,10 +19,7 @@ import dao.exceptions.roleExceptions.DeleteRoleFailException;
 import dao.exceptions.roleExceptions.GetRoleFailException;
 import dao.exceptions.userExceptions.*;
 import dao.restApi.*;
-import model.DailyDishModel;
-import model.DishModel;
-import model.RoleModel;
-import model.UserModel;
+import model.*;
 import model.enums.DaySession;
 import model.enums.Permission;
 
@@ -203,5 +204,34 @@ public class Repository {
 
     public void editDailyDish(DailyDishModel dailyDish) throws EditDailyDishFailException {
         _dailyDishDao.editDailyDish(getToken(), dailyDish.get_day(), dailyDish.get_session(), dailyDish.get_dish().get_dishId(), dailyDish.get_status(), dailyDish.get_price());
+    }
+
+    public ArrayList<BillModel> getBillByDay(Date day) throws GetBillFailException {
+        return _billDao.getAll(getToken(), day, null, null);
+    }
+
+    public BillModel getBill(int billId) throws GetBillFailException {
+        return _billDao.getBill(getToken(), billId);
+    }
+
+    public void createBill(BillModel billModel) throws CreateBillFailException {
+        _billDao.createBill(getToken(), billModel);
+    }
+
+    public void editBill(BillModel billModel) throws EditBillFailException {
+        _billDao.editBill(getToken(), billModel);
+    }
+
+    public void addBillDetail(int billId, BillDetailModel billDetailModel) throws EditBillFailException {
+        _billDao.addDishToBill(getToken(), billId, billDetailModel.get_dish().get_dishId(), billDetailModel.get_price(),
+                billDetailModel.get_quantity());
+    }
+
+    public void removeBillDetail(int billId, int dishId) throws EditBillFailException {
+        _billDao.removeDishToBill(getToken(), billId, dishId);
+    }
+
+    public void deleteBill(int billId) throws DeleteBillFailException {
+        _billDao.deleteBill(getToken(), billId);
     }
 }
