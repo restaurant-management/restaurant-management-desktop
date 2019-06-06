@@ -26,6 +26,12 @@ public class BillDetailModel {
         _dish = billDetailModel._dish;
     }
 
+    public BillDetailModel(int quantity, int price, DishModel dish) {
+        _quantity = quantity;
+        _price = price;
+        _dish = dish;
+    }
+
     public int get_billId() {
         return _billId;
     }

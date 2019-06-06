@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import ui.compenents.PrimaryButton?>
+<GridPane alignment="CENTER" hgap="10.0" prefWidth="500.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1">
+    <Label alignment="CENTER_RIGHT" text="Ngày*:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <JFXDatePicker fx:id="dayField" prefWidth="180" promptText="Ngày" GridPane.columnIndex="1"
+                   GridPane.rowIndex="0">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn ngày!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXDatePicker>
+    <Label alignment="CENTER_RIGHT" text="Lúc*:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <JFXTimePicker fx:id="timeField" prefWidth="180" promptText="Thời gian" GridPane.columnIndex="1"
+                   GridPane.rowIndex="1">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn thời gian!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXTimePicker>
+    <Label alignment="CENTER_RIGHT" text="Trạng thái*:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <JFXComboBox fx:id="statusField" prefWidth="180" promptText="Trạng thái" GridPane.columnIndex="1"
+                 GridPane.rowIndex="2">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn 1 trạng thái!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXComboBox>
+    <Label alignment="CENTER_RIGHT" text="Người tạo*:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <JFXComboBox fx:id="userField" prefWidth="180" promptText="Người tạo" GridPane.columnIndex="1"
+                 GridPane.rowIndex="3">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn 1 người tạo!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXComboBox>
+    <Label alignment="CENTER_RIGHT" text="Người quản lý*:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <JFXComboBox fx:id="managerField" prefWidth="180" promptText="Người quản lý" GridPane.columnIndex="1"
+                 GridPane.rowIndex="4"/>
+    <Label alignment="CENTER_RIGHT" text="Món ăn:" GridPane.columnIndex="0" GridPane.rowIndex="5"
+           GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+    <JFXListView fx:id="dishField" prefHeight="150" maxHeight="150" GridPane.columnIndex="0"
+                 GridPane.rowIndex="6" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"/>
+
+    <PrimaryButton fx:id="submitButton" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="2"
+                   GridPane.halignment="CENTER" defaultButton="true">
+        Thêm vào menu
+    </PrimaryButton>
+    <columnConstraints>
+        <ColumnConstraints prefWidth="200.0"/>
+        <ColumnConstraints prefWidth="300.0"/>
+    </columnConstraints>
+</GridPane>

@@ -29,4 +29,25 @@ public enum BillStatus {
     public String toString() {
         return _value;
     }
+
+    public String toDisplayString() {
+        switch (_value) {
+            case "created":
+                return "Chưa thanh toán";
+            case "paid":
+                return "Đã thanh toán";
+            case "preparing":
+                return "Đang chuẩn bị";
+            case "prepare-done":
+                return "Chuẩn bị xong";
+            case "delivering":
+                return "Đang mang ra bàn";
+            case "shipping":
+                return "Đang ship";
+            case "complete":
+                return "Hoàn thành";
+            default:
+                return "Lỗi";
+        }
+    }
 }
