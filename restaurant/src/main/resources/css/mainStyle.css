@@ -1,0 +1,45 @@
+.custom-dialog {
+    -fx-border-width: 4 0 0 0;
+    -fx-border-color: #FC5C7D;
+}
+
+.icon-button {
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b6ff, #0000ff);
+    -fx-font-size: 14;
+}
+
+.close-button {
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #fc6302, red);
+    -fx-font-size: 14;
+}
+
+.close-button-text {
+    -fx-label-padding: 5 30 5 30;
+}
+
+.jfx-date-picker {
+    -jfx-default-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+}
+
+.jfx-time-picker {
+    -jfx-default-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+}
+
+.jfx-combo-box {
+    -jfx-focus-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+    -fx-font-weight: bold;
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-label-padding: 5 30 5 30;
+}
+
+.chart-series-line {
+    -fx-stroke: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+}

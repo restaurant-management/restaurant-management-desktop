@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import ui.compenents.PrimaryButton?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import util.EmailValidator?>
+<GridPane alignment="CENTER" hgap="10.0" prefWidth="500.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1">
+    <Label alignment="CENTER_RIGHT" text="Tên đăng nhập*:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <JFXTextField fx:id="usernameField" prefWidth="180" promptText="Tên đăng nhập" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <validators>
+            <RequiredFieldValidator message="Cần nhập tên đăng nhập!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXTextField>
+
+    <Label alignment="CENTER_RIGHT" text="Mật khẩu*:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <JFXPasswordField fx:id="passwordField" prefWidth="180" promptText="Mật khẩu" GridPane.columnIndex="1"
+                      GridPane.rowIndex="1">
+        <validators>
+            <RequiredFieldValidator message="Cần nhập mật khẩu!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXPasswordField>
+
+    <Label alignment="CENTER_RIGHT" text="Email*:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <JFXTextField fx:id="emailField" prefWidth="180" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <validators>
+            <EmailValidator message="Email chưa đúng!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </EmailValidator>
+        </validators>
+    </JFXTextField>
+
+    <Label alignment="CENTER_RIGHT" text="Tên đầy đủ:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <JFXTextField fx:id="fullNameField" prefWidth="180" promptText="Tên đầy đủ" GridPane.columnIndex="1"
+                  GridPane.rowIndex="3"/>
+
+    <Label alignment="CENTER_RIGHT" text="Ngày sinh:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <JFXDatePicker fx:id="birthdayField" prefWidth="180" promptText="Ngày sinh" GridPane.columnIndex="1"
+                   GridPane.rowIndex="4"/>
+
+    <Label alignment="CENTER_RIGHT" text="Vai trò:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <JFXComboBox fx:id="roleField" prefWidth="180" promptText="Vai trò" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <Label alignment="CENTER_RIGHT" text="Quyền:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <JFXListView fx:id="permissionField" prefWidth="180" maxHeight="150" GridPane.columnIndex="1"
+                 GridPane.rowIndex="6"/>
+
+    <Label alignment="CENTER_RIGHT" text="Ảnh đại diện:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <ImageView fx:id="avatarField" fitHeight="80" fitWidth="80" GridPane.columnIndex="1" GridPane.rowIndex="7">
+        <Image url="@../../../../../images/default-avatar.jpg"/>
+    </ImageView>
+
+    <PrimaryButton fx:id="submitButton" GridPane.columnIndex="0" GridPane.rowIndex="8" GridPane.columnSpan="2"
+                   GridPane.halignment="CENTER" defaultButton="true">
+        Tạo
+    </PrimaryButton>
+    <columnConstraints>
+        <ColumnConstraints prefWidth="200.0"/>
+        <ColumnConstraints prefWidth="300.0"/>
+    </columnConstraints>
+</GridPane>

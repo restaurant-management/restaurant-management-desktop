@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import ui.compenents.PrimaryButton?>
+<GridPane alignment="CENTER" hgap="10.0" prefWidth="500.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1">
+    <Label alignment="CENTER_RIGHT" text="Món ăn*:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <JFXComboBox fx:id="dishNameField" prefWidth="180" promptText="Món ăn" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn 1 món ăn!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXComboBox>
+    <Label alignment="CENTER_RIGHT" text="Buổi*:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <JFXComboBox fx:id="sessionField" prefWidth="180" promptText="Buổi" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn 1 buổi!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXComboBox>
+    <Label alignment="CENTER_RIGHT" text="Trạng thái*:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <JFXComboBox fx:id="statusField" prefWidth="180" promptText="Trạng thái" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <validators>
+            <RequiredFieldValidator message="Cần chọn 1 trạng thái!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXComboBox>
+
+    <Label alignment="CENTER_RIGHT" text="Giá:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <JFXTextField fx:id="priceField" prefWidth="180" promptText="Giá" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <PrimaryButton fx:id="submitButton" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"
+                   GridPane.halignment="CENTER" defaultButton="true">
+        Thêm vào menu
+    </PrimaryButton>
+    <columnConstraints>
+        <ColumnConstraints prefWidth="200.0"/>
+        <ColumnConstraints prefWidth="300.0"/>
+    </columnConstraints>
+</GridPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.*?>
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <StackPane.margin>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </StackPane.margin>
+    <LineChart fx:id="billChart" legendVisible="false" title="Thống kê số hoá đơn mỗi ngày" GridPane.columnIndex="0"
+               GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS" GridPane.halignment="CENTER"
+               GridPane.valignment="CENTER" GridPane.rowIndex="0">
+        <xAxis>
+            <CategoryAxis side="BOTTOM"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis side="LEFT"/>
+        </yAxis>
+    </LineChart>
+    <HBox spacing="30" alignment="CENTER" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS"
+          GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.rowIndex="1">
+        <JFXDatePicker fx:id="startField" promptText="Ngày đầu" prefWidth="150" styleClass="dailyDishDatePicker"/>
+        <JFXButton fx:id="reloadButton" text="Tải lại" style="-fx-font-weight: BOLD; -fx-font-size: 16"/>
+        <JFXDatePicker fx:id="endField" promptText="Ngày cuối" prefWidth="150" styleClass="dailyDishDatePicker"/>
+    </HBox>
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+</GridPane>

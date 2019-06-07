@@ -3,56 +3,46 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.signInScreen.Controller">
-    <AnchorPane prefHeight="400.0" prefWidth="752.0" style="-fx-background-color: BLACK;">
-        <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" layoutX="159.0" layoutY="59.0" prefHeight="282.0" prefWidth="265.0" style="-fx-background-color: WHITE; -fx-background-radius: 10;">
-            <Pane prefHeight="111.0" prefWidth="292.0" style="-fx-background-color: #7B1FA2; -fx-background-radius: 10;">
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" orientation="VERTICAL" styleClass="login-container"
+          xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+          stylesheets="@../../css/signInScreen.css">
+    <FlowPane styleClass="login-box" alignment="CENTER" columnHalignment="CENTER">
+        <FlowPane columnHalignment="CENTER" alignment="CENTER">
+            <Label text="ĐĂNG NHẬP" styleClass="login-title">
                 <FlowPane.margin>
-                    <Insets top="-50.0" />
+                    <Insets top="40" bottom="40"/>
                 </FlowPane.margin>
-                <Label alignment="CENTER" prefHeight="111.0" prefWidth="292.0" text="Đăng nhập" textFill="WHITE">
-                    <font>
-                        <Font size="22.0" />
-                    </font>
-                </Label>
-            </Pane>
-            <FlowPane alignment="TOP_CENTER" prefHeight="30.0" prefWidth="337.0">
-                <FlowPane.margin>
-                    <Insets top="50.0" />
-                </FlowPane.margin>
-                <!--<ImageView fitHeight="30.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">-->
-                <!--<image>-->
-                <!--<Image url="@../Images/icons8-people-outline-64.png" />-->
-                <!--</image>-->
-                <!--<FlowPane.margin>-->
-                <!--<Insets right="10.0" />-->
-                <!--</FlowPane.margin>-->
-                <!--</ImageView>-->
-                <JFXTextField fx:id="textUsername" prefHeight="25.0" prefWidth="255.0" promptText="Tên đăng nhập" />
-            </FlowPane>
-            <FlowPane alignment="TOP_CENTER" layoutX="10.0" layoutY="96.0" prefHeight="30.0" prefWidth="337.0">
-                <FlowPane.margin>
-                    <Insets top="10.0" />
-                </FlowPane.margin>
-                <!--<ImageView fitHeight="30.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">-->
-                <!--<image>-->
-                <!--<Image url="@../Images/icons8-people-outline-64.png" />-->
-                <!--</image>-->
-                <!--<FlowPane.margin>-->
-                <!--<Insets right="10.0" />-->
-                <!--</FlowPane.margin>-->
-                <!--</ImageView>-->
-                <JFXPasswordField fx:id="textPassword" prefHeight="25.0" prefWidth="255.0" promptText="Mật khẩu" />
-            </FlowPane>
-            <JFXButton fx:id="loginButton" defaultButton="true" onAction="#loginAction" prefHeight="25.0" prefWidth="156.0" ripplerFill="#ab47bc" style="-fx-background-radius: 10;" text="Đăng nhập" textFill="#9c27b0">
-                <FlowPane.margin>
-                    <Insets top="10.0" />
-                </FlowPane.margin>
-            </JFXButton>
+            </Label>
         </FlowPane>
-    </AnchorPane>
-</VBox>
+        <JFXTextField fx:id="textUsername" prefHeight="35.0" prefWidth="255.0" promptText="Tên đăng nhập"
+                      labelFloat="true">
+            <validators>
+                <RequiredFieldValidator message="Cần nhập tên đăng nhập!">
+                    <FontIcon iconLiteral="fas-exclamation-triangle"/>
+                </RequiredFieldValidator>
+            </validators>
+        </JFXTextField>
+        <JFXPasswordField fx:id="textPassword" prefHeight="35.0" prefWidth="255.0" promptText="Mật khẩu"
+                          labelFloat="true">
+            <validators>
+                <RequiredFieldValidator message="Cần nhập mật khẩu!">
+                    <FontIcon iconLiteral="fas-exclamation-triangle"/>
+                </RequiredFieldValidator>
+            </validators>
+            <FlowPane.margin>
+                <Insets top="50"/>
+            </FlowPane.margin>
+        </JFXPasswordField>
+        <JFXButton fx:id="loginButton" defaultButton="true" onAction="#loginAction" prefWidth="255" prefHeight="50"
+                   text="ĐĂNG NHẬP" textFill="white" buttonType="RAISED">
+            <FlowPane.margin>
+                <Insets top="40.0" bottom="40"/>
+            </FlowPane.margin>
+        </JFXButton>
+    </FlowPane>
+</FlowPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import ui.compenents.PrimaryButton?>
+<GridPane alignment="CENTER" hgap="10.0" prefWidth="500.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1">
+    <Label alignment="CENTER_RIGHT" text="Tên món ăn*:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <JFXTextField fx:id="nameField" prefWidth="180" promptText="Tên món ăn" GridPane.columnIndex="1"
+                  GridPane.rowIndex="0">
+        <validators>
+            <RequiredFieldValidator message="Cần nhập tên!">
+                <FontIcon iconLiteral="fas-exclamation-triangle"/>
+            </RequiredFieldValidator>
+        </validators>
+    </JFXTextField>
+
+    <Label alignment="CENTER_RIGHT" text="Mô tả:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <JFXTextField fx:id="descriptionField" prefWidth="180" promptText="Mô tả" GridPane.columnIndex="1"
+                  GridPane.rowIndex="1"/>
+
+    <Label alignment="CENTER_RIGHT" text="Giá mặc đinh:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <JFXTextField fx:id="priceField" prefWidth="180" promptText="Giá mặc định" GridPane.columnIndex="1"
+                  GridPane.rowIndex="2"/>
+
+    <Label alignment="CENTER_RIGHT" text="Hình ảnh:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <JFXListView fx:id="imageField" prefWidth="180" prefHeight="120" orientation="HORIZONTAL"/>
+        <Label alignment="CENTER_RIGHT" style="-fx-font-size: 14" text="Ấn chuột phải vào hình để xoá hình!"/>
+    </VBox>
+
+    <PrimaryButton fx:id="submitButton" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"
+                   GridPane.halignment="CENTER" defaultButton="true">
+        Tạo
+    </PrimaryButton>
+    <columnConstraints>
+        <ColumnConstraints prefWidth="200.0"/>
+        <ColumnConstraints prefWidth="300.0"/>
+    </columnConstraints>
+</GridPane>

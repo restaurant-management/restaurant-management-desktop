@@ -1,27 +1,44 @@
+import com.jfoenix.svg.SVGGlyphLoader;
+import io.datafx.controller.flow.FlowException;
 import javafx.application.Application;
-import javafx.scene.Scene;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import ui.base.StageManager;
 import ui.splashScreen.SplashScreen;
 
 import java.io.IOException;
 
 public class MainApp extends Application {
-    @Override
-    public void start(Stage primaryStage) throws IOException {
-
-        Scene scene = new Scene(new SplashScreen());
-
-        primaryStage.setTitle("Quản lý quán cơm");
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-
-        StageManager.getInstance().push(primaryStage);
-    }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws FlowException {
+
+        //region Load font
+        new Thread(() -> {
+            try {
+                SVGGlyphLoader.loadGlyphsFont(MainApp.class.getResourceAsStream("/fonts/icomoon.svg"),
+                        "icomoon.svg");
+                Font.loadFont(MainApp.class.getResource("/fonts/HussarBd.otf").toExternalForm(), 12);
+            } catch (IOException ioExc) {
+                ioExc.printStackTrace();
+            }
+        }).start();
+        //endregion
+
+        double width = 800;
+        double height = 600;
+        try {
+            Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
+            width = bounds.getWidth() / 1.1;
+            height = bounds.getHeight() / 1.1;
+        } catch (Exception ignored) {
+        }
+        StageManager.getInstance().push(SplashScreen.class, width, height, "Phần mềm quản lý quán cơm", primaryStage);
     }
 }

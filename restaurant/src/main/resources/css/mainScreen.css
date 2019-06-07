@@ -1,0 +1,96 @@
+.jfx-rippler {
+    -fx-ripple-color: linear-gradient(from 0% 0% to 100% 100%, #FC5C7D, #9c27b0);
+}
+
+.title-label {
+    -fx-font-family: 'Hussar Bold';
+    -fx-font-size: 25;
+    -fx-font-weight: bold;
+}
+
+.about-tab {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+}
+
+.about-tab .information-card {
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+}
+
+.about-tab .about-tab-avatar {
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 5;
+}
+
+.about-tab .information-card .card-title {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.about-tab .label {
+    -fx-text-fill: white;
+}
+
+.profile-tab {
+    -fx-background-color: antiquewhite;
+}
+
+.profile-tab .profile-box {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+    -fx-border-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+    -fx-border-width: 4 0 0 0;
+}
+
+.profile-tab .profile-box .box-title {
+    -fx-font-family: 'Hussar Bold';
+    -fx-font-size: 16;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: gray;
+    -fx-label-padding: 5 0 5 0;
+}
+
+.profile-tab .profile-box .detail-box .property-name {
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-font-family: "Segoe UI";
+}
+
+.profile-tab .profile-box .detail-box {
+    -fx-font-size: 14;
+    -fx-font-family: "Segoe UI Light";
+}
+
+
+.drop-shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.tree-table-row-cell:odd {
+    -fx-background-color: #ebebeb;
+}
+
+.tree-table-row-cell:even {
+    -fx-background-color: white;
+}
+
+.tree-table-row-cell:selected {
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 50%, #FC5C7D, #9c27b0);
+}
+
+.tree-table-row-cell:selected > .tree-table-cell{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tree-table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 2; /* 2px, plus border adds 1px */
+    -fx-border-color: transparent -fx-table-cell-border-color transparent transparent;
+    -fx-border-width: 1; /* 1 */
+}
+
+.dailyDishDatePicker > .text-field  {
+    -fx-alignment: center;
+}

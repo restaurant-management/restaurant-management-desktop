@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           stylesheets="@../../css/mainScreen.css">
+    <!-- Header -->
+    <BorderPane>
+        <top>
+            <VBox spacing="20">
+                <JFXToolbar>
+                    <leftItems>
+                        <JFXRippler maskType="CIRCLE">
+                            <StackPane fx:id="titleBurgerContainer">
+                                <JFXHamburger fx:id="titleBurger">
+                                    <HamburgerSlideCloseTransition/>
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                        <Label fx:id="titleLabel" styleClass="title-label" />
+                    </leftItems>
+                    <rightItems>
+                        <JFXRippler onMouseClicked="#goToProfile" maskType="CIRCLE">
+                            <StackPane style="-fx-padding: 15px">
+                                <FontIcon iconLiteral="far-user" iconSize="18" iconColor="white" />
+                            </StackPane>
+                        </JFXRippler>
+                        <JFXRippler fx:id="optionsRippler" maskType="CIRCLE">
+                            <StackPane fx:id="optionsBurger">
+                                <JFXHamburger styleClass="jfx-options-burger">
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                    </rightItems>
+                </JFXToolbar>
+            </VBox>
+        </top>
+
+        <!-- Content Area -->
+        <center>
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="100" direction="LEFT" resizeContent="true"/>
+            <JFXDrawer fx:id="profileDrawer" defaultDrawerSize="400" direction="RIGHT" />
+        </center>
+    </BorderPane>
+</StackPane>

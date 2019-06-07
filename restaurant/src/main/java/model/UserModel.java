@@ -1,9 +1,12 @@
 package model;
 
+import model.enums.Permission;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class UserModel {
@@ -14,21 +17,43 @@ public class UserModel {
     private String _email;
     private Date _birthday;
     private String _role;
-    private int _point;
+    private Integer _point;
+    private ArrayList<Permission> _permissions;
 
     public UserModel(JSONObject jsonObject) {
         _uuid = jsonObject.getString("uuid");
         _username = jsonObject.getString("userName");
-        _fullName = jsonObject.getString("fullName");
-        _avatar = jsonObject.getString("avatar");
+        try {
+            _fullName = jsonObject.getString("fullName");
+        } catch (JSONException e) {
+            _fullName = null;
+        }
+        try {
+            _avatar = jsonObject.getString("avatar");
+        } catch (JSONException e) {
+            _avatar = null;
+        }
         _email = jsonObject.getString("email");
         try {
-            _birthday = new SimpleDateFormat("yyyy-MM-dd").parse(jsonObject.getString("birthday"));
-        } catch (ParseException e) {
-            _birthday = new Date();
+            _birthday = new SimpleDateFormat("yyyy-MM-dd")
+                    .parse(jsonObject.getString("birthday"));
+        } catch (Exception e) {
+            _birthday = null;
         }
         _point = jsonObject.getInt("point");
         _role = jsonObject.getString("role");
+        try {
+            JSONArray jsonPermissions = jsonObject.getJSONArray("permissions");
+            _permissions = new ArrayList<>();
+            for (Object object : jsonPermissions) {
+                try {
+                    _permissions.add(Permission.get((String) object));
+                } catch (Exception ignore) {
+                }
+            }
+        } catch (Exception e) {
+            _permissions = null;
+        }
     }
 
     public UserModel(UserModel user) {
@@ -40,22 +65,34 @@ public class UserModel {
         _birthday = user._birthday;
         _point = user._point;
         _role = user._role;
+        _permissions = user._permissions;
+    }
+
+    public UserModel(String username, String fullName, String avatar, String email, Date birthday, String role, Integer point, ArrayList<Permission> permissions) {
+        _username = username;
+        _fullName = fullName;
+        _avatar = avatar;
+        _email = email;
+        _birthday = birthday;
+        _role = role;
+        _point = point;
+        _permissions = permissions;
+    }
+
+    public ArrayList<Permission> get_permissions() {
+        return _permissions;
+    }
+
+    public void set_permissions(ArrayList<Permission> _permissions) {
+        this._permissions = _permissions;
     }
 
     public String get_uuid() {
         return _uuid;
     }
 
-    public void set_uuid(String _uuid) {
-        this._uuid = _uuid;
-    }
-
     public String get_username() {
         return _username;
-    }
-
-    public void set_username(String _username) {
-        this._username = _username;
     }
 
     public String get_fullName() {
@@ -98,11 +135,16 @@ public class UserModel {
         this._role = _role;
     }
 
-    public int get_point() {
+    public Integer get_point() {
         return _point;
     }
 
-    public void set_point(int _point) {
+    public void set_point(Integer _point) {
         this._point = _point;
+    }
+
+    @Override
+    public String toString() {
+        return _username;
     }
 }
