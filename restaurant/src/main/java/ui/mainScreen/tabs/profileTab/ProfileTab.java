@@ -2,7 +2,6 @@ package ui.mainScreen.tabs.profileTab;
 
 import bus.UserProfileBus;
 import com.jfoenix.controls.JFXButton;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.action.ActionMethod;
@@ -18,7 +17,10 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import model.UserModel;
-import ui.compenents.*;
+import ui.compenents.CustomDialog;
+import ui.compenents.ErrorDialog;
+import ui.compenents.LoadingDialog;
+import ui.compenents.LoadingImage;
 import ui.mainScreen.tabs.profileTab.popups.ChangePasswordPopup;
 import ui.mainScreen.tabs.profileTab.popups.EditProfilePopup;
 
