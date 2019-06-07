@@ -83,7 +83,7 @@ class HttpConnection {
         System.out.println(" " + responseCode);
         if (responseCode != HttpsURLConnection.HTTP_OK)
             throw new RequestFailException(responseCode, result.toString());
-        return new String(result.toString());
+        return result.toString();
     }
 
 }

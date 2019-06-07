@@ -2,6 +2,7 @@ package dao;
 
 import com.google.firebase.database.annotations.NotNull;
 import dao.exceptions.AddPermissionFailException;
+import dao.exceptions.RequestFailException;
 import dao.exceptions.billExceptions.CreateBillFailException;
 import dao.exceptions.billExceptions.DeleteBillFailException;
 import dao.exceptions.billExceptions.EditBillFailException;
@@ -22,7 +23,10 @@ import dao.restApi.*;
 import model.*;
 import model.enums.DaySession;
 import model.enums.Permission;
+import org.json.JSONArray;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.prefs.Preferences;
@@ -40,6 +44,7 @@ public class Repository {
     private RoleDao _roleDao;
     private BillDao _billDao;
     private DishDao _dishDao;
+    private StatisticsDao _statisticsDao;
     private DailyDishDao _dailyDishDao;
     private UserModel _currentUser;
     private ArrayList<Permission> _currentUserPermissions;
@@ -50,6 +55,7 @@ public class Repository {
         _roleDao = new RoleDao();
         _billDao = new BillDao();
         _dishDao = new DishDao();
+        _statisticsDao = new StatisticsDao();
         _dailyDishDao = new DailyDishDao();
     }
 
@@ -233,5 +239,9 @@ public class Repository {
 
     public void deleteBill(int billId) throws DeleteBillFailException {
         _billDao.deleteBill(getToken(), billId);
+    }
+
+    public JSONArray countBill(@NotNull LocalDate startDate, LocalDate endDate) throws IOException, RequestFailException {
+        return _statisticsDao.countBill(getToken(), startDate, endDate);
     }
 }

@@ -69,6 +69,7 @@ public class MainScreen {
                 drawer.close();
             }
         });
+        drawer.open();
 
         // set flow for content
         context = new ViewFlowContext();
