@@ -14,4 +14,8 @@ public class StatisticsBus {
     public JSONArray countBill(@NotNull LocalDate startDate, LocalDate endDate) throws IOException, RequestFailException {
         return _repository.countBill(startDate, endDate);
     }
+
+    public JSONArray countDish(@NotNull Integer dishId,@NotNull LocalDate startDate, LocalDate endDate) throws IOException, RequestFailException {
+        return _repository.countDish(dishId, startDate, endDate);
+    }
 }

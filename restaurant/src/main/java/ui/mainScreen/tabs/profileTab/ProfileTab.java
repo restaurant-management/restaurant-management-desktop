@@ -57,7 +57,7 @@ public class ProfileTab {
 //    @FXML
 //    private IconButton reloadButton;
 
-    private UserModel _currentUser = new UserProfileBus().getCurrentUser();
+    private UserModel _currentUser;
 
     @PostConstruct
     void init() {
@@ -70,6 +70,7 @@ public class ProfileTab {
     }
 
     private void initData() {
+        _currentUser = new UserProfileBus().getCurrentUser();
         avatar.setStroke(Color.SEAGREEN);
         String url = _currentUser.get_avatar() != null ? _currentUser.get_avatar() : "/images/default-avatar.jpg";
         new LoadingImage(url, "/images/default-avatar.jpg").start(avatar);

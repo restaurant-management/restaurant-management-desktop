@@ -15,7 +15,7 @@ public class DishBus {
     private Repository _repository = Repository.getInstance();
     private ArrayList<DishModel> _listDishes;
 
-    private DishBus() {
+    public DishBus() {
     }
 
     public static DishBus get_instance() {

@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="RestaurantManagement.restaurant">
+    <output-path>$PROJECT_DIR$/out/artifacts/RestaurantManagement_restaurant</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="RestaurantManagement.restaurant.MainApp" />
+        <option name="description" value="Quan ly quan com" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="Quan ly quan com" />
+        <option name="vendor" value="Hieren Lee" />
+        <option name="version" value="0.1" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="RestaurantManagement_restaurant.jar">
+        <element id="module-output" name="RestaurantManagement.restaurant" />
+        <element id="artifact" artifact-name="jfoenix" />
+      </element>
+    </root>
+  </artifact>
+</component>

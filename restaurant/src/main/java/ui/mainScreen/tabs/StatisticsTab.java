@@ -12,15 +12,16 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.util.StringConverter;
+import model.DishModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ui.compenents.ErrorDialog;
 import ui.compenents.LoadingDialog;
 
 import javax.annotation.PostConstruct;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 @ViewController(value = "/ui/mainScreen/tabs/StatisticsTab.fxml")
 public class StatisticsTab {
@@ -36,6 +37,8 @@ public class StatisticsTab {
     private JFXDatePicker endField;
 
     private JSONArray _listBillData;
+    private ArrayList<JSONArray> _listLegend = new ArrayList<>();
+    private ArrayList<DishModel> listDish = new ArrayList<>();
     private XYChart.Series<String, Integer> series = new XYChart.Series<>();
 
     @PostConstruct
@@ -54,6 +57,7 @@ public class StatisticsTab {
                     return "";
                 }
             }
+
             @Override
             public LocalDate fromString(String string) {
                 if (string != null && !string.isEmpty()) {
@@ -82,12 +86,28 @@ public class StatisticsTab {
         }
     }
 
+//    private void setupChart() {
+//        billChart.getData().clear();
+//        int j = 0;
+//        for (JSONArray data : _listLegend) {
+//
+//            XYChart.Series<String, Integer> series = new XYChart.Series<>();
+//            series.setName(listDish.get(j).get_name());
+//            for (int i = 0; i < data.length(); i++) {
+//                String xValue = ((JSONObject) data.get(i)).getString("day");
+//                int yValue = ((JSONObject) data.get(i)).getInt("count");
+//                series.getData().add(new XYChart.Data<>(xValue, yValue));
+//            }
+//            billChart.getData().add(series);
+//            j++;
+//        }
+//    }
+
     private void loadBillData() {
         LoadingDialog loadingDialog = new LoadingDialog("Đang tải dữ liệu").show();
         Task<Void> getDataTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 _listBillData = new StatisticsBus().countBill(startField.getValue(), endField.getValue());
                 return null;
             }

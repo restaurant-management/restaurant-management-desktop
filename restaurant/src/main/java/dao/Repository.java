@@ -244,4 +244,8 @@ public class Repository {
     public JSONArray countBill(@NotNull LocalDate startDate, LocalDate endDate) throws IOException, RequestFailException {
         return _statisticsDao.countBill(getToken(), startDate, endDate);
     }
+
+    public JSONArray countDish(@NotNull Integer dishId,@NotNull LocalDate startDate, LocalDate endDate) throws IOException, RequestFailException {
+        return _statisticsDao.countDish(getToken(), dishId, startDate, endDate);
+    }
 }
