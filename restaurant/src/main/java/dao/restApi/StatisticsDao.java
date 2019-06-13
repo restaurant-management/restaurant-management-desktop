@@ -8,10 +8,8 @@ import org.apache.http.message.BasicHeader;
 import org.json.JSONArray;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class StatisticsDao implements IStatisticsDao {
     @Override
@@ -26,4 +24,20 @@ public class StatisticsDao implements IStatisticsDao {
         String response = http.get(url, new Header[]{header});
         return new JSONArray(response);
     }
+
+    @Override
+    public JSONArray countDish(String token, Integer dishId, LocalDate startDate, LocalDate endDate) throws RequestFailException, IOException {
+        HttpConnection http = new HttpConnection();
+        BasicHeader header = new BasicHeader("Authorization", token);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String url = "/api/statistics/countDish?startDate=" + startDate.format(formatter);
+        if (endDate != null) url += "&endDate=" + endDate.format(formatter);
+        else url += "&endDate=" + LocalDate.now().format(formatter);
+        url += "&dishId=" + dishId;
+        String response = http.get(url, new Header[]{header});
+        return new JSONArray(response);
+    }
+
+
 }

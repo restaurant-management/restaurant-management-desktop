@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="javafx-preloader" name="jfoenix">
+    <output-path>$PROJECT_DIR$/out/artifacts/jfoenix</output-path>
+    <root id="archive" name="jfoenix.jar">
+      <element id="module-output" name="RestaurantManagement.jfoenix.main" />
+    </root>
+  </artifact>
+</component>
